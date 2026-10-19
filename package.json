@@ -1,0 +1,10 @@
+{
+  "name": "cdsu-main",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Career Development Society of Uganda (CDSU) — Official Website & Career Development Programme Portal",
+  "scripts": {
+    "build": "mkdir -p dist build && cp -r index.html css js assets dist/ && cp -r index.html css js assets build/",
+    "start": "python3 -m http.server 8000"
+  }
+}
