@@ -5,12 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Book & CDP Access Portal — CDSU</title>
   <meta name="description" content="Career Development: A Path to Wealth (ISBN 978-9913-678-02-5) — preview the 8 chapters, read endorsements, and register your original book serial number." />
-  <link rel="icon" type="image/png" href="assets/images/cdsu_logo.png" />
+  <link rel="icon" type="image/png" href="assets/images/cdsu_emblem.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20261024c" />
+  <link rel="stylesheet" href="css/styles.css?v=20261024d" />
   <style>
+  .brand{display:inline-flex;align-items:center;gap:.75rem;text-decoration:none;color:#1E1B20;padding:.25rem .4rem .25rem .25rem;border-radius:12px}
+  .brand-logo-wrap{display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#fff 0%,#f5f4fb 100%);border:1.5px solid rgba(24,80,156,.18);box-shadow:0 4px 12px rgba(18,40,84,.1);border-radius:11px;padding:.3rem .45rem;flex-shrink:0}
+  .brand-logo-wrap img{height:50px;width:auto;object-fit:contain}
+  .brand-divider{width:4px;height:44px;border-radius:99px;flex-shrink:0;background:linear-gradient(180deg,#1E1B20 0% 33%,#F8D008 33% 66%,#D82828 66% 100%)}
+  .brand-text{display:flex;flex-direction:column;line-height:1.12}
+  .brand-kicker{font-family:var(--font-display);font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#18509C}
+  .brand-title{font-family:var(--font-display);font-size:1.08rem;font-weight:800;letter-spacing:-.01em;color:#1E1B20}
+  .brand-motto{font-family:var(--font-serif);font-style:italic;font-size:.72rem;color:#D82828;margin-top:.12rem}
+  .hero-slide{display:none}
+  .hero-slide.active{display:block}
   .page-hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(circle at 88% 20%,rgba(24,80,156,.88),transparent 55%),linear-gradient(135deg,#122854 0%,#0d1c3d 65%,#1E1B20 100%);padding:clamp(2.8rem,5.5vw,4.4rem) 0;border-bottom:4px solid #F8D008}
   .page-hero-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;position:relative;z-index:1}
   .page-hero h1{font-size:clamp(2rem,4vw,2.9rem);font-weight:800;margin-bottom:.5rem;color:#fff}
@@ -54,7 +64,7 @@
   .footer-contact-list .f-ico{width:32px;height:32px;border-radius:8px;background:rgba(216,40,40,.22);border:1px solid rgba(216,40,40,.45);color:#F8D008;display:grid;place-items:center;flex-shrink:0;font-size:.9rem}
   .footer-contact-list strong{display:block;color:#fff;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
   @media(max-width:900px){.hub-grid,.rules-grid,.footer-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:600px){.hub-grid,.rules-grid,.footer-grid{grid-template-columns:1fr}}
+  @media(max-width:600px){.hub-grid,.rules-grid,.footer-grid{grid-template-columns:1fr}.brand-motto{display:none}}
 </style>
 </head>
 <body>
@@ -62,9 +72,16 @@
 
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a href="index.html" class="brand" aria-label="CDSU home">
-        <img src="assets/images/cdsu_logo.png" alt="CDSU logo" />
-        <span class="brand-text"><strong>CDSU</strong><small>Career Development Society of Uganda</small></span>
+      <a href="index.html" class="brand" aria-label="The Career Development Society of Uganda — Home">
+        <span class="brand-logo-wrap">
+          <img src="assets/images/cdsu_emblem.png" alt="CDSU Emblem" />
+        </span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-kicker">THE CAREER DEVELOPMENT</span>
+          <strong class="brand-title">SOCIETY OF UGANDA</strong>
+          <small class="brand-motto">Empowering Today, Transforming Tomorrow</small>
+        </span>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -243,14 +260,14 @@
     <div class="container footer-grid">
       <div>
         <div class="footer-brand-head">
-          <div class="footer-logo"><img src="assets/images/cdsu_logo.png" alt="CDSU logo" /></div>
+          <div class="footer-logo"><img src="assets/images/cdsu_emblem.png" alt="CDSU logo" /></div>
           <div class="footer-brand-title">
-            <strong>CDSU</strong>
-            <small>Career Development Society of Uganda</small>
+            <strong>The Career Development Society of Uganda</strong>
+            <small>Non-Partisan, Non-Profit Organization</small>
           </div>
         </div>
         <p class="motto-sm">“<span data-bind="organization.motto">Building people first, for wealth to follow.</span>”</p>
-        <p class="footer-desc">A non-partisan, non-profit institutional society running a subscription-based, data-driven Career Development Programme across schools, universities, workplaces, and communities.</p>
+        <p class="footer-desc">Running a subscription-based, data-driven Career Development Programme across schools, universities, workplaces, and communities to build people first, for wealth to follow.</p>
         <div class="footer-badges">
           <span class="footer-badge">ISBN <span data-bind="organization.bookIsbn">978-9913-678-02-5</span></span>
           <span class="footer-badge">ABSA UGX &amp; USD</span>
@@ -327,7 +344,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/cdsuData.js?v=20261024c"></script>
-  <script src="js/app.js?v=20261024c"></script>
+  <script src="js/cdsuData.js?v=20261024d"></script>
+  <script src="js/app.js?v=20261024d"></script>
 </body>
 </html>

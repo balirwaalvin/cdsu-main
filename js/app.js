@@ -48,6 +48,91 @@
     });
   }
 
+  /* ---------- home hero multi-slide carousel loop ---------- */
+  const heroSlider = $("#hero-slider");
+  if (heroSlider) {
+    const slides = $$(".hero-slide", heroSlider);
+    const tabs = $$(".hero-tab", heroSlider);
+    const pauseBtn = $("[data-hero-pause]", heroSlider);
+    let idx = 0;
+    let paused = false;
+    let timer = null;
+    const INTERVAL = 7500;
+
+    const resetProgressBar = (tab) => {
+      const bar = $(".hero-tab-bar", tab);
+      if (!bar) return;
+      bar.style.transition = "none";
+      bar.style.width = "0%";
+      void bar.offsetWidth;
+      if (!paused) {
+        bar.style.transition = `width ${INTERVAL}ms linear`;
+        bar.style.width = "100%";
+      }
+    };
+
+    const showSlide = (nextIdx) => {
+      idx = (nextIdx + slides.length) % slides.length;
+      slides.forEach((s, i) => {
+        const active = i === idx;
+        s.classList.toggle("active", active);
+        s.setAttribute("aria-hidden", String(!active));
+      });
+      tabs.forEach((t, i) => {
+        const active = i === idx;
+        t.classList.toggle("active", active);
+        t.setAttribute("aria-selected", String(active));
+        const bar = $(".hero-tab-bar", t);
+        if (bar && !active) {
+          bar.style.transition = "none";
+          bar.style.width = "0%";
+        }
+        if (active) resetProgressBar(t);
+      });
+    };
+
+    const startLoop = () => {
+      clearInterval(timer);
+      if (paused) return;
+      timer = setInterval(() => showSlide(idx + 1), INTERVAL);
+    };
+
+    tabs.forEach((t, i) => {
+      t.addEventListener("click", () => {
+        showSlide(i);
+        startLoop();
+      });
+    });
+
+    $$("[data-hero-dir]", heroSlider).forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const dir = Number(btn.dataset.heroDir) || 1;
+        showSlide(idx + dir);
+        startLoop();
+      });
+    });
+
+    if (pauseBtn) {
+      pauseBtn.addEventListener("click", () => {
+        paused = !paused;
+        pauseBtn.textContent = paused ? "▶" : "⏸";
+        pauseBtn.setAttribute("aria-label", paused ? "Resume hero slideshow" : "Pause hero slideshow");
+        showSlide(idx);
+        startLoop();
+      });
+    }
+
+    heroSlider.addEventListener("mouseenter", () => {
+      clearInterval(timer);
+    });
+    heroSlider.addEventListener("mouseleave", () => {
+      if (!paused) startLoop();
+    });
+
+    showSlide(0);
+    startLoop();
+  }
+
   /* ---------- partners marquee (only partner/sponsor entries; linked if URL set) ---------- */
   const partnerTrack = $("#partner-track");
   if (partnerTrack) {

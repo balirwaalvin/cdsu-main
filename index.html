@@ -3,14 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CDSU — The Career Development Society of Uganda</title>
+  <title>The Career Development Society of Uganda (CDSU) — Official Portal</title>
   <meta name="description" content="The Career Development Society of Uganda (CDSU) is a non-partisan and non-profit organization established following the need for a structured, data-driven Career Development Programme (CDP) to enhance Uganda&#39;s national leap to high middle-income status." />
-  <link rel="icon" type="image/png" href="assets/images/cdsu_logo.png" />
+  <link rel="icon" type="image/png" href="assets/images/cdsu_emblem.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20261024c" />
+  <link rel="stylesheet" href="css/styles.css?v=20261024d" />
   <style>
+  .brand{display:inline-flex;align-items:center;gap:.75rem;text-decoration:none;color:#1E1B20;padding:.25rem .4rem .25rem .25rem;border-radius:12px}
+  .brand-logo-wrap{display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#fff 0%,#f5f4fb 100%);border:1.5px solid rgba(24,80,156,.18);box-shadow:0 4px 12px rgba(18,40,84,.1);border-radius:11px;padding:.3rem .45rem;flex-shrink:0}
+  .brand-logo-wrap img{height:50px;width:auto;object-fit:contain}
+  .brand-divider{width:4px;height:44px;border-radius:99px;flex-shrink:0;background:linear-gradient(180deg,#1E1B20 0% 33%,#F8D008 33% 66%,#D82828 66% 100%)}
+  .brand-text{display:flex;flex-direction:column;line-height:1.12}
+  .brand-kicker{font-family:var(--font-display);font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#18509C}
+  .brand-title{font-family:var(--font-display);font-size:1.08rem;font-weight:800;letter-spacing:-.01em;color:#1E1B20}
+  .brand-motto{font-family:var(--font-serif);font-style:italic;font-size:.72rem;color:#D82828;margin-top:.12rem}
+  .hero-slide{display:none}
+  .hero-slide.active{display:block}
   .page-hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(circle at 88% 20%,rgba(24,80,156,.88),transparent 55%),linear-gradient(135deg,#122854 0%,#0d1c3d 65%,#1E1B20 100%);padding:clamp(2.8rem,5.5vw,4.4rem) 0;border-bottom:4px solid #F8D008}
   .page-hero-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;position:relative;z-index:1}
   .page-hero h1{font-size:clamp(2rem,4vw,2.9rem);font-weight:800;margin-bottom:.5rem;color:#fff}
@@ -54,7 +64,7 @@
   .footer-contact-list .f-ico{width:32px;height:32px;border-radius:8px;background:rgba(216,40,40,.22);border:1px solid rgba(216,40,40,.45);color:#F8D008;display:grid;place-items:center;flex-shrink:0;font-size:.9rem}
   .footer-contact-list strong{display:block;color:#fff;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
   @media(max-width:900px){.hub-grid,.rules-grid,.footer-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:600px){.hub-grid,.rules-grid,.footer-grid{grid-template-columns:1fr}}
+  @media(max-width:600px){.hub-grid,.rules-grid,.footer-grid{grid-template-columns:1fr}.brand-motto{display:none}}
 </style>
 </head>
 <body>
@@ -62,9 +72,16 @@
 
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a href="index.html" class="brand" aria-label="CDSU home">
-        <img src="assets/images/cdsu_logo.png" alt="CDSU logo" />
-        <span class="brand-text"><strong>CDSU</strong><small>Career Development Society of Uganda</small></span>
+      <a href="index.html" class="brand" aria-label="The Career Development Society of Uganda — Home">
+        <span class="brand-logo-wrap">
+          <img src="assets/images/cdsu_emblem.png" alt="CDSU Emblem" />
+        </span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-kicker">THE CAREER DEVELOPMENT</span>
+          <strong class="brand-title">SOCIETY OF UGANDA</strong>
+          <small class="brand-motto">Empowering Today, Transforming Tomorrow</small>
+        </span>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -84,26 +101,184 @@
   </header>
 
   <main id="main">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="pill pill-light" data-bind="organization.fullName">The Career Development Society of Uganda</span>
-          <h1>Career Development:<br /><span class="accent">A Path to Wealth</span></h1>
-          <p class="motto">“<span data-bind="organization.motto">Building people first, for wealth to follow.</span>”</p>
-          <p class="lead" data-bind="organization.aboutSummary">The Career Development Society of Uganda (CDSU) is a non-partisan and non-profit organization established following the need for a structured, data-driven Career Development Programme (CDP) to enhance Uganda&#39;s national leap to high middle-income status.</p>
-          <div class="hero-ctas">
-            <a href="book.html" class="btn btn-red">Get the Book — UGX 50,000</a>
-            <a href="programme.html" class="btn btn-gold">Explore the Programme</a>
-            <button type="button" class="btn btn-outline-light" data-open-pay="donate">Support CDSU</button>
+    <!-- MULTI-SLIDE INTERACTIVE HERO LOOP -->
+    <section class="hero" id="hero-slider" aria-roledescription="carousel" aria-label="CDSU Highlights">
+      <div class="container hero-slider-stage">
+
+        <!-- SLIDE 1 (DEFAULT): THE NGO — CAREER DEVELOPMENT SOCIETY OF UGANDA -->
+        <div class="hero-slide active" role="tabpanel" aria-hidden="false" data-slide="0">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <span class="pill pill-gold">Non-Partisan, Non-Profit NGO • Uganda</span>
+              <h1>The Career Development<br /><span class="accent">Society of Uganda (CDSU)</span></h1>
+              <p class="motto">“<span data-bind="organization.motto">Building people first, for wealth to follow.</span>”</p>
+              <p class="lead">The Career Development Society of Uganda (CDSU) is a non-partisan and non-profit organization established following the need for a structured, data-driven Career Development Programme (CDP) to enhance Uganda&#39;s national leap to high middle-income status. We are focused on raising a critical mass of citizens with productive skills, who passionately add holistic value to themselves and the country at large. Our intent is on &#39;building people first, for wealth to follow&#39;—bridging the gap between education, TVET skills mastery, industry mentorship, and sustainable entrepreneurship.</p>
+              <div class="hero-ctas">
+                <a href="programme.html" class="btn btn-gold">Explore Our Programme</a>
+                <a href="about.html" class="btn btn-red">About CDSU &amp; Leadership</a>
+                <button type="button" class="btn btn-outline-light" data-open-pay="donate">Partner / Support Us</button>
+              </div>
+              <ul class="hero-tags">
+                <li>Inspire</li><li>Empower</li><li>Transform</li>
+              </ul>
+            </div>
+            <div class="hero-visual">
+              <div class="hero-ngo-card">
+                <div class="hero-ngo-collage">
+                  <img src="assets/images/students_laptop.jpg" alt="CDSU students in digital and career mentorship" />
+                  <img src="assets/images/students_reading.jpg" alt="Students studying career pathways" />
+                </div>
+                <div class="hero-ngo-vision">
+                  <small>Our Institutional Vision</small>
+                  <p>To be the lead career development enterprise contributing to the production of balanced and wealthy citizens.</p>
+                </div>
+                <div class="hero-ngo-pillars">
+                  <div class="hero-ngo-pillar"><span>01</span> School &amp; College Seminars</div>
+                  <div class="hero-ngo-pillar"><span>02</span> Supervised Career Clubs</div>
+                  <div class="hero-ngo-pillar"><span>03</span> TVET &amp; Enterprise Skilling</div>
+                  <div class="hero-ngo-pillar"><span>04</span> Annual Skills Exhibitions</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <ul class="hero-tags">
-            <li>Inspire</li><li>Empower</li><li>Transform</li>
-          </ul>
         </div>
-        <div class="hero-visual">
-          <img src="assets/images/book_3d.jpg" alt="Career Development: A Path to Wealth — book cover" />
+
+        <!-- SLIDE 2: THE FLAGSHIP BOOK — CAREER DEVELOPMENT: A PATH TO WEALTH -->
+        <div class="hero-slide" role="tabpanel" aria-hidden="true" data-slide="1">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <span class="pill pill-light">Flagship Reference Publication • ISBN 978-9913-678-02-5</span>
+              <h1>Career Development:<br /><span class="accent">A Path to Wealth</span></h1>
+              <p class="motto">The Lead Reference Manual &amp; Self-Assessment Workbook for the CDP</p>
+              <p class="lead">Authored by seasoned Ugandan educators, university vice chancellors, and school career counselors. Bridges Uganda's Competence-Based Curriculum, UVTAB/TVET pathways, and Enterprise Uganda (B.E.S.T) wealth creation principles.</p>
+              <div class="hero-ctas">
+                <button type="button" class="btn btn-red" data-open-pay="tier-book">Get the Book — UGX 50,000</button>
+                <a href="book.html" class="btn btn-gold">Explore 8-Chapter Syllabus</a>
+                <a href="book.html#access" class="btn btn-outline-light">Register Book Serial No.</a>
+              </div>
+              <ul class="hero-tags">
+                <li>8 Practical Chapters</li><li>Self-Awareness Tool</li><li>Serialized CDP Access Code</li>
+              </ul>
+            </div>
+            <div class="hero-visual">
+              <div class="hero-book-showcase">
+                <img src="assets/images/book_3d.jpg" alt="Career Development: A Path to Wealth — 3D Book Cover" />
+                <div class="hero-book-badges">
+                  <span class="hero-float-badge"><strong>UGX 50,000</strong> • Official Copy</span>
+                  <span class="hero-float-badge">Unlocks <strong>CDP Access Code</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- SLIDE 3: CREATIVE TESTIMONIALS & KEYNOTE ENDORSEMENTS -->
+        <div class="hero-slide" role="tabpanel" aria-hidden="true" data-slide="2">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <span class="pill pill-gold">Voices of Impact • Endorsements &amp; Testimonies</span>
+              <h1>Endorsed by Leaders,<br /><span class="accent">Proven by Ugandan Youth</span></h1>
+              <p class="motto">Real stories of career clarity, scientific discovery, and enterprise creation</p>
+              <p class="lead">From national investment and academic pioneers to secondary school biological innovators, TVET furniture artisans, and international space scientists — see how structured career guidance transforms lives across Uganda.</p>
+              <div class="hero-ctas">
+                <a href="stories.html" class="btn btn-gold">Read Full Youth Stories</a>
+                <a href="book.html" class="btn btn-red">View Keynote Endorsements</a>
+                <a href="contact.html?topic=Sharing%20a%20success%20story" class="btn btn-outline-light">Share Your Story</a>
+              </div>
+              <ul class="hero-tags">
+                <li>Space Science</li><li>CBC School Innovation</li><li>TVET Manufacturing</li>
+              </ul>
+            </div>
+            <div class="hero-visual">
+              <div class="hero-testi-deck">
+                <article class="hero-testi-card">
+                  <img src="assets/images/maggie_kigozi.jpg" alt="Prof. Maggie Kigozi" />
+                  <div>
+                    <blockquote>“A comprehensive, step-by-step career guidance tool that aligns young people with Uganda's wealth creation opportunities.”</blockquote>
+                    <div class="hero-testi-meta"><strong>Prof. Maggie Kigozi</strong> <span>• Keynote Endorser, Former ED UIA</span></div>
+                  </div>
+                </article>
+                <article class="hero-testi-card">
+                  <img src="assets/images/story_safari_daniel.jpg" alt="Mr. Safari Daniel" />
+                  <div>
+                    <blockquote>“Never let your rural background define your ceiling — structured career mentorship launched me from Uganda into space physics.”</blockquote>
+                    <div class="hero-testi-meta"><strong>Mr. Safari Daniel</strong> <span>• Space Scientist &amp; Physicist</span></div>
+                  </div>
+                </article>
+                <article class="hero-testi-card">
+                  <img src="assets/images/story_kirabo_mimi.jpg" alt="Ms. Kirabo Mimi Rehema" />
+                  <div>
+                    <blockquote>“Through school career guidance and the new curriculum, I turned classroom biology into an organic pesticide enterprise.”</blockquote>
+                    <div class="hero-testi-meta"><strong>Ms. Kirabo Mimi Rehema</strong> <span>• Student Innovator, Seeta High School</span></div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4: THE 3-PHASE PROGRAMME & INTERACTIVE CAREER CLUSTER QUIZ -->
+        <div class="hero-slide" role="tabpanel" aria-hidden="true" data-slide="3">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <span class="pill pill-light">3-Phase CDP Model &amp; Annexure 3 Self-Check</span>
+              <h1>Discover Your Ideal<br /><span class="accent">Career Cluster Today</span></h1>
+              <p class="motto">Phase I: Theorizing • Phase II: Practice • Phase III: Exposure</p>
+              <p class="lead">Unsure which career cluster fits your talents, values, and work style? Take our interactive Self-Awareness &amp; Career Direction check and see how schools and institutions implement the 3-Phase CDP.</p>
+              <div class="hero-ctas">
+                <a href="programme.html#quiz-section" class="btn btn-gold">Take Free Career Quiz &rarr;</a>
+                <a href="programme.html" class="btn btn-red">Explore 3-Phase CDP</a>
+                <a href="join.html" class="btn btn-outline-light">Onboard a School (100 Books)</a>
+              </div>
+              <ul class="hero-tags">
+                <li>6 Career Clusters</li><li>5 Core Products</li><li>School &amp; Corporate Tiers</li>
+              </ul>
+            </div>
+            <div class="hero-visual">
+              <div class="hero-cluster-card">
+                <div class="hero-phase-mini">
+                  <div class="hero-phase-box"><small>Phase I</small><strong>Theorizing</strong></div>
+                  <div class="hero-phase-box"><small>Phase II</small><strong>Practice</strong></div>
+                  <div class="hero-phase-box"><small>Phase III</small><strong>Exposure</strong></div>
+                </div>
+                <strong style="display:block;font-size:.86rem;color:var(--gold)">Explore the 6 National Career Clusters (Click to Test Yourself):</strong>
+                <div class="hero-cluster-chips"><a href="programme.html#quiz-section" class="hero-cluster-chip"><strong>A.</strong> Science, Technology &amp; Engineering</a><a href="programme.html#quiz-section" class="hero-cluster-chip"><strong>B.</strong> Business, Entrepreneurship &amp; Management</a><a href="programme.html#quiz-section" class="hero-cluster-chip"><strong>C.</strong> Social Services, Education &amp; Healthcare Support</a><a href="programme.html#quiz-section" class="hero-cluster-chip"><strong>D.</strong> Technical, TVET &amp; Practical Skilled Trades</a><a href="programme.html#quiz-section" class="hero-cluster-chip"><strong>E.</strong> Creative Arts, Media &amp; Design</a><a href="programme.html#quiz-section" class="hero-cluster-chip"><strong>F.</strong> Security, Sports &amp; Uniformed / Outdoor Leadership</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE SLIDE CONTROLS & PROGRESS TABS -->
+        <div class="hero-controls">
+          <div class="hero-tabs" role="tablist" aria-label="Hero slides">
+            <button type="button" class="hero-tab active" role="tab" aria-selected="true" data-slide-to="0">
+              <small>01 • The NGO</small>
+              <strong>About CDSU &amp; Mission</strong>
+              <span class="hero-tab-bar"></span>
+            </button>
+            <button type="button" class="hero-tab" role="tab" aria-selected="false" data-slide-to="1">
+              <small>02 • The Reference Book</small>
+              <strong>A Path to Wealth</strong>
+              <span class="hero-tab-bar"></span>
+            </button>
+            <button type="button" class="hero-tab" role="tab" aria-selected="false" data-slide-to="2">
+              <small>03 • Testimonials</small>
+              <strong>Leaders &amp; Youth Voices</strong>
+              <span class="hero-tab-bar"></span>
+            </button>
+            <button type="button" class="hero-tab" role="tab" aria-selected="false" data-slide-to="3">
+              <small>04 • Career Discovery</small>
+              <strong>3-Phase CDP &amp; Quiz</strong>
+              <span class="hero-tab-bar"></span>
+            </button>
+          </div>
+          <div class="hero-arrows">
+            <button type="button" class="hero-arrow" data-hero-dir="-1" aria-label="Previous slide">&lsaquo;</button>
+            <button type="button" class="hero-arrow" data-hero-pause aria-label="Pause hero slideshow">⏸</button>
+            <button type="button" class="hero-arrow" data-hero-dir="1" aria-label="Next slide">&rsaquo;</button>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -311,14 +486,14 @@
     <div class="container footer-grid">
       <div>
         <div class="footer-brand-head">
-          <div class="footer-logo"><img src="assets/images/cdsu_logo.png" alt="CDSU logo" /></div>
+          <div class="footer-logo"><img src="assets/images/cdsu_emblem.png" alt="CDSU logo" /></div>
           <div class="footer-brand-title">
-            <strong>CDSU</strong>
-            <small>Career Development Society of Uganda</small>
+            <strong>The Career Development Society of Uganda</strong>
+            <small>Non-Partisan, Non-Profit Organization</small>
           </div>
         </div>
         <p class="motto-sm">“<span data-bind="organization.motto">Building people first, for wealth to follow.</span>”</p>
-        <p class="footer-desc">A non-partisan, non-profit institutional society running a subscription-based, data-driven Career Development Programme across schools, universities, workplaces, and communities.</p>
+        <p class="footer-desc">Running a subscription-based, data-driven Career Development Programme across schools, universities, workplaces, and communities to build people first, for wealth to follow.</p>
         <div class="footer-badges">
           <span class="footer-badge">ISBN <span data-bind="organization.bookIsbn">978-9913-678-02-5</span></span>
           <span class="footer-badge">ABSA UGX &amp; USD</span>
@@ -402,7 +577,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/cdsuData.js?v=20261024c"></script>
-  <script src="js/app.js?v=20261024c"></script>
+  <script src="js/cdsuData.js?v=20261024d"></script>
+  <script src="js/app.js?v=20261024d"></script>
 </body>
 </html>
