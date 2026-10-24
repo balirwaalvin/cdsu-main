@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us &amp; Refer a School — CDSU</title>
+  <meta name="description" content="Get in touch with The Career Development Society of Uganda (CDSU), refer a school or institution for the CDP, or inquire about partnerships and book orders." />
+  <link rel="icon" type="image/png" href="assets/images/cdsu_logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="CDSU home">
+        <img src="assets/images/cdsu_logo.png" alt="CDSU logo" />
+        <span class="brand-text"><strong>CDSU</strong><small>Career Development Society of Uganda</small></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="programme.html">Programme</a>
+        <a href="book.html">The Book</a>
+        <a href="stories.html">Success Stories</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="join.html" class="btn btn-gold btn-sm">Join / Support</a>
+      </nav>
+    </div>
+    <div class="ribbon" aria-hidden="true"><i></i><i></i><i></i></div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Contact Us</div>
+        <span class="pill pill-gold">Get in Touch</span>
+        <h1>Contact the CDSU Secretariat</h1>
+        <p>Refer a school or social institution where the Career Development Programme (CDP) can be implemented, inquire about corporate sponsorship, or order original copies of the book.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <div>
+          <span class="pill">Official Contacts</span>
+          <h2>Reach Us Directly</h2>
+          <p class="muted">We welcome inquiries from students, parents, school administrators, TVET institutes, universities, corporate sponsors, and development partners.</p>
+          <ul class="contact-list" id="contact-list"></ul>
+        </div>
+
+        <div style="background:var(--white);padding:2rem;border-radius:var(--radius);box-shadow:var(--shadow)">
+          <h3>Send Us a Message or School Referral</h3>
+          <p class="small muted">Choose your topic below and dispatch directly to our official WhatsApp or Email:</p>
+          <form id="contact-form" class="form form-light" novalidate>
+            <label>I am contacting you about
+              <select name="topic">
+                <option>Referring a school or institution</option>
+                <option>Becoming a sponsor / partner</option>
+                <option>Ordering books</option>
+                <option>Sharing a success story</option>
+                <option>General enquiry</option>
+              </select>
+            </label>
+            <label>Full name<input name="name" required placeholder="Your full name" /></label>
+            <label>Phone or email<input name="contact" required placeholder="Your phone number or email" /></label>
+            <label>Message<textarea name="message" rows="4" required placeholder="Tell us how we can collaborate or which school/institution you are referring…"></textarea></label>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-red" data-channel="whatsapp">Send via WhatsApp</button>
+              <button type="submit" class="btn btn-outline" data-channel="email">Send via Email</button>
+            </div>
+            <p class="form-msg" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="ribbon" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-logo"><img src="assets/images/cdsu_logo.png" alt="CDSU logo" /></div>
+        <p class="motto-sm">“<span data-bind="organization.motto"></span>”</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <a href="about.html">About Us</a>
+        <a href="programme.html">Programme &amp; Quiz</a>
+        <a href="book.html">The Book &amp; Access Code</a>
+        <a href="stories.html">Success Stories</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="join.html">Join / Support</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div id="footer-contact"><h4>Contact</h4></div>
+    </div>
+    <div class="container footer-base">
+      <span>© <span data-bind="organization.copyrightYear"></span> The Career Development Society of Uganda. All rights reserved.</span>
+      <span>ISBN <span data-bind="organization.bookIsbn"></span></span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/cdsuData.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

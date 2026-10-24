@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programme, Products &amp; Career Quiz — CDSU</title>
+  <meta name="description" content="Explore the 3-Phase Career Development Programme (CDP), our 5 core products, and take the free Self-Awareness & Career Cluster Discovery Quiz." />
+  <link rel="icon" type="image/png" href="assets/images/cdsu_logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="CDSU home">
+        <img src="assets/images/cdsu_logo.png" alt="CDSU logo" />
+        <span class="brand-text"><strong>CDSU</strong><small>Career Development Society of Uganda</small></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="programme.html">Programme</a>
+        <a href="book.html">The Book</a>
+        <a href="stories.html">Success Stories</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="join.html" class="btn btn-gold btn-sm">Join / Support</a>
+      </nav>
+    </div>
+    <div class="ribbon" aria-hidden="true"><i></i><i></i><i></i></div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Programme &amp; Products</div>
+        <span class="pill pill-gold">Our Work</span>
+        <h1>The Career Development Programme (CDP)</h1>
+        <p>A subscription-based, data-driven programme conducting career training seminars and cluster-based support activities across schools, colleges, workplaces, and communities.</p>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill">3-Phase Methodology</span>
+          <h2>How the Programme Works</h2>
+          <p>Using our manual <em>Career Development: A Path to Wealth</em> as the lead reference, participants progress through three structured phases:</p>
+        </div>
+        <div class="phase-tabs" role="tablist" id="phase-tabs"></div>
+        <div class="phase-panel" id="phase-panel" role="tabpanel"></div>
+
+        <h3 class="sub-head">Our 5 Core Products &amp; Services</h3>
+        <div class="product-grid" id="products"></div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE CAREER CLUSTER QUIZ -->
+    <section class="section section-dark" id="quiz-section">
+      <div class="container" style="max-width:860px">
+        <div class="tool-card" id="quiz">
+          <span class="pill pill-gold">Free Self-Check (Annexure 3)</span>
+          <h2 style="font-size:1.75rem;margin-bottom:.4rem">Which Career Cluster Fits You?</h2>
+          <p>Take this interactive preview of the book's <em>Self-Awareness &amp; Career Direction Tool</em> (aligned to Uganda's education levels). Best completed alongside a parent, career teacher, or mentor.</p>
+          <div id="quiz-root"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="ribbon" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-logo"><img src="assets/images/cdsu_logo.png" alt="CDSU logo" /></div>
+        <p class="motto-sm">“<span data-bind="organization.motto"></span>”</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <a href="about.html">About Us</a>
+        <a href="programme.html">Programme &amp; Quiz</a>
+        <a href="book.html">The Book &amp; Access Code</a>
+        <a href="stories.html">Success Stories</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="join.html">Join / Support</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div id="footer-contact"><h4>Contact</h4></div>
+    </div>
+    <div class="container footer-base">
+      <span>© <span data-bind="organization.copyrightYear"></span> The Career Development Society of Uganda. All rights reserved.</span>
+      <span>ISBN <span data-bind="organization.bookIsbn"></span></span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/cdsuData.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

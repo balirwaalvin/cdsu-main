@@ -16,7 +16,7 @@
 
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a href="#top" class="brand" aria-label="CDSU home">
+      <a href="index.html" class="brand" aria-label="CDSU home">
         <img src="assets/images/cdsu_logo.png" alt="CDSU logo" />
         <span class="brand-text"><strong>CDSU</strong><small>Career Development Society of Uganda</small></span>
       </a>
@@ -24,13 +24,14 @@
         <span></span><span></span><span></span>
       </button>
       <nav id="site-nav" class="site-nav" aria-label="Main">
-        <a href="#about">About</a>
-        <a href="#programme">Programme</a>
-        <a href="#book">The Book</a>
-        <a href="#stories">Success Stories</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-        <a href="#join" class="btn btn-gold btn-sm">Join / Support</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="programme.html">Programme</a>
+        <a href="book.html">The Book</a>
+        <a href="stories.html">Success Stories</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="join.html" class="btn btn-gold btn-sm">Join / Support</a>
       </nav>
     </div>
     <div class="ribbon" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -46,8 +47,9 @@
           <p class="motto">“<span data-bind="organization.motto"></span>”</p>
           <p class="lead" data-bind="organization.aboutSummary"></p>
           <div class="hero-ctas">
-            <a href="#join" class="btn btn-red">Get the Book — UGX 50,000</a>
-            <a href="#join" class="btn btn-outline-light" data-open-pay="donate">Support CDSU</a>
+            <a href="book.html" class="btn btn-red">Get the Book — UGX 50,000</a>
+            <a href="programme.html" class="btn btn-gold">Explore the Programme</a>
+            <button type="button" class="btn btn-outline-light" data-open-pay="donate">Support CDSU</button>
           </div>
           <ul class="hero-tags">
             <li>Inspire</li><li>Empower</li><li>Transform</li>
@@ -67,182 +69,81 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
+    <!-- EXPLORE CDSU NAVIGATION HUB -->
+    <section class="section">
       <div class="container">
         <div class="section-head">
-          <span class="pill">About Us</span>
-          <h2>Who we are</h2>
+          <span class="pill">Explore CDSU</span>
+          <h2>Structured Career Pathways for Every Ugandan</h2>
           <p data-bind="organization.aboutExtended"></p>
         </div>
-        <div class="vm-grid">
-          <article class="vm-card vm-vision"><h3>Our Vision</h3><p data-bind="organization.vision"></p></article>
-          <article class="vm-card vm-mission"><h3>Our Mission</h3><p data-bind="organization.mission"></p></article>
+
+        <div class="hub-grid">
+          <a href="about.html" class="hub-card">
+            <span class="hub-tag">01 • Who We Are</span>
+            <h3>About Us &amp; Leadership</h3>
+            <p>Discover our Vision, Mission, 4 Core Objectives, and the team of educators, vice chancellors, and career counselors behind CDSU.</p>
+            <span class="hub-link">Read About CDSU &rarr;</span>
+          </a>
+
+          <a href="programme.html" class="hub-card">
+            <span class="hub-tag">02 • Our Work</span>
+            <h3>Programme, Products &amp; Career Quiz</h3>
+            <p>Explore the 3-Phase Career Development Programme (Theorizing, Practice &amp; Exposure), our 5 core products, and take the free Career Cluster Self-Check.</p>
+            <span class="hub-link">Explore the Programme &rarr;</span>
+          </a>
+
+          <a href="book.html" class="hub-card">
+            <span class="hub-tag">03 • Flagship Publication</span>
+            <h3>The Reference Book &amp; Access Portal</h3>
+            <p>Preview <em>Career Development: A Path to Wealth</em> (ISBN 978-9913-678-02-5), read keynote endorsements, and register your book serial number.</p>
+            <span class="hub-link">View the Book &rarr;</span>
+          </a>
+
+          <a href="stories.html" class="hub-card">
+            <span class="hub-tag">04 • Real Impact</span>
+            <h3>Youth Success Stories</h3>
+            <p>Read inspiring testimonies from Ugandan youth turning career guidance, TVET skills, and the new curriculum into global science and thriving enterprises.</p>
+            <span class="hub-link">Read Success Stories &rarr;</span>
+          </a>
+
+          <a href="gallery.html" class="hub-card">
+            <span class="hub-tag">05 • Field Implementation</span>
+            <h3>Activities &amp; Outreach Gallery</h3>
+            <p>Browse photos from school career guidance seminars, student study circles, TVET practical skilling, and youth enterprise showcases.</p>
+            <span class="hub-link">Open Gallery &rarr;</span>
+          </a>
+
+          <a href="join.html" class="hub-card">
+            <span class="hub-tag">06 • Partner With Us</span>
+            <h3>Join, Subscribe &amp; Donate</h3>
+            <p>Become an Ordinary or Corporate Member, onboard a beneficiary school (100 books or 250 members), or donate globally via ABSA Bank &amp; Mobile Money.</p>
+            <span class="hub-link">Join or Donate &rarr;</span>
+          </a>
         </div>
-        <h3 class="sub-head">Our Core Objectives</h3>
-        <div class="obj-grid" id="objectives"></div>
       </div>
     </section>
 
-    <!-- PROGRAMME -->
-    <section id="programme" class="section section-tint">
+    <!-- THE 5 RULES TO A SUPER CAREER -->
+    <section class="section section-tint">
       <div class="container">
         <div class="section-head">
-          <span class="pill">Our Work</span>
-          <h2>The Career Development Programme (CDP)</h2>
-          <p>A subscription-based, data-driven programme of seminars and cluster-based support for parents, employees, in-school and out-of-school youth — with the book <em>Career Development: A Path to Wealth</em> as the lead reference.</p>
+          <span class="pill">Core Philosophy</span>
+          <h2>The 5 Rules to a Super Career</h2>
+          <p>Designed to enable every learner and professional to skillfully channel talent, education, and experience as leverage for wealth creation.</p>
         </div>
-        <div class="phase-tabs" role="tablist" id="phase-tabs"></div>
-        <div class="phase-panel" id="phase-panel" role="tabpanel"></div>
+        <div class="rules-grid" id="rules-grid"></div>
 
-        <h3 class="sub-head">Our Products</h3>
-        <div class="product-grid" id="products"></div>
-      </div>
-    </section>
-
-    <!-- BOOK -->
-    <section id="book" class="section">
-      <div class="container">
-        <div class="book-grid">
-          <div class="book-cover"><img src="assets/images/book_cover.jpg" alt="Book cover" /></div>
+        <div class="donate-band" style="margin-top:3rem">
           <div>
-            <span class="pill">The Book</span>
-            <h2>Career Development: A Path to Wealth</h2>
-            <p>A practical manual for young people in Uganda on career development and wealth creation — aligned to Uganda's education levels, TVET pathways and enterprise development, with self-assessment and budgeting tools.</p>
-            <dl class="book-meta">
-              <div><dt>ISBN</dt><dd data-bind="organization.bookIsbn"></dd></div>
-              <div><dt>Publisher</dt><dd data-bind="organization.publisher"></dd></div>
-              <div><dt>Price</dt><dd>UGX 50,000</dd></div>
-            </dl>
-            <p class="note">Buy only from authorized CDSU distribution points. Each original copy carries a serial number used to generate your CDP access code.</p>
-            <div class="hero-ctas">
-              <a href="#join" class="btn btn-red">Order the Book</a>
-              <a href="#access" class="btn btn-outline">Register your serial number</a>
-            </div>
+            <h3>Ready to implement the Career Development Programme at your school or organization?</h3>
+            <p>Onboard your school, order serialized copies of the reference manual, or support Ugandan youth from anywhere in the world.</p>
           </div>
-        </div>
-
-        <div class="endorse-grid" id="endorsements"></div>
-
-        <h3 class="sub-head">Inside the book — chapter overview</h3>
-        <div class="accordion" id="chapters"></div>
-      </div>
-    </section>
-
-    <!-- TOOLS: ACCESS + QUIZ -->
-    <section class="section section-dark" id="tools">
-      <div class="container tools-grid">
-        <div class="tool-card" id="access">
-          <span class="pill pill-gold">CDP Access</span>
-          <h3>Register your book serial number</h3>
-          <p>Bought an original copy? Send your serial number to the CDSU secretariat to receive your access code for CDP activities.</p>
-          <form id="access-form" class="form" novalidate>
-            <label>Full name<input name="name" required /></label>
-            <label>School / institution / community<input name="org" /></label>
-            <label>Phone or email<input name="contact" required /></label>
-            <label>Book serial number<input name="serial" required /></label>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-gold" data-channel="whatsapp">Send via WhatsApp</button>
-              <button type="submit" class="btn btn-outline-light" data-channel="email">Send via Email</button>
-            </div>
-            <p class="form-msg" role="status"></p>
-          </form>
-        </div>
-        <div class="tool-card" id="quiz">
-          <span class="pill pill-gold">Free Self-Check</span>
-          <h3>Which career cluster fits you?</h3>
-          <p>A short version of the book's <em>Self-Awareness &amp; Career Direction Tool</em> (Annexure 3). Best used together with a parent, teacher or mentor.</p>
-          <div id="quiz-root"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STORIES -->
-    <section id="stories" class="section">
-      <div class="container">
-        <div class="section-head">
-          <span class="pill">Success Stories</span>
-          <h2>Ordinary Ugandan youth, real results</h2>
-          <p>Young people turning career choices and learned skills into sustainable livelihoods.</p>
-        </div>
-        <div class="story-grid" id="story-grid"></div>
-        <p class="center muted">Have a CDP story to share? <a href="#contact">Tell us</a>.</p>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section id="gallery" class="section section-tint">
-      <div class="container">
-        <div class="section-head">
-          <span class="pill">Gallery</span>
-          <h2>Activities &amp; outreach</h2>
-          <p>Moments from our programme activities. More photos will be added as school and community outreaches roll out.</p>
-        </div>
-        <div class="filters" id="gallery-filters"></div>
-        <div class="gallery-grid" id="gallery-grid"></div>
-      </div>
-    </section>
-
-    <!-- JOIN -->
-    <section id="join" class="section">
-      <div class="container">
-        <div class="section-head">
-          <span class="pill">Join Us for Impact</span>
-          <h2>Membership, training &amp; support</h2>
-          <p>Choose how you'd like to take part. Individuals, groups, associations, companies and CSOs are welcome to support our work with regular termly or annual contributions.</p>
-        </div>
-        <div class="tier-grid" id="tiers"></div>
-
-        <div class="donate-band">
-          <div>
-            <h3>Donate from anywhere in the world</h3>
-            <p>We are open to calls for proposals targeting youth and education development. Group or private donations to any of our programme areas are welcome.</p>
-          </div>
-          <button class="btn btn-gold" data-open-pay="donate">Donate now</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- AUTHORS -->
-    <section id="team" class="section section-tint">
-      <div class="container">
-        <div class="section-head">
-          <span class="pill">The Authors</span>
-          <h2>The people behind the book</h2>
-        </div>
-        <div class="author-grid" id="authors"></div>
-        <h3 class="sub-head">Edits &amp; Reviews</h3>
-        <ul class="review-list" id="reviewers"></ul>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="container contact-grid">
-        <div>
-          <span class="pill">Contact Us</span>
-          <h2>Get in touch</h2>
-          <ul class="contact-list" id="contact-list"></ul>
-        </div>
-        <form id="contact-form" class="form form-light" novalidate>
-          <label>I am contacting you about
-            <select name="topic">
-              <option>Referring a school or institution</option>
-              <option>Becoming a sponsor / partner</option>
-              <option>Ordering books</option>
-              <option>Sharing a success story</option>
-              <option>General enquiry</option>
-            </select>
-          </label>
-          <label>Full name<input name="name" required /></label>
-          <label>Phone or email<input name="contact" required /></label>
-          <label>Message<textarea name="message" rows="4" required></textarea></label>
           <div class="form-actions">
-            <button type="submit" class="btn btn-red" data-channel="whatsapp">Send via WhatsApp</button>
-            <button type="submit" class="btn btn-outline" data-channel="email">Send via Email</button>
+            <a href="join.html" class="btn btn-gold">View Membership &amp; Packages</a>
+            <a href="contact.html" class="btn btn-outline-light">Contact Secretariat</a>
           </div>
-          <p class="form-msg" role="status"></p>
-        </form>
+        </div>
       </div>
     </section>
   </main>
@@ -255,8 +156,14 @@
         <p class="motto-sm">“<span data-bind="organization.motto"></span>”</p>
       </div>
       <div>
-        <h4>Explore</h4>
-        <a href="#about">About</a><a href="#programme">Programme</a><a href="#book">The Book</a><a href="#stories">Success Stories</a><a href="#join">Join / Support</a>
+        <h4>Pages</h4>
+        <a href="about.html">About Us</a>
+        <a href="programme.html">Programme &amp; Quiz</a>
+        <a href="book.html">The Book &amp; Access Code</a>
+        <a href="stories.html">Success Stories</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="join.html">Join / Support</a>
+        <a href="contact.html">Contact Us</a>
       </div>
       <div id="footer-contact"><h4>Contact</h4></div>
     </div>
@@ -266,7 +173,7 @@
     </div>
   </footer>
 
-  <!-- MODALS -->
+  <!-- PAYMENT MODAL -->
   <div class="modal" id="pay-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pay-title">
     <div class="modal-box">
       <button class="modal-close" aria-label="Close">&times;</button>
@@ -281,14 +188,6 @@
       <p class="muted small">After paying, send your name and transaction reference so we can confirm your order or membership.</p>
       <div class="form-actions" id="pay-confirm"></div>
     </div>
-  </div>
-
-  <div class="modal" id="story-modal" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal-box modal-wide"><button class="modal-close" aria-label="Close">&times;</button><div id="story-body"></div></div>
-  </div>
-
-  <div class="modal lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal-box modal-wide"><button class="modal-close" aria-label="Close">&times;</button><div id="lightbox-body"></div></div>
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>

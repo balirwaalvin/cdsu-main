@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Success Stories — CDSU</title>
+  <meta name="description" content="Read inspiring success stories of Ugandan youth transforming career guidance, TVET skilling, and the new curriculum into global science and thriving enterprises." />
+  <link rel="icon" type="image/png" href="assets/images/cdsu_logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="CDSU home">
+        <img src="assets/images/cdsu_logo.png" alt="CDSU logo" />
+        <span class="brand-text"><strong>CDSU</strong><small>Career Development Society of Uganda</small></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="programme.html">Programme</a>
+        <a href="book.html">The Book</a>
+        <a href="stories.html">Success Stories</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="join.html" class="btn btn-gold btn-sm">Join / Support</a>
+      </nav>
+    </div>
+    <div class="ribbon" aria-hidden="true"><i></i><i></i><i></i></div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Success Stories</div>
+        <span class="pill pill-gold">Testimonies &amp; Impact</span>
+        <h1>Ordinary Ugandan Youth, Real Results</h1>
+        <p>Stories of resilience, structured career guidance, Competence-Based Curriculum innovation, and TVET mastery across Uganda.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="story-grid" id="story-grid"></div>
+
+        <div class="donate-band" style="margin-top:3rem">
+          <div>
+            <h3>Have a Career Development Programme (CDP) story or role-play recording to share?</h3>
+            <p>As we expand our school and community outreaches across Uganda, we feature outstanding student projects, career club achievements, and mentorship testimonies.</p>
+          </div>
+          <a href="contact.html?topic=Sharing%20a%20success%20story" class="btn btn-gold">Share Your Story &rarr;</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="ribbon" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-logo"><img src="assets/images/cdsu_logo.png" alt="CDSU logo" /></div>
+        <p class="motto-sm">“<span data-bind="organization.motto"></span>”</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <a href="about.html">About Us</a>
+        <a href="programme.html">Programme &amp; Quiz</a>
+        <a href="book.html">The Book &amp; Access Code</a>
+        <a href="stories.html">Success Stories</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="join.html">Join / Support</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div id="footer-contact"><h4>Contact</h4></div>
+    </div>
+    <div class="container footer-base">
+      <span>© <span data-bind="organization.copyrightYear"></span> The Career Development Society of Uganda. All rights reserved.</span>
+      <span>ISBN <span data-bind="organization.bookIsbn"></span></span>
+    </div>
+  </footer>
+
+  <!-- STORY READER MODAL -->
+  <div class="modal" id="story-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-box modal-wide">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div id="story-body"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/cdsuData.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
