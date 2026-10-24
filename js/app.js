@@ -53,10 +53,9 @@
   if (heroSlider) {
     const track = $(".hero-track", heroSlider);
     const slides = $$(".hero-slide", heroSlider);
-    const tabs = $$(".hero-tab", heroSlider);
     const count = slides.length;
     const INTERVAL = 5200;
-    const TRANSITION_CSS = "transform 0.85s cubic-bezier(0.22, 1, 0.36, 1)";
+    const TRANSITION_CSS = "transform 0.9s cubic-bezier(0.22, 1, 0.36, 1)";
     let pos = 0;
 
     if (track && count > 1) {
@@ -65,39 +64,20 @@
       firstClone.setAttribute("aria-hidden", "true");
       track.appendChild(firstClone);
 
-      const updateIndicators = (logicalIdx) => {
-        tabs.forEach((t, i) => {
-          const active = i === logicalIdx;
-          t.classList.toggle("active", active);
-          const bar = $(".hero-tab-bar", t);
-          if (!bar) return;
-          bar.style.transition = "none";
-          bar.style.width = "0%";
-          if (active) {
-            void bar.offsetWidth;
-            bar.style.transition = `width ${INTERVAL}ms linear`;
-            bar.style.width = "100%";
-          }
-        });
-      };
-
       const stepLoop = () => {
         pos += 1;
         track.style.transition = TRANSITION_CSS;
         track.style.transform = `translateX(-${pos * 100}%)`;
-        const logicalIdx = pos % count;
-        updateIndicators(logicalIdx);
 
         if (pos === count) {
           setTimeout(() => {
             track.style.transition = "none";
             pos = 0;
             track.style.transform = "translateX(0%)";
-          }, 880);
+          }, 920);
         }
       };
 
-      updateIndicators(0);
       setInterval(stepLoop, INTERVAL);
     }
   }
