@@ -140,7 +140,7 @@ p { margin: 0 0 1em; }
   position: relative; overflow: hidden; color: var(--white);
   background: linear-gradient(135deg, var(--navy) 0%, #0d1c3d 60%, var(--charcoal) 100%);
   padding: 0;
-  min-height: clamp(560px, calc(86vh - 76px), 780px);
+  min-height: clamp(360px, 54vh, 470px);
   display: flex; align-items: stretch;
 }
 .hero-slider-stage {
@@ -155,7 +155,7 @@ p { margin: 0 0 1em; }
   will-change: transform;
 }
 .hero-slide {
-  flex: 0 0 100%; width: 100%; min-width: 100%; min-height: clamp(560px, calc(86vh - 76px), 780px);
+  flex: 0 0 100%; width: 100%; min-width: 100%; min-height: clamp(360px, 54vh, 470px);
   position: relative; display: flex; align-items: center; overflow: hidden;
   padding: 0;
 }
@@ -170,117 +170,118 @@ p { margin: 0 0 1em; }
               linear-gradient(96deg, rgba(10,22,48,.95) 0%, rgba(15,33,72,.86) 52%, rgba(13,28,61,.70) 100%);
 }
 .hero-slide-inner {
-  width: min(1440px, 92%); margin: 0 auto;
-  padding: clamp(3.2rem, 6vw, 5.2rem) 0;
+  width: min(1140px, 90%); margin: 0 auto;
+  padding: clamp(1.5rem, 2.8vw, 2.2rem) 0;
   position: relative; z-index: 2;
 }
 .hero-grid {
-  display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(2.4rem, 5vw, 4.8rem);
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(1.4rem, 3vw, 2.4rem);
   align-items: center; width: 100%;
 }
-.hero h1 { font-size: clamp(2.35rem, 4.8vw, 3.85rem); font-weight: 800; line-height: 1.09; margin-bottom: .55rem; }
+.hero h1 { font-size: clamp(1.7rem, 2.9vw, 2.45rem); font-weight: 800; line-height: 1.13; margin-bottom: .35rem; }
 .hero .accent { color: var(--gold); }
-.motto { font-family: var(--font-serif); font-style: italic; font-size: 1.2rem; color: var(--gold); margin-bottom: .85rem; }
-.lead { font-size: 1.08rem; color: rgba(255,255,255,.92); max-width: 64ch; line-height: 1.66; }
-.hero-ctas { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 1.6rem; }
-.hero-tags { display: flex; flex-wrap: wrap; gap: 1.2rem; padding: 0; margin: 1.8rem 0 0; list-style: none; }
+.motto { font-family: var(--font-serif); font-style: italic; font-size: .98rem; color: var(--gold); margin-bottom: .45rem; }
+.lead { font-size: .92rem; color: rgba(255,255,255,.92); max-width: 55ch; line-height: 1.5; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .95rem; }
+.hero-ctas .btn { padding: .58rem 1.1rem; font-size: .86rem; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: .85rem; padding: 0; margin: .95rem 0 0; list-style: none; }
 .hero-tags li {
-  font-family: var(--font-display); font-weight: 700; font-size: .8rem;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--gold);
-  display: inline-flex; align-items: center; gap: .45rem;
+  font-family: var(--font-display); font-weight: 700; font-size: .72rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--gold);
+  display: inline-flex; align-items: center; gap: .38rem;
 }
 .hero-tags li::before {
-  content: "●"; color: var(--red); font-size: .65rem;
+  content: "●"; color: var(--red); font-size: .58rem;
 }
 
 /* Slide 1: Open Borderless NGO Showcase */
 .hero-ngo-card {
-  display: grid; gap: 1.15rem;
+  display: grid; gap: .65rem;
 }
 .hero-ngo-collage {
-  display: grid; grid-template-columns: 1.2fr .8fr; gap: 1rem;
+  display: grid; grid-template-columns: 1.2fr .8fr; gap: .65rem;
 }
 .hero-ngo-collage img {
-  width: 100%; height: 220px; object-fit: cover; object-position: top center;
-  border-radius: 16px; box-shadow: 0 20px 44px rgba(0,0,0,.35);
+  width: 100%; height: 135px; object-fit: cover; object-position: top center;
+  border-radius: 12px; box-shadow: 0 14px 30px rgba(0,0,0,.32);
 }
 .hero-ngo-vision {
   background: rgba(216,40,40,.22); backdrop-filter: blur(8px);
-  padding: 1rem 1.25rem; border-radius: 14px;
+  padding: .65rem .9rem; border-radius: 10px;
 }
 .hero-ngo-vision small {
-  display: block; font-family: var(--font-display); font-size: .74rem;
-  font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--gold);
+  display: block; font-family: var(--font-display); font-size: .66rem;
+  font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--gold);
 }
-.hero-ngo-vision p { margin: .25rem 0 0; font-size: .94rem; color: #fff; line-height: 1.5; }
+.hero-ngo-vision p { margin: .15rem 0 0; font-size: .8rem; color: #fff; line-height: 1.38; }
 .hero-ngo-pillars {
-  display: grid; grid-template-columns: 1fr 1fr; gap: .7rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: .45rem;
 }
 .hero-ngo-pillar {
   background: rgba(255,255,255,.08); backdrop-filter: blur(6px);
-  border-radius: 12px; padding: .7rem .95rem; font-size: .86rem; font-weight: 600;
-  display: flex; align-items: center; gap: .55rem;
+  border-radius: 9px; padding: .45rem .7rem; font-size: .76rem; font-weight: 600;
+  display: flex; align-items: center; gap: .4rem;
 }
-.hero-ngo-pillar span { color: var(--gold); font-family: var(--font-display); font-weight: 800; font-size: .95rem; }
+.hero-ngo-pillar span { color: var(--gold); font-family: var(--font-display); font-weight: 800; font-size: .82rem; }
 
 /* Slide 2: Open Book Showcase */
 .hero-book-showcase {
   position: relative; display: flex; flex-direction: column; align-items: center;
 }
 .hero-book-showcase img {
-  max-height: 430px; width: auto; margin: 0 auto;
-  filter: drop-shadow(0 28px 48px rgba(0,0,0,.55)); transform: rotate(-2.5deg);
+  max-height: 275px; width: auto; margin: 0 auto;
+  filter: drop-shadow(0 20px 36px rgba(0,0,0,.5)); transform: rotate(-2.5deg);
   transition: transform .3s ease;
 }
 .hero-book-showcase:hover img { transform: rotate(0deg) scale(1.03); }
 .hero-book-badges {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: 1.2rem;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: .7rem;
 }
 .hero-float-badge {
   background: rgba(255,255,255,.12); backdrop-filter: blur(8px);
-  color: #fff; padding: .5rem 1.05rem; border-radius: 999px;
-  font-size: .84rem; font-weight: 700;
+  color: #fff; padding: .35rem .85rem; border-radius: 999px;
+  font-size: .76rem; font-weight: 700;
 }
 .hero-float-badge strong { color: var(--gold); }
 
 /* Slide 3: Open Testimonials & Endorsements Deck */
-.hero-testi-deck { display: grid; gap: 1rem; }
+.hero-testi-deck { display: grid; gap: .55rem; }
 .hero-testi-card {
   background: rgba(255,255,255,.09); backdrop-filter: blur(10px);
-  border-radius: 16px; padding: 1.1rem 1.3rem;
-  display: grid; grid-template-columns: 64px 1fr; gap: 1rem; align-items: center;
+  border-radius: 12px; padding: .68rem .9rem;
+  display: grid; grid-template-columns: 46px 1fr; gap: .75rem; align-items: center;
   transition: transform .2s ease, background .2s ease;
 }
-.hero-testi-card:nth-child(2) { transform: translateX(14px); }
+.hero-testi-card:nth-child(2) { transform: translateX(10px); }
 .hero-testi-card:hover { transform: translateX(4px) translateY(-2px); background: rgba(255,255,255,.14); }
 .hero-testi-card img {
-  width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: top;
-  box-shadow: 0 8px 20px rgba(0,0,0,.3);
+  width: 46px; height: 46px; border-radius: 50%; object-fit: cover; object-position: top;
+  box-shadow: 0 6px 14px rgba(0,0,0,.28);
 }
 .hero-testi-card blockquote {
-  margin: 0 0 .4rem; font-family: var(--font-serif); font-style: italic;
-  font-size: .9rem; line-height: 1.48; color: rgba(255,255,255,.96);
+  margin: 0 0 .2rem; font-family: var(--font-serif); font-style: italic;
+  font-size: .79rem; line-height: 1.36; color: rgba(255,255,255,.96);
 }
-.hero-testi-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; font-size: .82rem; }
+.hero-testi-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; font-size: .73rem; }
 .hero-testi-meta strong { color: var(--gold); font-family: var(--font-display); }
 .hero-testi-meta span { color: rgba(255,255,255,.78); }
 
 /* Slide 4: Open 3-Phase CDP & Career Clusters Showcase */
 .hero-cluster-card {
-  display: grid; gap: 1.1rem;
+  display: grid; gap: .7rem;
 }
-.hero-phase-mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+.hero-phase-mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
 .hero-phase-box {
   background: rgba(255,255,255,.09); backdrop-filter: blur(8px);
-  padding: .9rem 1rem; border-radius: 14px;
+  padding: .6rem .75rem; border-radius: 10px;
 }
-.hero-phase-box small { display: block; font-size: .72rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
-.hero-phase-box strong { display: block; font-size: .96rem; margin-top: .15rem; }
-.hero-cluster-chips { display: flex; flex-wrap: wrap; gap: .55rem; }
+.hero-phase-box small { display: block; font-size: .64rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.hero-phase-box strong { display: block; font-size: .84rem; margin-top: .1rem; }
+.hero-cluster-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
 .hero-cluster-chip {
   background: rgba(255,255,255,.11); backdrop-filter: blur(6px);
-  color: #fff; text-decoration: none; font-size: .84rem; font-weight: 600;
-  padding: .48rem .95rem; border-radius: 999px; transition: background .2s, color .2s;
+  color: #fff; text-decoration: none; font-size: .75rem; font-weight: 600;
+  padding: .34rem .72rem; border-radius: 999px; transition: background .2s, color .2s;
 }
 .hero-cluster-chip:hover { background: var(--gold); color: var(--charcoal); }
 
@@ -672,8 +673,10 @@ a.partner-chip:hover { border-color: var(--blue); }
   .site-nav.open { display: flex; }
   .site-nav a:not(.btn) { padding: .8rem 0; border-bottom: 1px solid var(--line); }
   .site-nav .btn { margin: .8rem 0; }
-  .hero-grid, .book-grid, .tools-grid, .contact-grid, .story-full, .page-hero-inner { grid-template-columns: 1fr; flex-direction: column; align-items: flex-start; min-height: auto; }
-  .hero-book-showcase img { max-height: 300px; }
+  .hero, .hero-slide { min-height: auto; }
+  .hero-slide-inner { padding: 1.5rem 0; }
+  .hero-grid, .book-grid, .tools-grid, .contact-grid, .story-full, .page-hero-inner { grid-template-columns: 1fr; flex-direction: column; align-items: flex-start; min-height: auto; gap: 1.25rem; }
+  .hero-book-showcase img { max-height: 220px; }
   .story-grid, .tier-grid, .endorse-grid, .gallery-grid, .review-list, .hub-grid, .rules-grid { grid-template-columns: repeat(2, 1fr); }
   .phase-tabs { grid-template-columns: 1fr; }
   .donate-band, .footer-cta-inner { flex-direction: column; align-items: flex-start; }
