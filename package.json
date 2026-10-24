@@ -5,6 +5,6 @@
   "description": "The Career Development Society of Uganda (CDSU) — Official Website & Career Development Programme Portal",
   "scripts": {
     "build": "mkdir -p dist build && cp -r *.html css js assets dist/ && cp -r *.html css js assets build/",
-    "start": "python3 -m http.server 8000"
+    "start": "python3 server.py 8000"
   }
 }

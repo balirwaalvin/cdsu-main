@@ -4,12 +4,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CDSU — The Career Development Society of Uganda</title>
-  <meta name="description" content="The Career Development Society of Uganda (CDSU): a non-partisan, non-profit organization running a data-driven Career Development Programme. Building people first, for wealth to follow." />
+  <meta name="description" content="The Career Development Society of Uganda (CDSU) is a non-partisan and non-profit organization established following the need for a structured, data-driven Career Development Programme (CDP) to enhance Uganda&#39;s national leap to high middle-income status." />
   <link rel="icon" type="image/png" href="assets/images/cdsu_logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css?v=20261024c" />
+  <style>
+  .page-hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(circle at 88% 20%,rgba(24,80,156,.88),transparent 55%),linear-gradient(135deg,#122854 0%,#0d1c3d 65%,#1E1B20 100%);padding:clamp(2.8rem,5.5vw,4.4rem) 0;border-bottom:4px solid #F8D008}
+  .page-hero-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;position:relative;z-index:1}
+  .page-hero h1{font-size:clamp(2rem,4vw,2.9rem);font-weight:800;margin-bottom:.5rem;color:#fff}
+  .page-hero p{font-size:1.05rem;color:rgba(255,255,255,.9);max-width:66ch;margin:0}
+  .page-hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.4rem}
+  .breadcrumb{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;color:rgba(255,255,255,.8);margin-bottom:.85rem;font-family:var(--font-display);background:rgba(255,255,255,.08);padding:.3rem .8rem;border-radius:999px;border:1px solid rgba(255,255,255,.15)}
+  .breadcrumb a{color:#F8D008;text-decoration:none;font-weight:700}
+  .hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  .hub-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(18,40,84,.1);border:1px solid #E4E2EA;display:flex;flex-direction:column;text-decoration:none;color:#1E1B20;transition:transform .22s,box-shadow .22s,border-color .22s}
+  .hub-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(18,40,84,.18);border-color:#D82828}
+  .hub-card-media{position:relative;height:185px;overflow:hidden;background:#122854}
+  .hub-card-media img{width:100%;height:100%;object-fit:cover;object-position:top center}
+  .hub-card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,40,84,.1) 0%,rgba(18,40,84,.72) 100%)}
+  .hub-card .hub-tag{position:absolute;top:12px;left:12px;z-index:2;background:rgba(30,27,32,.88);color:#F8D008;font-family:var(--font-display);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.3rem .75rem;border-radius:999px;border:1px solid rgba(248,208,8,.35)}
+  .hub-card-body{padding:1.5rem;display:flex;flex-direction:column;flex:1}
+  .hub-card h3{font-size:1.22rem;margin-bottom:.45rem;color:#1E1B20}
+  .hub-card p{color:#3D3945;font-size:.92rem;flex:1;margin-bottom:1rem}
+  .hub-card .hub-link{font-family:var(--font-display);font-weight:700;font-size:.88rem;color:#fff;background:#18509C;padding:.55rem 1rem;border-radius:999px;align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem}
+  .hub-card:hover .hub-link{background:#D82828}
+  .rules-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+  .rule-card{background:#fff;border-radius:14px;padding:1.4rem;box-shadow:0 10px 30px rgba(18,40,84,.1);border-top:4px solid #F8D008;border-bottom:4px solid #D82828;display:flex;flex-direction:column}
+  .rule-card .num{width:40px;height:40px;border-radius:10px;background:#D82828;color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:1rem;margin-bottom:.75rem}
+  .footer-cta{background:linear-gradient(120deg,#122854 0%,#18509C 100%);border-bottom:1px solid rgba(255,255,255,.12);padding:2rem 0}
+  .footer-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .footer-cta h3{color:#fff;font-size:1.35rem;margin-bottom:.25rem}
+  .footer-cta p{color:rgba(255,255,255,.85);margin:0;font-size:.95rem;max-width:60ch}
+  .footer-cta-btns{display:flex;flex-wrap:wrap;gap:.75rem}
+  .footer-grid{display:grid;grid-template-columns:1.35fr .95fr 1fr 1.35fr;gap:2.2rem;padding:3.2rem 0 2.4rem}
+  .footer-brand-head{display:flex;align-items:center;gap:.85rem;margin-bottom:.9rem}
+  .footer-logo{background:#fff;border-radius:12px;padding:.45rem .6rem;width:74px;flex-shrink:0}
+  .footer-brand-title strong{display:block;font-family:var(--font-display);font-size:1.15rem;color:#fff}
+  .footer-brand-title small{display:block;color:#F8D008;font-size:.78rem;font-weight:600}
+  .footer-desc{font-size:.88rem;color:rgba(255,255,255,.72);line-height:1.55;margin-bottom:.9rem}
+  .footer-badges{display:flex;flex-wrap:wrap;gap:.45rem}
+  .footer-badge{display:inline-block;font-size:.74rem;font-weight:600;padding:.25rem .65rem;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.9)}
+  .footer-links{list-style:none;padding:0;margin:0;display:grid;gap:.5rem}
+  .footer-links a{display:inline-flex;align-items:center;gap:.45rem;color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem}
+  .footer-links a::before{content:"›";color:#F8D008;font-weight:800;font-size:1.1rem;line-height:1}
+  .footer-contact-list{list-style:none;padding:0;margin:0;display:grid;gap:.75rem}
+  .footer-contact-list li{display:flex;align-items:flex-start;gap:.75rem;font-size:.88rem}
+  .footer-contact-list .f-ico{width:32px;height:32px;border-radius:8px;background:rgba(216,40,40,.22);border:1px solid rgba(216,40,40,.45);color:#F8D008;display:grid;place-items:center;flex-shrink:0;font-size:.9rem}
+  .footer-contact-list strong{display:block;color:#fff;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+  @media(max-width:900px){.hub-grid,.rules-grid,.footer-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.hub-grid,.rules-grid,.footer-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -24,7 +70,7 @@
         <span></span><span></span><span></span>
       </button>
       <nav id="site-nav" class="site-nav" aria-label="Main">
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active" aria-current="page">Home</a>
         <a href="about.html">About</a>
         <a href="programme.html">Programme</a>
         <a href="book.html">The Book</a>
@@ -42,10 +88,10 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="pill pill-light" data-bind="organization.fullName"></span>
+          <span class="pill pill-light" data-bind="organization.fullName">The Career Development Society of Uganda</span>
           <h1>Career Development:<br /><span class="accent">A Path to Wealth</span></h1>
-          <p class="motto">“<span data-bind="organization.motto"></span>”</p>
-          <p class="lead" data-bind="organization.aboutSummary"></p>
+          <p class="motto">“<span data-bind="organization.motto">Building people first, for wealth to follow.</span>”</p>
+          <p class="lead" data-bind="organization.aboutSummary">The Career Development Society of Uganda (CDSU) is a non-partisan and non-profit organization established following the need for a structured, data-driven Career Development Programme (CDP) to enhance Uganda&#39;s national leap to high middle-income status.</p>
           <div class="hero-ctas">
             <a href="book.html" class="btn btn-red">Get the Book — UGX 50,000</a>
             <a href="programme.html" class="btn btn-gold">Explore the Programme</a>
@@ -65,60 +111,90 @@
     <section class="partners" aria-label="Partners and contributors">
       <div class="container partners-inner">
         <span class="partners-label">Partners &amp; Contributors</span>
-        <div class="marquee"><div class="marquee-track" id="partner-track"></div></div>
+        <div class="marquee"><div class="marquee-track" id="partner-track"><a class="partner-chip" href="https://seetauniversity.ac.ug" target="_blank" rel="noopener" title="Visit Seeta University"><span><strong>Seeta University</strong> <small>Confirmed Sponsor • Editorial Review</small></span></a><a class="partner-chip" href="https://uvtab.go.ug" target="_blank" rel="noopener" title="Visit UVTAB"><span><strong>UVTAB</strong> <small>Confirmed Sponsor • TVET Assessment Board</small></span></a><a class="partner-chip" href="https://enterprise.co.ug" target="_blank" rel="noopener" title="Visit Enterprise Uganda"><span><strong>Enterprise Uganda</strong> <small>Development Partner • B.E.S.T Training</small></span></a><a class="partner-chip" href="https://vu.ac.ug" target="_blank" rel="noopener" title="Visit Victoria University"><span><strong>Victoria University</strong> <small>Academic Review Partner</small></span></a><a class="partner-chip" href="https://aiu.ac.ug" target="_blank" rel="noopener" title="Visit Avance International University"><span><strong>Avance International University</strong> <small>Academic Leadership Partner</small></span></a><a class="partner-chip" href="https://smack.sc.ug" target="_blank" rel="noopener" title="Visit St. Mary&#39;s College Kisubi"><span><strong>St. Mary&#39;s College Kisubi</strong> <small>Careers Office Partner</small></span></a><a class="partner-chip" href="https://seetauniversity.ac.ug" target="_blank" rel="noopener" title="Visit Seeta University" tabindex="-1" aria-hidden="true"><span><strong>Seeta University</strong> <small>Confirmed Sponsor • Editorial Review</small></span></a><a class="partner-chip" href="https://uvtab.go.ug" target="_blank" rel="noopener" title="Visit UVTAB" tabindex="-1" aria-hidden="true"><span><strong>UVTAB</strong> <small>Confirmed Sponsor • TVET Assessment Board</small></span></a><a class="partner-chip" href="https://enterprise.co.ug" target="_blank" rel="noopener" title="Visit Enterprise Uganda" tabindex="-1" aria-hidden="true"><span><strong>Enterprise Uganda</strong> <small>Development Partner • B.E.S.T Training</small></span></a><a class="partner-chip" href="https://vu.ac.ug" target="_blank" rel="noopener" title="Visit Victoria University" tabindex="-1" aria-hidden="true"><span><strong>Victoria University</strong> <small>Academic Review Partner</small></span></a><a class="partner-chip" href="https://aiu.ac.ug" target="_blank" rel="noopener" title="Visit Avance International University" tabindex="-1" aria-hidden="true"><span><strong>Avance International University</strong> <small>Academic Leadership Partner</small></span></a><a class="partner-chip" href="https://smack.sc.ug" target="_blank" rel="noopener" title="Visit St. Mary&#39;s College Kisubi" tabindex="-1" aria-hidden="true"><span><strong>St. Mary&#39;s College Kisubi</strong> <small>Careers Office Partner</small></span></a></div></div>
       </div>
     </section>
 
-    <!-- EXPLORE CDSU NAVIGATION HUB -->
+    <!-- GRAPHICAL EXPLORE CDSU NAVIGATION HUB -->
     <section class="section">
       <div class="container">
         <div class="section-head">
           <span class="pill">Explore CDSU</span>
           <h2>Structured Career Pathways for Every Ugandan</h2>
-          <p data-bind="organization.aboutExtended"></p>
+          <p data-bind="organization.aboutExtended">We are focused on raising a critical mass of citizens with productive skills, who passionately add holistic value to themselves and the country at large. Our intent is on &#39;building people first, for wealth to follow&#39;—bridging the gap between education, TVET skills mastery, industry mentorship, and sustainable entrepreneurship.</p>
         </div>
 
         <div class="hub-grid">
           <a href="about.html" class="hub-card">
-            <span class="hub-tag">01 • Who We Are</span>
-            <h3>About Us &amp; Leadership</h3>
-            <p>Discover our Vision, Mission, 4 Core Objectives, and the team of educators, vice chancellors, and career counselors behind CDSU.</p>
-            <span class="hub-link">Read About CDSU &rarr;</span>
+            <div class="hub-card-media">
+              <span class="hub-tag">01 • Who We Are</span>
+              <img src="assets/images/charity_barungi.jpg" alt="CDSU Leadership and Vision" loading="lazy" />
+            </div>
+            <div class="hub-card-body">
+              <h3>About Us &amp; Leadership</h3>
+              <p>Discover our Vision, Mission, 4 Core Objectives, and the team of educators, vice chancellors, and career counselors behind CDSU.</p>
+              <span class="hub-link">Explore About Us &rarr;</span>
+            </div>
           </a>
 
           <a href="programme.html" class="hub-card">
-            <span class="hub-tag">02 • Our Work</span>
-            <h3>Programme, Products &amp; Career Quiz</h3>
-            <p>Explore the 3-Phase Career Development Programme (Theorizing, Practice &amp; Exposure), our 5 core products, and take the free Career Cluster Self-Check.</p>
-            <span class="hub-link">Explore the Programme &rarr;</span>
+            <div class="hub-card-media">
+              <span class="hub-tag">02 • Our Work</span>
+              <img src="assets/images/students_laptop.jpg" alt="Career Development Programme and Quiz" loading="lazy" />
+            </div>
+            <div class="hub-card-body">
+              <h3>Programme, Products &amp; Career Quiz</h3>
+              <p>Explore the 3-Phase Career Development Programme (Theorizing, Practice &amp; Exposure), our 5 core products, and take the free Career Cluster Self-Check.</p>
+              <span class="hub-link">View Programme &amp; Quiz &rarr;</span>
+            </div>
           </a>
 
           <a href="book.html" class="hub-card">
-            <span class="hub-tag">03 • Flagship Publication</span>
-            <h3>The Reference Book &amp; Access Portal</h3>
-            <p>Preview <em>Career Development: A Path to Wealth</em> (ISBN 978-9913-678-02-5), read keynote endorsements, and register your book serial number.</p>
-            <span class="hub-link">View the Book &rarr;</span>
+            <div class="hub-card-media">
+              <span class="hub-tag">03 • Flagship Publication</span>
+              <img src="assets/images/book_cover.jpg" alt="Career Development: A Path to Wealth Book" loading="lazy" />
+            </div>
+            <div class="hub-card-body">
+              <h3>The Reference Book &amp; Access Portal</h3>
+              <p>Preview <em>Career Development: A Path to Wealth</em> (ISBN 978-9913-678-02-5), read keynote endorsements, and register your book serial number.</p>
+              <span class="hub-link">Explore the Book &rarr;</span>
+            </div>
           </a>
 
           <a href="stories.html" class="hub-card">
-            <span class="hub-tag">04 • Real Impact</span>
-            <h3>Youth Success Stories</h3>
-            <p>Read inspiring testimonies from Ugandan youth turning career guidance, TVET skills, and the new curriculum into global science and thriving enterprises.</p>
-            <span class="hub-link">Read Success Stories &rarr;</span>
+            <div class="hub-card-media">
+              <span class="hub-tag">04 • Real Impact</span>
+              <img src="assets/images/story_safari_daniel.jpg" alt="Youth Transformation and Success Stories" loading="lazy" />
+            </div>
+            <div class="hub-card-body">
+              <h3>Youth Success Stories</h3>
+              <p>Read inspiring testimonies from Ugandan youth turning career guidance, TVET skills, and the new curriculum into global science and thriving enterprises.</p>
+              <span class="hub-link">Read Success Stories &rarr;</span>
+            </div>
           </a>
 
           <a href="gallery.html" class="hub-card">
-            <span class="hub-tag">05 • Field Implementation</span>
-            <h3>Activities &amp; Outreach Gallery</h3>
-            <p>Browse photos from school career guidance seminars, student study circles, TVET practical skilling, and youth enterprise showcases.</p>
-            <span class="hub-link">Open Gallery &rarr;</span>
+            <div class="hub-card-media">
+              <span class="hub-tag">05 • Field Implementation</span>
+              <img src="assets/images/students_reading.jpg" alt="Activities and Outreach Gallery" loading="lazy" />
+            </div>
+            <div class="hub-card-body">
+              <h3>Activities &amp; Outreach Gallery</h3>
+              <p>Browse photos from school career guidance seminars, student study circles, TVET practical skilling, and youth enterprise showcases.</p>
+              <span class="hub-link">Open Gallery &rarr;</span>
+            </div>
           </a>
 
           <a href="join.html" class="hub-card">
-            <span class="hub-tag">06 • Partner With Us</span>
-            <h3>Join, Subscribe &amp; Donate</h3>
-            <p>Become an Ordinary or Corporate Member, onboard a beneficiary school (100 books or 250 members), or donate globally via ABSA Bank &amp; Mobile Money.</p>
-            <span class="hub-link">Join or Donate &rarr;</span>
+            <div class="hub-card-media">
+              <span class="hub-tag">06 • Partner With Us</span>
+              <img src="assets/images/book_stack.jpg" alt="Join, Subscribe and Donate" loading="lazy" />
+            </div>
+            <div class="hub-card-body">
+              <h3>Join, Subscribe &amp; Donate</h3>
+              <p>Become an Ordinary or Corporate Member, onboard a beneficiary school (100 books or 250 members), or donate globally via ABSA Bank &amp; Mobile Money.</p>
+              <span class="hub-link">Join or Support Us &rarr;</span>
+            </div>
           </a>
         </div>
       </div>
@@ -132,9 +208,77 @@
           <h2>The 5 Rules to a Super Career</h2>
           <p>Designed to enable every learner and professional to skillfully channel talent, education, and experience as leverage for wealth creation.</p>
         </div>
-        <div class="rules-grid" id="rules-grid"></div>
+        <div class="rules-grid" id="rules-grid">
+          <article class="rule-card reveal">
+            <div class="num">01</div>
+            <h4>Appreciate &amp; Take on Informal Work Early</h4>
+            <p>After self-awareness, practice your profession or career path even before formal qualification. Start early—volunteering and executing assignments well opens doors for repeat business.</p>
+          </article>
+          <article class="rule-card reveal">
+            <div class="num">02</div>
+            <h4>Acquire &amp; Stack Practical Skills</h4>
+            <p>In addition to your core profession, acquire vocational skills in digital literacy, AI &amp; data analysis, and essential life skills.</p>
+          </article>
+          <article class="rule-card reveal">
+            <div class="num">03</div>
+            <h4>Build Rock-Solid Work Ethics</h4>
+            <p>Demonstrate unwavering commitment. True work ethic is about delivering exceptional value, productivity, and integrity—not merely hours spent at a desk.</p>
+          </article>
+          <article class="rule-card reveal">
+            <div class="num">04</div>
+            <h4>Cultivate a Records &amp; Learning Culture</h4>
+            <p>Ride on data and financial records to analyze and make decisions. Implement, extract lessons, refine actions, and continuously upgrade.</p>
+          </article>
+          <article class="rule-card reveal">
+            <div class="num">05</div>
+            <h4>Tap into the Journey of Entrepreneurship</h4>
+            <p>Careers provide cash flow, scarce skills, and social capital—when channeled into business and asset ownership, entrepreneurship becomes a game changer.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        <div class="donate-band" style="margin-top:3rem">
+    <!-- FEATURED SUCCESS STORIES PREVIEW -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="pill">Featured Impact</span>
+          <h2>Ordinary Ugandan Youth, Extraordinary Pathways</h2>
+          <p>From international space physics to award-winning secondary school organic innovation and custom furniture manufacturing.</p>
+        </div>
+        <div class="story-grid" id="story-grid">
+          <article class="story-card reveal">
+            <img src="assets/images/story_safari_daniel.jpg" alt="Mr. Safari Daniel" loading="lazy">
+            <div class="body">
+              <span class="cluster">Medicine, Health &amp; Scientific Research (STEM)</span>
+              <h3>From the Ghetto of Namuwongo to Global Science</h3>
+              <div class="who">Mr. Safari Daniel<small>Clinical Epidemiologist &amp; NIH Grant Recipient</small></div>
+              <blockquote>“My story is proof that one&#39;s starting point does not determine one&#39;s destination. Without that two-hour career guidance session with Mr. Gitta Ivan, I would not be where I am today.”</blockquote>
+              <button class="btn btn-outline btn-sm" data-story="safari-daniel">Read the story</button>
+            </div>
+          </article>
+          <article class="story-card reveal">
+            <img src="assets/images/story_kirabo_mimi.jpg" alt="Ms. Kirabo Mimi Rehema" loading="lazy">
+            <div class="body">
+              <span class="cluster">Agri-Processing, Biology &amp; Youth Entrepreneurship</span>
+              <h3>Turning New Curriculum Knowledge into a Business Win</h3>
+              <div class="who">Ms. Kirabo Mimi Rehema<small>Student Founder, Mimi&#39;s Yogurt</small></div>
+              <blockquote>“While in Senior One studying biology under the new Competence-Based Curriculum, I learned how friendly bacteria like Lactobacillus can be used in food production. That inspired me to start Mimi&#39;s Yogurt.”</blockquote>
+              <button class="btn btn-outline btn-sm" data-story="kirabo-mimi">Read the story</button>
+            </div>
+          </article>
+          <article class="story-card reveal">
+            <img src="assets/images/story_kabenge_lawrence.jpg" alt="Mr. Kabenge Joy Lawrence (&#39;Musawo&#39;)" loading="lazy">
+            <div class="body">
+              <span class="cluster">TVET, Veterinary Care &amp; Agribusiness</span>
+              <h3>Taking a Different Path: Why TVET Agricultural Training is a Game Changer</h3>
+              <div class="who">Mr. Kabenge Joy Lawrence (&#39;Musawo&#39;)<small>TVET Veterinary &amp; Poultry Entrepreneur</small></div>
+              <blockquote>“Society often sees you as a failure when you choose a technical course after S.4, which is a lie based on ignorance. I don&#39;t need to seek a job—I am a creator who is soon employing other youths.”</blockquote>
+              <button class="btn btn-outline btn-sm" data-story="kabenge-lawrence">Read the story</button>
+            </div>
+          </article>
+        </div>
+        <div class="donate-band" style="margin-top:2.5rem">
           <div>
             <h3>Ready to implement the Career Development Programme at your school or organization?</h3>
             <p>Onboard your school, order serialized copies of the reference manual, or support Ugandan youth from anywhere in the world.</p>
@@ -150,49 +294,115 @@
 
   <footer class="site-footer">
     <div class="ribbon" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="footer-cta">
+      <div class="container footer-cta-inner">
+        <div>
+          <h3>Partner With CDSU to Empower Uganda's Next Generation</h3>
+          <p>Order serialized copies of <em>Career Development: A Path to Wealth</em>, onboard a beneficiary school, or make a direct contribution.</p>
+        </div>
+        <div class="footer-cta-btns">
+          <button type="button" class="btn btn-gold btn-sm" data-open-pay="tier-book">Order the Book (UGX 50,000)</button>
+          <a href="programme.html#quiz-section" class="btn btn-outline-light btn-sm">Take Free Career Quiz</a>
+          <button type="button" class="btn btn-red btn-sm" data-open-pay="donate">Donate / Support</button>
+        </div>
+      </div>
+    </div>
+
     <div class="container footer-grid">
       <div>
-        <div class="footer-logo"><img src="assets/images/cdsu_logo.png" alt="CDSU logo" /></div>
-        <p class="motto-sm">“<span data-bind="organization.motto"></span>”</p>
+        <div class="footer-brand-head">
+          <div class="footer-logo"><img src="assets/images/cdsu_logo.png" alt="CDSU logo" /></div>
+          <div class="footer-brand-title">
+            <strong>CDSU</strong>
+            <small>Career Development Society of Uganda</small>
+          </div>
+        </div>
+        <p class="motto-sm">“<span data-bind="organization.motto">Building people first, for wealth to follow.</span>”</p>
+        <p class="footer-desc">A non-partisan, non-profit institutional society running a subscription-based, data-driven Career Development Programme across schools, universities, workplaces, and communities.</p>
+        <div class="footer-badges">
+          <span class="footer-badge">ISBN <span data-bind="organization.bookIsbn">978-9913-678-02-5</span></span>
+          <span class="footer-badge">ABSA UGX &amp; USD</span>
+        </div>
       </div>
+
       <div>
-        <h4>Pages</h4>
-        <a href="about.html">About Us</a>
-        <a href="programme.html">Programme &amp; Quiz</a>
-        <a href="book.html">The Book &amp; Access Code</a>
-        <a href="stories.html">Success Stories</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="join.html">Join / Support</a>
-        <a href="contact.html">Contact Us</a>
+        <h4>Website Pages</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home Overview</a></li>
+          <li><a href="about.html">About Us &amp; Leadership</a></li>
+          <li><a href="programme.html">The CDP Programme</a></li>
+          <li><a href="book.html">The Reference Book</a></li>
+          <li><a href="stories.html">Youth Success Stories</a></li>
+          <li><a href="gallery.html">Outreach Gallery</a></li>
+          <li><a href="join.html">Join &amp; Support Us</a></li>
+          <li><a href="contact.html">Contact Secretariat</a></li>
+        </ul>
       </div>
-      <div id="footer-contact"><h4>Contact</h4></div>
+
+      <div>
+        <h4>Interactive Tools &amp; Links</h4>
+        <ul class="footer-links">
+          <li><a href="programme.html#quiz-section">Career Cluster Self-Check</a></li>
+          <li><a href="book.html#access">Register Book Serial No.</a></li>
+          <li><a href="programme.html#products-section">5 Core CDSU Products</a></li>
+          <li><a href="book.html#chapters-section">8-Chapter Book Syllabus</a></li>
+          <li><a href="join.html#tiers-section">School &amp; Corporate Tiers</a></li>
+          <li><a href="join.html#donate-section">ABSA Bank &amp; MoMo Details</a></li>
+          <li><a href="contact.html?topic=Referring%20a%20school%20or%20institution">Refer a School</a></li>
+        </ul>
+      </div>
+
+      <div id="footer-contact">
+        <h4>Secretariat Contact</h4>
+        <ul class="footer-contact-list">
+          <li><span class="f-ico">📍</span><div><strong>Head Office</strong>Plot 5007, Valley Drive, Bulamu Ward, Gayaza, Wakiso District - Uganda</div></li>
+          <li><span class="f-ico">📞</span><div><strong>Telephones</strong><a href="tel:+256746265724">+256 746 265 724</a> / <a href="tel:+256759746364">+256 759 746 364</a> / <a href="tel:+256791662188">+256 791 662 188</a></div></li>
+          <li><span class="f-ico">💬</span><div><strong>WhatsApp Only</strong><a href="https://wa.me/211988196141" target="_blank" rel="noopener">+211 988 196 141</a></div></li>
+          <li><span class="f-ico">✉️</span><div><strong>Official Email</strong><a href="mailto:info.cdsu@gmail.com">info.cdsu@gmail.com</a></div></li>
+        </ul>
+      </div>
     </div>
+
     <div class="container footer-base">
-      <span>© <span data-bind="organization.copyrightYear"></span> The Career Development Society of Uganda. All rights reserved.</span>
-      <span>ISBN <span data-bind="organization.bookIsbn"></span></span>
+      <span>© <span data-bind="organization.copyrightYear">2026</span> The Career Development Society of Uganda (CDSU). All rights reserved.</span>
+      <span>Published by <span data-bind="organization.publisher">CDSU Publishers</span> • <a href="#top">Back to top &uarr;</a></span>
     </div>
   </footer>
 
-  <!-- PAYMENT MODAL -->
+  <!-- PAYMENT MODAL (Available on every page) -->
   <div class="modal" id="pay-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pay-title">
     <div class="modal-box">
       <button class="modal-close" aria-label="Close">&times;</button>
       <h3 id="pay-title">Payment details</h3>
-      <p class="pay-summary" id="pay-summary"></p>
+      <p class="pay-summary" id="pay-summary">Donation to CDSU — any amount</p>
       <div class="pay-tabs" role="tablist">
         <button class="active" data-tab="bank">Bank transfer</button>
         <button data-tab="momo">Mobile Money</button>
       </div>
-      <div class="pay-pane" id="pane-bank"></div>
-      <div class="pay-pane" id="pane-momo" hidden></div>
+      <div class="pay-pane" id="pane-bank"><div class="kv">
+  <div class="kv-row"><div><small>Bank</small><strong>ABSA Bank, Wandegeya Branch, Uganda</strong></div></div>
+  <div class="kv-row"><div><small>Account name</small><strong>The Career Development Society of Uganda</strong></div><button class="copy-btn" data-copy="The Career Development Society of Uganda">Copy</button></div>
+  <div class="kv-row"><div><small>UGX account no.</small><strong>6010048654</strong></div><button class="copy-btn" data-copy="6010048654">Copy</button></div>
+  <div class="kv-row"><div><small>USD account no. (international donors)</small><strong>6010048522</strong></div><button class="copy-btn" data-copy="6010048522">Copy</button></div>
+</div></div>
+      <div class="pay-pane" id="pane-momo" hidden><div class="momo-card momo-mtn"><div><strong>MTN Mobile Money</strong><br><span class="small muted">Merchant code coming soon</span></div><span class="tag">Pending</span></div><div class="momo-card momo-airtel"><div><strong>Airtel Money</strong><br><span class="small muted">Merchant code coming soon</span></div><span class="tag">Pending</span></div><p class="small muted">Our Mobile Money merchant codes are being finalised. Meanwhile please use bank transfer, or call <a href="tel:+256746265724">+256 746 265 724</a>.</p></div>
       <p class="muted small">After paying, send your name and transaction reference so we can confirm your order or membership.</p>
       <div class="form-actions" id="pay-confirm"></div>
     </div>
   </div>
 
+  <!-- STORY READER MODAL -->
+  <div class="modal" id="story-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-box modal-wide">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div id="story-body"></div>
+    </div>
+  </div>
+
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/cdsuData.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/cdsuData.js?v=20261024c"></script>
+  <script src="js/app.js?v=20261024c"></script>
 </body>
 </html>

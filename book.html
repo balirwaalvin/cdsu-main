@@ -3,13 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Book &amp; CDP Access Portal — CDSU</title>
+  <title>The Book & CDP Access Portal — CDSU</title>
   <meta name="description" content="Career Development: A Path to Wealth (ISBN 978-9913-678-02-5) — preview the 8 chapters, read endorsements, and register your original book serial number." />
   <link rel="icon" type="image/png" href="assets/images/cdsu_logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css?v=20261024c" />
+  <style>
+  .page-hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(circle at 88% 20%,rgba(24,80,156,.88),transparent 55%),linear-gradient(135deg,#122854 0%,#0d1c3d 65%,#1E1B20 100%);padding:clamp(2.8rem,5.5vw,4.4rem) 0;border-bottom:4px solid #F8D008}
+  .page-hero-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;position:relative;z-index:1}
+  .page-hero h1{font-size:clamp(2rem,4vw,2.9rem);font-weight:800;margin-bottom:.5rem;color:#fff}
+  .page-hero p{font-size:1.05rem;color:rgba(255,255,255,.9);max-width:66ch;margin:0}
+  .page-hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.4rem}
+  .breadcrumb{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;color:rgba(255,255,255,.8);margin-bottom:.85rem;font-family:var(--font-display);background:rgba(255,255,255,.08);padding:.3rem .8rem;border-radius:999px;border:1px solid rgba(255,255,255,.15)}
+  .breadcrumb a{color:#F8D008;text-decoration:none;font-weight:700}
+  .hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  .hub-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(18,40,84,.1);border:1px solid #E4E2EA;display:flex;flex-direction:column;text-decoration:none;color:#1E1B20;transition:transform .22s,box-shadow .22s,border-color .22s}
+  .hub-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(18,40,84,.18);border-color:#D82828}
+  .hub-card-media{position:relative;height:185px;overflow:hidden;background:#122854}
+  .hub-card-media img{width:100%;height:100%;object-fit:cover;object-position:top center}
+  .hub-card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,40,84,.1) 0%,rgba(18,40,84,.72) 100%)}
+  .hub-card .hub-tag{position:absolute;top:12px;left:12px;z-index:2;background:rgba(30,27,32,.88);color:#F8D008;font-family:var(--font-display);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.3rem .75rem;border-radius:999px;border:1px solid rgba(248,208,8,.35)}
+  .hub-card-body{padding:1.5rem;display:flex;flex-direction:column;flex:1}
+  .hub-card h3{font-size:1.22rem;margin-bottom:.45rem;color:#1E1B20}
+  .hub-card p{color:#3D3945;font-size:.92rem;flex:1;margin-bottom:1rem}
+  .hub-card .hub-link{font-family:var(--font-display);font-weight:700;font-size:.88rem;color:#fff;background:#18509C;padding:.55rem 1rem;border-radius:999px;align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem}
+  .hub-card:hover .hub-link{background:#D82828}
+  .rules-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+  .rule-card{background:#fff;border-radius:14px;padding:1.4rem;box-shadow:0 10px 30px rgba(18,40,84,.1);border-top:4px solid #F8D008;border-bottom:4px solid #D82828;display:flex;flex-direction:column}
+  .rule-card .num{width:40px;height:40px;border-radius:10px;background:#D82828;color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:1rem;margin-bottom:.75rem}
+  .footer-cta{background:linear-gradient(120deg,#122854 0%,#18509C 100%);border-bottom:1px solid rgba(255,255,255,.12);padding:2rem 0}
+  .footer-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .footer-cta h3{color:#fff;font-size:1.35rem;margin-bottom:.25rem}
+  .footer-cta p{color:rgba(255,255,255,.85);margin:0;font-size:.95rem;max-width:60ch}
+  .footer-cta-btns{display:flex;flex-wrap:wrap;gap:.75rem}
+  .footer-grid{display:grid;grid-template-columns:1.35fr .95fr 1fr 1.35fr;gap:2.2rem;padding:3.2rem 0 2.4rem}
+  .footer-brand-head{display:flex;align-items:center;gap:.85rem;margin-bottom:.9rem}
+  .footer-logo{background:#fff;border-radius:12px;padding:.45rem .6rem;width:74px;flex-shrink:0}
+  .footer-brand-title strong{display:block;font-family:var(--font-display);font-size:1.15rem;color:#fff}
+  .footer-brand-title small{display:block;color:#F8D008;font-size:.78rem;font-weight:600}
+  .footer-desc{font-size:.88rem;color:rgba(255,255,255,.72);line-height:1.55;margin-bottom:.9rem}
+  .footer-badges{display:flex;flex-wrap:wrap;gap:.45rem}
+  .footer-badge{display:inline-block;font-size:.74rem;font-weight:600;padding:.25rem .65rem;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.9)}
+  .footer-links{list-style:none;padding:0;margin:0;display:grid;gap:.5rem}
+  .footer-links a{display:inline-flex;align-items:center;gap:.45rem;color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem}
+  .footer-links a::before{content:"›";color:#F8D008;font-weight:800;font-size:1.1rem;line-height:1}
+  .footer-contact-list{list-style:none;padding:0;margin:0;display:grid;gap:.75rem}
+  .footer-contact-list li{display:flex;align-items:flex-start;gap:.75rem;font-size:.88rem}
+  .footer-contact-list .f-ico{width:32px;height:32px;border-radius:8px;background:rgba(216,40,40,.22);border:1px solid rgba(216,40,40,.45);color:#F8D008;display:grid;place-items:center;flex-shrink:0;font-size:.9rem}
+  .footer-contact-list strong{display:block;color:#fff;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+  @media(max-width:900px){.hub-grid,.rules-grid,.footer-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.hub-grid,.rules-grid,.footer-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -27,7 +73,7 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="programme.html">Programme</a>
-        <a href="book.html">The Book</a>
+        <a href="book.html" class="active" aria-current="page">The Book</a>
         <a href="stories.html">Success Stories</a>
         <a href="gallery.html">Gallery</a>
         <a href="contact.html">Contact</a>
@@ -39,11 +85,17 @@
 
   <main id="main">
     <section class="page-hero">
-      <div class="container">
-        <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; The Book</div>
-        <span class="pill pill-gold">Flagship Publication</span>
-        <h1>Career Development: A Path to Wealth</h1>
-        <p>The primary reference manual and self-assessment workbook for subscribed schools, universities, TVET colleges, parents, and community outreaches across Uganda.</p>
+      <div class="container page-hero-inner">
+        <div>
+          <div class="breadcrumb"><a href="index.html">Home</a> <span>&rsaquo;</span> <span>The Reference Book</span></div>
+          <div><span class="pill pill-gold">Flagship Publication</span></div>
+          <h1>Career Development: A Path to Wealth</h1>
+          <p>The primary reference manual and self-assessment workbook for subscribed schools, universities, TVET colleges, parents, and community outreaches across Uganda.</p>
+          <div class="page-hero-actions">
+            <button type="button" class="btn btn-red btn-sm" data-open-pay="tier-book">Order the Book (UGX 50,000)</button>
+            <a href="#access" class="btn btn-gold btn-sm">Register Book Serial Number</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -56,8 +108,8 @@
             <h2>A Practical Footprint from Classroom to Wealth Creation</h2>
             <p>Prepared for students, teachers, parents, counselors, and institutional leaders, this 8-chapter manual bridges Uganda's formal education system, Competence-Based Curriculum projects, UVTAB/TVET pathways, and Enterprise Uganda (B.E.S.T) entrepreneurship principles.</p>
             <dl class="book-meta">
-              <div><dt>ISBN</dt><dd data-bind="organization.bookIsbn"></dd></div>
-              <div><dt>Publisher</dt><dd data-bind="organization.publisher"></dd></div>
+              <div><dt>ISBN</dt><dd data-bind="organization.bookIsbn">978-9913-678-02-5</dd></div>
+              <div><dt>Publisher</dt><dd data-bind="organization.publisher">CDSU Publishers</dd></div>
               <div><dt>Price</dt><dd>UGX 50,000</dd></div>
             </dl>
             <p class="note"><strong>Copyright &amp; Serial Number Notice:</strong> Buy only from authorized CDSU distribution points. Beneficiaries need the serial number on an original book copy to generate their access code for participating in Career Development Programme (CDP) activities and complementary services.</p>
@@ -69,10 +121,83 @@
         </div>
 
         <h3 class="sub-head">Keynote &amp; Endorsements</h3>
-        <div class="endorse-grid" id="endorsements" style="margin-top:1.2rem"></div>
+        <div class="endorse-grid" id="endorsements" style="margin-top:1.2rem">
+          <article class="endorse-card reveal">
+            <blockquote>Indeed, your career is the path to wealth – not only in material terms, but in purpose, fulfilment, and impact... I thank the CDSU for breaking down the pathway to lead the young people by &#39;building people first, for wealth to follow.&#39; You are lucky to have this book which comprehensively gives you the rules to a super career.</blockquote>
+            <div class="endorser">
+              <img src="assets/images/maggie_kigozi.jpg" alt="Prof. Maggie Kigozi">
+              <div><strong>Prof. Maggie Kigozi</strong><small>Key Message • Former Executive Director, Uganda Investment Authority</small></div>
+            </div>
+          </article>
+          <article class="endorse-card reveal">
+            <blockquote>Young people cannot go where they know not, or rely on chance to get a fulfilling life. Those who have gone ahead must hold a candle and pacify career anxiety. They say a word to a wise man is enough, but we say a word to a young man or woman changes life. This manual gives a clear footprint on how one can get to that desired place in the marketplace.</blockquote>
+            <div class="endorser">
+              <img src="assets/images/charity_barungi.jpg" alt="Ms. Charity Barungi B.">
+              <div><strong>Ms. Charity Barungi B.</strong><small>Careers Office, St. Mary&#39;s College Kisubi (SMACK)</small></div>
+            </div>
+          </article>
+          <article class="endorse-card reveal">
+            <blockquote>Reviewed and endorsed as a timely, policy-aligned, and deeply practical career development manual that bridges Uganda&#39;s formal education system, TVET reforms, and enterprise creation.</blockquote>
+            <div class="endorser">
+              <span class="avatar">KN</span>
+              <div><strong>Prof. Kefa Natolooka</strong><small>Lead Academic Reviewer &amp; Endorser</small></div>
+            </div>
+          </article>
+        </div>
 
-        <h3 class="sub-head">Inside the Book — 8-Chapter Syllabus Overview</h3>
-        <div class="accordion" id="chapters"></div>
+        <div id="chapters-section" style="padding-top:1rem">
+          <h3 class="sub-head">Inside the Book — 8-Chapter Syllabus Overview</h3>
+          <div class="accordion" id="chapters">
+          <div class="acc-item open">
+            <button class="acc-btn" aria-expanded="true" aria-controls="acc-0">
+              <span class="ch">Ch 01</span><span class="t">Background, Foundations, Career &amp; Wealth Creation</span><span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="acc-body" id="acc-0"><p>Anchors career guidance in Uganda&#39;s NDPIV (2025/26–2029/30), NHRDP, ESSR25, and TVET Act 2025. Explores the history of careers, the 4 Career Traps (Education/Salary, Job, Mind, Time vs. Hard Work), and the 4-Stage Career-to-Wealth Pipeline.</p><ul><li>Three outputs of a career: Cash Flow, Scarce Skills, and Social Capital</li><li>Breaking the &#39;Cut the Rope of Excuses&#39; and &#39;Accomplish, Move!&#39; mindset traps</li><li>Moving from position to asset ownership (businesses, land, equity, IP)</li></ul></div>
+          </div>
+          <div class="acc-item ">
+            <button class="acc-btn" aria-expanded="false" aria-controls="acc-1">
+              <span class="ch">Ch 02</span><span class="t">The Environmental Factors in Career Choice</span><span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="acc-body" id="acc-1"><p>Examines the pivotal role of Parents/Guardians, the distinction between Role Models and Mentors (5 things you need from a mentor &amp; 5 things a mentor needs from you: Responsibility, Accountability, Time, Tenacity, Versatility), School Interventions, and Faith/Community platforms for out-of-school youth.</p><ul><li>Parental guide: Train early, talk WITH not AT children, encourage without imposing</li><li>Interactive classroom dialogue: &#39;Mutesi the Deejay and Her Strict Mom&#39;</li><li>Mobilizing out-of-school youth via faith institutions, clubs, and community spaces</li></ul></div>
+          </div>
+          <div class="acc-item ">
+            <button class="acc-btn" aria-expanded="false" aria-controls="acc-2">
+              <span class="ch">Ch 03</span><span class="t">Self-Awareness in Career Development</span><span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="acc-body" id="acc-2"><p>Deep dive into Personality Types (Introverts vs. Extroverts competitive formulas), Values, Strengths vs. Interests, the 5 Tests to separate Real Passion from Passing Interest, the 3-Zone Career Model, Social Competence (EQ), and Uganda&#39;s Education Pathways (PLE to University/TVET).</p><ul><li>Career Acceleration Formula: Technical Skills × Social Competence × Visibility</li><li>Are Certificates Important? The Career-to-Wealth Pyramid</li><li>Balanced analysis: Studying Locally (UNEB) vs. Studying Abroad &amp; School Selection Guide</li></ul></div>
+          </div>
+          <div class="acc-item ">
+            <button class="acc-btn" aria-expanded="false" aria-controls="acc-3">
+              <span class="ch">Ch 04</span><span class="t">Everyone is Unique — A Case for TVET</span><span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="acc-body" id="acc-3"><p>Demystifies Technical and Vocational Education and Training (TVET) as a first-choice pathway. Features the Japan &amp; JICA Kosen Case Study, the UVTAB progressive ladder (Artisan Level 1 to PhD), over 170 UVTAB-examined programs, and 585+ accredited TVET centers across Uganda.</p><ul><li>In Uganda today, a learner can start with tools in their hands and end with a PhD in their mind</li><li>Complete directory of UVTAB Certificate &amp; Diploma programs across all sectors</li><li>Regional breakdown of 585+ accredited TVET centers across Uganda</li></ul></div>
+          </div>
+          <div class="acc-item ">
+            <button class="acc-btn" aria-expanded="false" aria-controls="acc-4">
+              <span class="ch">Ch 05</span><span class="t">Career Pathways, Entrepreneurship &amp; Career Planning</span><span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="acc-body" id="acc-4"><p>Maps 8 major Career Clusters, positions Entrepreneurship as a professional career path with excerpts from Enterprise Uganda&#39;s B.E.S.T Training &amp; Mr. Charles Ocici, explores Family Career Legacies, analyzes AI &amp; the Future of Careers, and teaches SMARTER/PURE/CLEAR Career Planning plus CV, Resume &amp; Interview mastery.</p><ul><li>6 Sources of Business Finance &amp; The 5Cs of Borrowing (Never borrow for a start-up!)</li><li>AI-Resilient Careers &amp; Human Advantage (Meta-skills, EQ, Character &amp; Creativity)</li><li>Practical templates for CVs vs. Resumes, Cover Letters, and acing Job Interviews</li></ul></div>
+          </div>
+          <div class="acc-item ">
+            <button class="acc-btn" aria-expanded="false" aria-controls="acc-5">
+              <span class="ch">Ch 06</span><span class="t">Challenges &amp; Overview of Financial Literacy</span><span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="acc-body" id="acc-5"><p>Addresses the 9 core barriers to career growth (Finances, Responsibilities, Comfort Zone, Norms &amp; Extended Family Obligations) and delivers a practical Financial Literacy blueprint covering the Decision Matrix, the 10-30-50-10 Budgeting Rule, Money Personalities, and the 7 Key Startup Business Records.</p><ul><li>The 10-30-50-10 Rule: 10% Tithe/Giving, 30% Savings/Investment, 50% Needs, 10% Wants</li><li>Revenue is vanity, profit is sanity, and cash flow is survival—all three depend on records</li><li>The 7 mandatory records every startup must keep daily and monthly</li></ul></div>
+          </div>
+          <div class="acc-item ">
+            <button class="acc-btn" aria-expanded="false" aria-controls="acc-6">
+              <span class="ch">Ch 07</span><span class="t">Work, Change, Career Transition &amp; Retirement</span><span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="acc-body" id="acc-6"><p>Explores the dignity of work, Work Ethics &amp; Uganda&#39;s Occupational Safety and Health Act, redefining Work-Life Balance as Energy/Agency/Meaning, responding proactively to Change (Eagle Flight principle), separating Job Problems from Career Problems, and the 4-Phase Career–Retirement Continuum.</p><ul><li>10-step Career Transition checklist &amp; testing 3–6 months before full exit</li><li>Retirement is not an age (60/65)—it is independence from compulsory work</li><li>The 4 Phases: Accumulation (20s–30s), Acceleration (30s–40s), Consolidation (40s–50s), Independence (50s+)</li></ul></div>
+          </div>
+          <div class="acc-item ">
+            <button class="acc-btn" aria-expanded="false" aria-controls="acc-7">
+              <span class="ch">Ch 08</span><span class="t">The Conclusion (Walking in Wisdom) &amp; Practical Annexures</span><span class="chev" aria-hidden="true">▾</span>
+            </button>
+            <div class="acc-body" id="acc-7"><p>Concludes with the place of faith and calling in career fulfillment, Dr. Ben Carson&#39;s 4-Question Decision Matrix, and 3 ready-to-use interactive tools: Monthly Budget Template (Annexure 1), Money Personality Quiz (Annexure 2), and the Self-Awareness &amp; Career Direction Tool (Annexure 3).</p><ul><li>Annexure 1: Customizable 10-30-50-10 Monthly Budget Template</li><li>Annexure 2: 5-Question Money Personality Scorer (Spender, Balancer, Saver, Investor)</li><li>Annexure 3: Uganda-aligned Career Cluster Assessment &amp; Counselor Sign-off Sheet</li></ul></div>
+          </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -101,49 +226,108 @@
 
   <footer class="site-footer">
     <div class="ribbon" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="footer-cta">
+      <div class="container footer-cta-inner">
+        <div>
+          <h3>Partner With CDSU to Empower Uganda's Next Generation</h3>
+          <p>Order serialized copies of <em>Career Development: A Path to Wealth</em>, onboard a beneficiary school, or make a direct contribution.</p>
+        </div>
+        <div class="footer-cta-btns">
+          <button type="button" class="btn btn-gold btn-sm" data-open-pay="tier-book">Order the Book (UGX 50,000)</button>
+          <a href="programme.html#quiz-section" class="btn btn-outline-light btn-sm">Take Free Career Quiz</a>
+          <button type="button" class="btn btn-red btn-sm" data-open-pay="donate">Donate / Support</button>
+        </div>
+      </div>
+    </div>
+
     <div class="container footer-grid">
       <div>
-        <div class="footer-logo"><img src="assets/images/cdsu_logo.png" alt="CDSU logo" /></div>
-        <p class="motto-sm">“<span data-bind="organization.motto"></span>”</p>
+        <div class="footer-brand-head">
+          <div class="footer-logo"><img src="assets/images/cdsu_logo.png" alt="CDSU logo" /></div>
+          <div class="footer-brand-title">
+            <strong>CDSU</strong>
+            <small>Career Development Society of Uganda</small>
+          </div>
+        </div>
+        <p class="motto-sm">“<span data-bind="organization.motto">Building people first, for wealth to follow.</span>”</p>
+        <p class="footer-desc">A non-partisan, non-profit institutional society running a subscription-based, data-driven Career Development Programme across schools, universities, workplaces, and communities.</p>
+        <div class="footer-badges">
+          <span class="footer-badge">ISBN <span data-bind="organization.bookIsbn">978-9913-678-02-5</span></span>
+          <span class="footer-badge">ABSA UGX &amp; USD</span>
+        </div>
       </div>
+
       <div>
-        <h4>Pages</h4>
-        <a href="about.html">About Us</a>
-        <a href="programme.html">Programme &amp; Quiz</a>
-        <a href="book.html">The Book &amp; Access Code</a>
-        <a href="stories.html">Success Stories</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="join.html">Join / Support</a>
-        <a href="contact.html">Contact Us</a>
+        <h4>Website Pages</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home Overview</a></li>
+          <li><a href="about.html">About Us &amp; Leadership</a></li>
+          <li><a href="programme.html">The CDP Programme</a></li>
+          <li><a href="book.html">The Reference Book</a></li>
+          <li><a href="stories.html">Youth Success Stories</a></li>
+          <li><a href="gallery.html">Outreach Gallery</a></li>
+          <li><a href="join.html">Join &amp; Support Us</a></li>
+          <li><a href="contact.html">Contact Secretariat</a></li>
+        </ul>
       </div>
-      <div id="footer-contact"><h4>Contact</h4></div>
+
+      <div>
+        <h4>Interactive Tools &amp; Links</h4>
+        <ul class="footer-links">
+          <li><a href="programme.html#quiz-section">Career Cluster Self-Check</a></li>
+          <li><a href="book.html#access">Register Book Serial No.</a></li>
+          <li><a href="programme.html#products-section">5 Core CDSU Products</a></li>
+          <li><a href="book.html#chapters-section">8-Chapter Book Syllabus</a></li>
+          <li><a href="join.html#tiers-section">School &amp; Corporate Tiers</a></li>
+          <li><a href="join.html#donate-section">ABSA Bank &amp; MoMo Details</a></li>
+          <li><a href="contact.html?topic=Referring%20a%20school%20or%20institution">Refer a School</a></li>
+        </ul>
+      </div>
+
+      <div id="footer-contact">
+        <h4>Secretariat Contact</h4>
+        <ul class="footer-contact-list">
+          <li><span class="f-ico">📍</span><div><strong>Head Office</strong>Plot 5007, Valley Drive, Bulamu Ward, Gayaza, Wakiso District - Uganda</div></li>
+          <li><span class="f-ico">📞</span><div><strong>Telephones</strong><a href="tel:+256746265724">+256 746 265 724</a> / <a href="tel:+256759746364">+256 759 746 364</a> / <a href="tel:+256791662188">+256 791 662 188</a></div></li>
+          <li><span class="f-ico">💬</span><div><strong>WhatsApp Only</strong><a href="https://wa.me/211988196141" target="_blank" rel="noopener">+211 988 196 141</a></div></li>
+          <li><span class="f-ico">✉️</span><div><strong>Official Email</strong><a href="mailto:info.cdsu@gmail.com">info.cdsu@gmail.com</a></div></li>
+        </ul>
+      </div>
     </div>
+
     <div class="container footer-base">
-      <span>© <span data-bind="organization.copyrightYear"></span> The Career Development Society of Uganda. All rights reserved.</span>
-      <span>ISBN <span data-bind="organization.bookIsbn"></span></span>
+      <span>© <span data-bind="organization.copyrightYear">2026</span> The Career Development Society of Uganda (CDSU). All rights reserved.</span>
+      <span>Published by <span data-bind="organization.publisher">CDSU Publishers</span> • <a href="#top">Back to top &uarr;</a></span>
     </div>
   </footer>
 
-  <!-- PAYMENT MODAL -->
+  <!-- PAYMENT MODAL (Available on every page) -->
   <div class="modal" id="pay-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pay-title">
     <div class="modal-box">
       <button class="modal-close" aria-label="Close">&times;</button>
       <h3 id="pay-title">Payment details</h3>
-      <p class="pay-summary" id="pay-summary"></p>
+      <p class="pay-summary" id="pay-summary">Donation to CDSU — any amount</p>
       <div class="pay-tabs" role="tablist">
         <button class="active" data-tab="bank">Bank transfer</button>
         <button data-tab="momo">Mobile Money</button>
       </div>
-      <div class="pay-pane" id="pane-bank"></div>
-      <div class="pay-pane" id="pane-momo" hidden></div>
+      <div class="pay-pane" id="pane-bank"><div class="kv">
+  <div class="kv-row"><div><small>Bank</small><strong>ABSA Bank, Wandegeya Branch, Uganda</strong></div></div>
+  <div class="kv-row"><div><small>Account name</small><strong>The Career Development Society of Uganda</strong></div><button class="copy-btn" data-copy="The Career Development Society of Uganda">Copy</button></div>
+  <div class="kv-row"><div><small>UGX account no.</small><strong>6010048654</strong></div><button class="copy-btn" data-copy="6010048654">Copy</button></div>
+  <div class="kv-row"><div><small>USD account no. (international donors)</small><strong>6010048522</strong></div><button class="copy-btn" data-copy="6010048522">Copy</button></div>
+</div></div>
+      <div class="pay-pane" id="pane-momo" hidden><div class="momo-card momo-mtn"><div><strong>MTN Mobile Money</strong><br><span class="small muted">Merchant code coming soon</span></div><span class="tag">Pending</span></div><div class="momo-card momo-airtel"><div><strong>Airtel Money</strong><br><span class="small muted">Merchant code coming soon</span></div><span class="tag">Pending</span></div><p class="small muted">Our Mobile Money merchant codes are being finalised. Meanwhile please use bank transfer, or call <a href="tel:+256746265724">+256 746 265 724</a>.</p></div>
       <p class="muted small">After paying, send your name and transaction reference so we can confirm your order or membership.</p>
       <div class="form-actions" id="pay-confirm"></div>
     </div>
   </div>
 
+
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/cdsuData.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/cdsuData.js?v=20261024c"></script>
+  <script src="js/app.js?v=20261024c"></script>
 </body>
 </html>

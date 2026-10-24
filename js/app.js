@@ -36,13 +36,15 @@
       navToggle.setAttribute("aria-expanded", "false");
     }));
 
-    const currentFile = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+    const rawSegment = (location.pathname.split("/").filter(Boolean).pop() || "index.html").toLowerCase();
+    const currentSlug = rawSegment.replace(/\.html$/, "") || "index";
     $$("#site-nav a").forEach((a) => {
       const href = (a.getAttribute("href") || "").split("?")[0].split("#")[0].toLowerCase();
-      if (href === currentFile || (currentFile === "" && href === "index.html")) {
-        a.classList.add("active");
-        a.setAttribute("aria-current", "page");
-      }
+      const hrefSlug = href.replace(/\.html$/, "") || "index";
+      const isMatch = hrefSlug === currentSlug;
+      a.classList.toggle("active", isMatch);
+      if (isMatch) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
     });
   }
 
@@ -123,9 +125,16 @@
   /* ---------- products ---------- */
   const productsEl = $("#products");
   if (productsEl) {
+    const topicMap = {
+      1: "book.html",
+      2: "contact.html?topic=" + encodeURIComponent("Referring a school or institution"),
+      3: "contact.html?topic=" + encodeURIComponent("General enquiry"),
+      4: "contact.html?topic=" + encodeURIComponent("General enquiry"),
+      5: "contact.html?topic=" + encodeURIComponent("Becoming a sponsor / partner")
+    };
     productsEl.innerHTML = D.products
       .map((p) => {
-        const href = p.id === 1 ? "book.html" : `contact.html?topic=${encodeURIComponent("General enquiry")}`;
+        const href = topicMap[p.id] || "contact.html";
         return `
       <article class="product-card reveal">
         <div class="num">${p.id}</div>
@@ -584,14 +593,16 @@
       <li><span class="ico">${ico.mail}</span><div><strong>Email</strong><a href="mailto:${esc(C.emailPrimary)}">${esc(C.emailPrimary)}</a></div></li>`;
   }
   const footerContact = $("#footer-contact");
-  if (footerContact) {
+  if (footerContact && !footerContact.querySelector(".footer-contact-list")) {
     footerContact.insertAdjacentHTML(
       "beforeend",
       `
-      <p>${esc(C.physicalAddress)}</p>
-      <a href="tel:${C.phones[0].replace(/\s/g, "")}">${esc(C.phones[0])}</a>
-      <a href="https://wa.me/${C.whatsappClean}" target="_blank" rel="noopener">WhatsApp: ${esc(C.whatsappNumber)}</a>
-      <a href="mailto:${esc(C.emailPrimary)}">${esc(C.emailPrimary)}</a>`
+      <ul class="footer-contact-list">
+        <li><span class="f-ico">${ico.pin}</span><div><strong>Head Office</strong>${esc(C.physicalAddress)}</div></li>
+        <li><span class="f-ico">${ico.phone}</span><div><strong>Telephones</strong>${C.phones.map((p) => `<a href="tel:${p.replace(/\s/g, "")}">${esc(p)}</a>`).join(" / ")}</div></li>
+        <li><span class="f-ico">${ico.wa}</span><div><strong>WhatsApp Only</strong><a href="https://wa.me/${C.whatsappClean}" target="_blank" rel="noopener">${esc(C.whatsappNumber)}</a></div></li>
+        <li><span class="f-ico">${ico.mail}</span><div><strong>Official Email</strong><a href="mailto:${esc(C.emailPrimary)}">${esc(C.emailPrimary)}</a></div></li>
+      </ul>`
     );
   }
 })();
