@@ -617,14 +617,19 @@
   }
 
   /* ---------- contact & footer ---------- */
-  const ico = { pin: "📍", phone: "📞", wa: "💬", mail: "✉️" };
+  const ico = {
+    pin: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.686-7-11a7 7 0 1 1 14 0c0 5.314-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>`,
+    phone: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
+    wa: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path d="M9.5 9.5c.3 1.8 1.7 3.2 3.5 3.5l1.2-.8c.3-.2.7-.1.9.1l1.1 1.1c.3.3.3.8 0 1.1-.8.8-2 1.1-3.1.8-2.8-.7-5.1-3-5.8-5.8-.3-1.1 0-2.3.8-3.1.3-.3.8-.3 1.1 0l1.1 1.1c.2.2.3.6.1.9l-.9 1.1z"/></svg>`,
+    mail: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`
+  };
   const contactListEl = $("#contact-list");
   if (contactListEl) {
     contactListEl.innerHTML = `
-      <li><span class="ico">${ico.pin}</span><div><strong>Physical address</strong>${esc(C.physicalAddress)}</div></li>
-      <li><span class="ico">${ico.phone}</span><div><strong>Telephone</strong>${C.phones.map((p) => `<a href="tel:${p.replace(/\s/g, "")}">${esc(p)}</a>`).join(" / ")}</div></li>
-      <li><span class="ico">${ico.wa}</span><div><strong>WhatsApp only</strong><a href="https://wa.me/${C.whatsappClean}" target="_blank" rel="noopener">${esc(C.whatsappNumber)}</a></div></li>
-      <li><span class="ico">${ico.mail}</span><div><strong>Email</strong><a href="mailto:${esc(C.emailPrimary)}">${esc(C.emailPrimary)}</a></div></li>`;
+      <li><span class="ico ico-pin">${ico.pin}</span><div><strong>Physical address</strong>${esc(C.physicalAddress)}</div></li>
+      <li><span class="ico ico-phone">${ico.phone}</span><div><strong>Telephone</strong>${C.phones.map((p) => `<a href="tel:${p.replace(/\s/g, "")}">${esc(p)}</a>`).join(" / ")}</div></li>
+      <li><span class="ico ico-wa">${ico.wa}</span><div><strong>WhatsApp only</strong><a href="https://wa.me/${C.whatsappClean}" target="_blank" rel="noopener">${esc(C.whatsappNumber)}</a></div></li>
+      <li><span class="ico ico-mail">${ico.mail}</span><div><strong>Email</strong><a href="mailto:${esc(C.emailPrimary)}">${esc(C.emailPrimary)}</a></div></li>`;
   }
   const footerContact = $("#footer-contact");
   if (footerContact && !footerContact.querySelector(".footer-contact-list")) {
@@ -632,10 +637,10 @@
       "beforeend",
       `
       <ul class="footer-contact-list">
-        <li><span class="f-ico">${ico.pin}</span><div><strong>Head Office</strong>${esc(C.physicalAddress)}</div></li>
-        <li><span class="f-ico">${ico.phone}</span><div><strong>Telephones</strong>${C.phones.map((p) => `<a href="tel:${p.replace(/\s/g, "")}">${esc(p)}</a>`).join(" / ")}</div></li>
-        <li><span class="f-ico">${ico.wa}</span><div><strong>WhatsApp Only</strong><a href="https://wa.me/${C.whatsappClean}" target="_blank" rel="noopener">${esc(C.whatsappNumber)}</a></div></li>
-        <li><span class="f-ico">${ico.mail}</span><div><strong>Official Email</strong><a href="mailto:${esc(C.emailPrimary)}">${esc(C.emailPrimary)}</a></div></li>
+        <li><span class="f-ico f-ico-pin">${ico.pin}</span><div><strong>Head Office</strong>${esc(C.physicalAddress)}</div></li>
+        <li><span class="f-ico f-ico-phone">${ico.phone}</span><div><strong>Telephones</strong>${C.phones.map((p) => `<a href="tel:${p.replace(/\s/g, "")}">${esc(p)}</a>`).join(" / ")}</div></li>
+        <li><span class="f-ico f-ico-wa">${ico.wa}</span><div><strong>WhatsApp Only</strong><a href="https://wa.me/${C.whatsappClean}" target="_blank" rel="noopener">${esc(C.whatsappNumber)}</a></div></li>
+        <li><span class="f-ico f-ico-mail">${ico.mail}</span><div><strong>Official Email</strong><a href="mailto:${esc(C.emailPrimary)}">${esc(C.emailPrimary)}</a></div></li>
       </ul>`
     );
   }
