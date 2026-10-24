@@ -135,12 +135,12 @@ p { margin: 0 0 1em; }
 .nav-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
 .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--charcoal); margin: 5px 0; transition: .2s; }
 
-/* Home Multi-Slide Hero Carousel */
+/* Home Continuous Automatic Slide-Over Hero Carousel */
 .hero {
   position: relative; overflow: hidden; color: var(--white);
   background: radial-gradient(circle at 85% 20%, rgba(24,80,156,.92), transparent 55%),
               linear-gradient(135deg, var(--navy) 0%, #0d1c3d 60%, var(--charcoal) 100%);
-  padding: clamp(2.6rem, 5.5vw, 4.6rem) 0 2.2rem;
+  padding: clamp(2.4rem, 5vw, 4.2rem) 0 2rem;
   border-bottom: 4px solid var(--gold);
 }
 .hero::after {
@@ -148,18 +148,21 @@ p { margin: 0 0 1em; }
   border: 28px solid var(--red); transform: rotate(45deg); opacity: .22; pointer-events: none;
 }
 .hero-slider-stage { position: relative; z-index: 2; }
-.hero-slide {
-  display: none;
-  animation: heroSlideIn .55s cubic-bezier(.22, 1, .36, 1);
+.hero-viewport {
+  overflow: hidden; width: 100%; position: relative;
 }
-.hero-slide.active { display: block; }
-@keyframes heroSlideIn {
-  from { opacity: 0; transform: translateX(34px); }
-  to { opacity: 1; transform: translateX(0); }
+.hero-track {
+  display: flex; width: 100%;
+  transition: transform .85s cubic-bezier(.22, 1, .36, 1);
+  will-change: transform;
+}
+.hero-slide {
+  flex: 0 0 100%; width: 100%; min-width: 100%;
+  padding: .2rem .1rem;
 }
 .hero-grid {
   display: grid; grid-template-columns: 1.12fr .88fr; gap: 2.6rem;
-  align-items: center; min-height: 450px;
+  align-items: center; min-height: 440px;
 }
 .hero h1 { font-size: clamp(2.1rem, 4.4vw, 3.35rem); font-weight: 800; line-height: 1.12; margin-bottom: .45rem; }
 .hero .accent { color: var(--gold); }
@@ -271,45 +274,33 @@ p { margin: 0 0 1em; }
 }
 .hero-cluster-chip:hover { background: var(--gold); color: var(--charcoal); border-color: var(--gold); }
 
-/* Hero Slider Bottom Controls & Tabs */
-.hero-controls {
-  margin-top: 2rem; padding-top: 1.1rem;
+/* Ambient Automatic Loop Progress Strip (No manual pause/next buttons needed) */
+.hero-loop-strip {
+  margin-top: 1.8rem; padding-top: 1rem;
   border-top: 1px solid rgba(255,255,255,.14);
-  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
 }
 .hero-tabs {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; flex: 1;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: .65rem;
 }
 .hero-tab {
-  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16);
-  color: rgba(255,255,255,.82); border-radius: 10px; padding: .6rem .85rem;
-  text-align: left; cursor: pointer; font: inherit; position: relative; overflow: hidden;
-  transition: background .2s, border-color .2s, color .2s;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14);
+  color: rgba(255,255,255,.72); border-radius: 10px; padding: .55rem .85rem;
+  text-align: left; position: relative; overflow: hidden;
+  transition: background .3s, border-color .3s, color .3s;
 }
 .hero-tab small {
-  display: block; font-family: var(--font-display); font-size: .68rem;
+  display: block; font-family: var(--font-display); font-size: .66rem;
   font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--gold);
 }
-.hero-tab strong { display: block; font-family: var(--font-display); font-size: .86rem; margin-top: .1rem; }
+.hero-tab strong { display: block; font-family: var(--font-display); font-size: .84rem; margin-top: .08rem; }
 .hero-tab.active {
-  background: rgba(255,255,255,.16); border-color: var(--gold); color: #fff;
+  background: rgba(255,255,255,.15); border-color: var(--gold); color: #fff;
   box-shadow: 0 8px 20px rgba(0,0,0,.22);
 }
 .hero-tab-bar {
   position: absolute; left: 0; bottom: 0; height: 3px; width: 0;
-  background: var(--gold);
+  background: linear-gradient(90deg, var(--gold), var(--red));
 }
-.hero-tab.active .hero-tab-bar {
-  width: 100%; transition: width 7.5s linear;
-}
-.hero-arrows { display: flex; gap: .45rem; }
-.hero-arrow {
-  width: 40px; height: 40px; border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.08);
-  color: #fff; font-size: 1.15rem; cursor: pointer; display: grid; place-items: center;
-  transition: background .2s, color .2s, border-color .2s;
-}
-.hero-arrow:hover { background: var(--gold); color: var(--charcoal); border-color: var(--gold); }
 
 /* Subpage Hero Banner */
 .page-hero {

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20261024d" />
+  <link rel="stylesheet" href="css/styles.css?v=20261024e" />
   <style>
   .brand{display:inline-flex;align-items:center;gap:.75rem;text-decoration:none;color:#1E1B20;padding:.25rem .4rem .25rem .25rem;border-radius:12px}
   .brand-logo-wrap{display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#fff 0%,#f5f4fb 100%);border:1.5px solid rgba(24,80,156,.18);box-shadow:0 4px 12px rgba(18,40,84,.1);border-radius:11px;padding:.3rem .45rem;flex-shrink:0}
@@ -19,8 +19,9 @@
   .brand-kicker{font-family:var(--font-display);font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#18509C}
   .brand-title{font-family:var(--font-display);font-size:1.08rem;font-weight:800;letter-spacing:-.01em;color:#1E1B20}
   .brand-motto{font-family:var(--font-serif);font-style:italic;font-size:.72rem;color:#D82828;margin-top:.12rem}
-  .hero-slide{display:none}
-  .hero-slide.active{display:block}
+  .hero-viewport{overflow:hidden;width:100%;position:relative}
+  .hero-track{display:flex;width:100%;transition:transform .85s cubic-bezier(.22,1,.36,1);will-change:transform}
+  .hero-slide{flex:0 0 100%;width:100%;min-width:100%;padding:.2rem .1rem}
   .page-hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(circle at 88% 20%,rgba(24,80,156,.88),transparent 55%),linear-gradient(135deg,#122854 0%,#0d1c3d 65%,#1E1B20 100%);padding:clamp(2.8rem,5.5vw,4.4rem) 0;border-bottom:4px solid #F8D008}
   .page-hero-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;position:relative;z-index:1}
   .page-hero h1{font-size:clamp(2rem,4vw,2.9rem);font-weight:800;margin-bottom:.5rem;color:#fff}
@@ -344,7 +345,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/cdsuData.js?v=20261024d"></script>
-  <script src="js/app.js?v=20261024d"></script>
+  <script src="js/cdsuData.js?v=20261024e"></script>
+  <script src="js/app.js?v=20261024e"></script>
 </body>
 </html>

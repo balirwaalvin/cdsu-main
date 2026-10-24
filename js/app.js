@@ -48,89 +48,58 @@
     });
   }
 
-  /* ---------- home hero multi-slide carousel loop ---------- */
+  /* ---------- home hero continuous automatic slide-over loop ---------- */
   const heroSlider = $("#hero-slider");
   if (heroSlider) {
+    const track = $(".hero-track", heroSlider);
     const slides = $$(".hero-slide", heroSlider);
     const tabs = $$(".hero-tab", heroSlider);
-    const pauseBtn = $("[data-hero-pause]", heroSlider);
-    let idx = 0;
-    let paused = false;
-    let timer = null;
-    const INTERVAL = 7500;
+    const count = slides.length;
+    const INTERVAL = 5200;
+    const TRANSITION_CSS = "transform 0.85s cubic-bezier(0.22, 1, 0.36, 1)";
+    let pos = 0;
 
-    const resetProgressBar = (tab) => {
-      const bar = $(".hero-tab-bar", tab);
-      if (!bar) return;
-      bar.style.transition = "none";
-      bar.style.width = "0%";
-      void bar.offsetWidth;
-      if (!paused) {
-        bar.style.transition = `width ${INTERVAL}ms linear`;
-        bar.style.width = "100%";
-      }
-    };
+    if (track && count > 1) {
+      // Append a seamless clone of the first slide so the loop always slides right-to-left continuously
+      const firstClone = slides[0].cloneNode(true);
+      firstClone.setAttribute("aria-hidden", "true");
+      track.appendChild(firstClone);
 
-    const showSlide = (nextIdx) => {
-      idx = (nextIdx + slides.length) % slides.length;
-      slides.forEach((s, i) => {
-        const active = i === idx;
-        s.classList.toggle("active", active);
-        s.setAttribute("aria-hidden", String(!active));
-      });
-      tabs.forEach((t, i) => {
-        const active = i === idx;
-        t.classList.toggle("active", active);
-        t.setAttribute("aria-selected", String(active));
-        const bar = $(".hero-tab-bar", t);
-        if (bar && !active) {
+      const updateIndicators = (logicalIdx) => {
+        tabs.forEach((t, i) => {
+          const active = i === logicalIdx;
+          t.classList.toggle("active", active);
+          const bar = $(".hero-tab-bar", t);
+          if (!bar) return;
           bar.style.transition = "none";
           bar.style.width = "0%";
+          if (active) {
+            void bar.offsetWidth;
+            bar.style.transition = `width ${INTERVAL}ms linear`;
+            bar.style.width = "100%";
+          }
+        });
+      };
+
+      const stepLoop = () => {
+        pos += 1;
+        track.style.transition = TRANSITION_CSS;
+        track.style.transform = `translateX(-${pos * 100}%)`;
+        const logicalIdx = pos % count;
+        updateIndicators(logicalIdx);
+
+        if (pos === count) {
+          setTimeout(() => {
+            track.style.transition = "none";
+            pos = 0;
+            track.style.transform = "translateX(0%)";
+          }, 880);
         }
-        if (active) resetProgressBar(t);
-      });
-    };
+      };
 
-    const startLoop = () => {
-      clearInterval(timer);
-      if (paused) return;
-      timer = setInterval(() => showSlide(idx + 1), INTERVAL);
-    };
-
-    tabs.forEach((t, i) => {
-      t.addEventListener("click", () => {
-        showSlide(i);
-        startLoop();
-      });
-    });
-
-    $$("[data-hero-dir]", heroSlider).forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const dir = Number(btn.dataset.heroDir) || 1;
-        showSlide(idx + dir);
-        startLoop();
-      });
-    });
-
-    if (pauseBtn) {
-      pauseBtn.addEventListener("click", () => {
-        paused = !paused;
-        pauseBtn.textContent = paused ? "▶" : "⏸";
-        pauseBtn.setAttribute("aria-label", paused ? "Resume hero slideshow" : "Pause hero slideshow");
-        showSlide(idx);
-        startLoop();
-      });
+      updateIndicators(0);
+      setInterval(stepLoop, INTERVAL);
     }
-
-    heroSlider.addEventListener("mouseenter", () => {
-      clearInterval(timer);
-    });
-    heroSlider.addEventListener("mouseleave", () => {
-      if (!paused) startLoop();
-    });
-
-    showSlide(0);
-    startLoop();
   }
 
   /* ---------- partners marquee (only partner/sponsor entries; linked if URL set) ---------- */
