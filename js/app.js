@@ -333,7 +333,7 @@
         <div class="quiz-progress"><span style="width:${((step + 1) / steps.length) * 100}%"></span></div>
         <div class="quiz-nav">
           <button type="button" class="btn btn-outline-light btn-sm" data-act="back" ${step === 0 ? "disabled" : ""}>Back</button>
-          <button type="button" class="btn btn-gold btn-sm" data-act="next">${step === steps.length - 1 ? "See my result" : "Next"}</button>
+          <button type="button" class="btn btn-primary btn-sm" data-act="next">${step === steps.length - 1 ? "See my result" : "Next"}</button>
         </div>`;
     };
 
@@ -352,7 +352,7 @@
       const ranked = keys.slice().sort((a, b) => sc[b] - sc[a]);
       const max = Math.max(1, ...Object.values(sc));
       if (sc[ranked[0]] === 0) {
-        root.innerHTML = `<p>You didn't select anything yet — go back and tap the options that describe you.</p><button class="btn btn-gold btn-sm" data-act="restart">Start again</button>`;
+        root.innerHTML = `<p>You didn't select anything yet — go back and tap the options that describe you.</p><button class="btn btn-primary btn-sm" data-act="restart">Start again</button>`;
         return;
       }
       const top = ranked
@@ -361,14 +361,14 @@
           const c = A.clusters[k];
           return `
         <div class="result-card">
-          <h4 style="color:var(--charcoal)"><span class="code">${esc(c.code)}</span>${esc(c.name)}</h4>
+          <h4><span class="code">${esc(c.code)}</span>${esc(c.name)}</h4>
           <p><strong>Example careers:</strong> ${esc(c.careers)}</p>
           <p><strong>Next step:</strong> ${esc(c.nextSteps)}</p>
         </div>`;
         })
         .join("");
       root.innerHTML = `
-        <h4 style="color:var(--gold)">Your top 2 career clusters</h4>${top}
+        <h4 style="color:var(--white)">Your top 2 career clusters</h4>${top}
         <div class="bars">${ranked
           .map(
             (k) =>
@@ -376,7 +376,7 @@
           )
           .join("")}</div>
         <p class="small" style="opacity:.75;margin-top:1rem">This is a short version. The full tool in the book adds a guidance recommendation and should be completed with a career guide, mentor or parent.</p>
-        <div class="form-actions"><a href="join.html" class="btn btn-gold btn-sm">Get the book</a><button class="btn btn-outline-light btn-sm" data-act="restart">Start again</button></div>`;
+        <div class="form-actions"><a href="join.html" class="btn btn-primary btn-sm">Get the book</a><button class="btn btn-outline-light btn-sm" data-act="restart">Start again</button></div>`;
     };
 
     root.addEventListener("click", (e) => {
@@ -483,7 +483,7 @@
           <div class="badges">${s.badges.map((x) => `<span>${esc(x)}</span>`).join("")}</div>
           <p>${esc(s.summary)}</p>
           ${s.fullStory.map((p) => `<p>${esc(p)}</p>`).join("")}
-          <blockquote style="font-family:var(--font-serif);font-style:italic;border-left:4px solid var(--red);padding-left:1rem;margin:1rem 0">“${esc(s.quote)}”</blockquote>
+          <blockquote style="font-family:var(--font-serif);font-style:italic;border-left:3px solid var(--navy);padding-left:1rem;margin:1rem 0">“${esc(s.quote)}”</blockquote>
           <p class="small muted">From <em>Career Development: A Path to Wealth</em>.</p>
         </div>
       </div>`;
@@ -541,7 +541,7 @@
         <div class="aud">${esc(t.audience)}</div>
         <p class="muted small" style="margin-top:.6rem">${esc(t.description)}</p>
         <ul>${t.perks.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>
-        <button class="btn ${t.featured ? "btn-red" : "btn-outline"}" data-open-pay="${esc(t.id)}">${esc(t.ctaLabel)}</button>
+        <button class="btn ${t.featured ? "btn-primary" : "btn-outline"}" data-open-pay="${esc(t.id)}">${esc(t.ctaLabel)}</button>
       </article>`
       )
       .join("");
@@ -613,7 +613,7 @@
     if ($("#pay-summary")) $("#pay-summary").textContent = label;
     const note = `Hello CDSU, I have paid for: ${label}.\nName: \nTransaction reference: `;
     if ($("#pay-confirm")) {
-      $("#pay-confirm").innerHTML = `<a class="btn btn-red btn-sm" target="_blank" rel="noopener" href="${waLink(note)}">Confirm via WhatsApp</a><a class="btn btn-outline btn-sm" href="${mailLink(
+      $("#pay-confirm").innerHTML = `<a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="${waLink(note)}">Confirm via WhatsApp</a><a class="btn btn-outline btn-sm" href="${mailLink(
         "Payment confirmation: " + label,
         note
       )}">Confirm via Email</a>`;

@@ -9,74 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20261101d" />
-  <style>
-  .brand{display:inline-flex;align-items:center;gap:.75rem;text-decoration:none;color:#1E1B20;padding:.25rem .4rem .25rem .25rem;border-radius:12px}
-  .brand-logo-wrap{display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#fff 0%,#f5f4fb 100%);border:1.5px solid rgba(24,80,156,.18);box-shadow:0 4px 12px rgba(18,40,84,.1);border-radius:11px;padding:.3rem .45rem;flex-shrink:0}
-  .brand-logo-wrap img{height:50px;width:auto;object-fit:contain}
-  .brand-divider{width:4px;height:44px;border-radius:99px;flex-shrink:0;background:linear-gradient(180deg,#1E1B20 0% 33%,#F8D008 33% 66%,#D82828 66% 100%)}
-  .brand-text{display:flex;flex-direction:column;line-height:1.12}
-  .brand-kicker{font-family:var(--font-display);font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#18509C}
-  .brand-title{font-family:var(--font-display);font-size:1.08rem;font-weight:800;letter-spacing:-.01em;color:#1E1B20}
-  .brand-motto{font-family:var(--font-serif);font-style:italic;font-size:.72rem;color:#D82828;margin-top:.12rem}
-  .hero{padding:0;min-height:clamp(360px,54vh,470px);display:flex;align-items:stretch}
-  .hero-slider-stage{position:relative;z-index:2;width:100%;display:flex;align-items:stretch}
-  .hero-viewport{overflow:hidden;width:100%;min-height:100%;position:relative;display:flex;align-items:stretch}
-  .hero-track{display:flex;width:100%;min-height:100%;transition:transform .9s cubic-bezier(.22,1,.36,1);will-change:transform}
-  .hero-slide{flex:0 0 100%;width:100%;min-width:100%;min-height:clamp(360px,54vh,470px);position:relative;display:flex;align-items:center;overflow:hidden;padding:0}
-  .hero-slide-bg{position:absolute;inset:0;z-index:0;pointer-events:none;background-size:cover;background-position:center;background-repeat:no-repeat;transform:scale(1.03)}
-  .hero-slide-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 28%,rgba(24,80,156,.45),transparent 60%),linear-gradient(96deg,rgba(10,22,48,.95) 0%,rgba(15,33,72,.86) 52%,rgba(13,28,61,.7) 100%)}
-  .hero-slide-inner{width:min(1140px,90%);margin:0 auto;padding:clamp(1.5rem,2.8vw,2.2rem) 0;position:relative;z-index:2}
-  .page-hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(circle at 88% 20%,rgba(24,80,156,.88),transparent 55%),linear-gradient(135deg,#122854 0%,#0d1c3d 65%,#1E1B20 100%);padding:clamp(2.8rem,5.5vw,4.4rem) 0;border-bottom:4px solid #F8D008}
-  .page-hero-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;position:relative;z-index:1}
-  .page-hero h1{font-size:clamp(2rem,4vw,2.9rem);font-weight:800;margin-bottom:.5rem;color:#fff}
-  .page-hero p{font-size:1.05rem;color:rgba(255,255,255,.9);max-width:66ch;margin:0}
-  .page-hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.4rem}
-  .breadcrumb{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;color:rgba(255,255,255,.8);margin-bottom:.85rem;font-family:var(--font-display);background:rgba(255,255,255,.08);padding:.3rem .8rem;border-radius:999px;border:1px solid rgba(255,255,255,.15)}
-  .breadcrumb a{color:#F8D008;text-decoration:none;font-weight:700}
-  .hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-  .hub-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(18,40,84,.1);border:1px solid #E4E2EA;display:flex;flex-direction:column;text-decoration:none;color:#1E1B20;transition:transform .22s,box-shadow .22s,border-color .22s}
-  .hub-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(18,40,84,.18);border-color:#D82828}
-  .hub-card-media{position:relative;height:185px;overflow:hidden;background:#122854}
-  .hub-card-media img{width:100%;height:100%;object-fit:cover;object-position:top center}
-  .hub-card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,40,84,.1) 0%,rgba(18,40,84,.72) 100%)}
-  .hub-card .hub-tag{position:absolute;top:12px;left:12px;z-index:2;background:rgba(30,27,32,.88);color:#F8D008;font-family:var(--font-display);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.3rem .75rem;border-radius:999px;border:1px solid rgba(248,208,8,.35)}
-  .hub-card-body{padding:1.5rem;display:flex;flex-direction:column;flex:1}
-  .hub-card h3{font-size:1.22rem;margin-bottom:.45rem;color:#1E1B20}
-  .hub-card p{color:#3D3945;font-size:.92rem;flex:1;margin-bottom:1rem}
-  .hub-card .hub-link{font-family:var(--font-display);font-weight:700;font-size:.88rem;color:#fff;background:#18509C;padding:.55rem 1rem;border-radius:999px;align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem}
-  .hub-card:hover .hub-link{background:#D82828}
-  .rules-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
-  .rule-card{background:#fff;border-radius:14px;padding:1.4rem;box-shadow:0 10px 30px rgba(18,40,84,.1);border-top:4px solid #F8D008;border-bottom:4px solid #D82828;display:flex;flex-direction:column}
-  .rule-card .num{width:40px;height:40px;border-radius:10px;background:#D82828;color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:1rem;margin-bottom:.75rem}
-  .footer-cta{background:linear-gradient(120deg,#122854 0%,#18509C 100%);border-bottom:1px solid rgba(255,255,255,.12);padding:2rem 0}
-  .footer-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
-  .footer-cta h3{color:#fff;font-size:1.35rem;margin-bottom:.25rem}
-  .footer-cta p{color:rgba(255,255,255,.85);margin:0;font-size:.95rem;max-width:60ch}
-  .footer-cta-btns{display:flex;flex-wrap:wrap;gap:.75rem}
-  .footer-grid{display:grid;grid-template-columns:1.35fr .95fr 1fr 1.35fr;gap:2.2rem;padding:3.2rem 0 2.4rem}
-  .footer-brand-head{display:flex;align-items:center;gap:.85rem;margin-bottom:.9rem}
-  .footer-logo{background:#fff;border-radius:12px;padding:.45rem .6rem;width:74px;flex-shrink:0}
-  .footer-brand-title strong{display:block;font-family:var(--font-display);font-size:1.15rem;color:#fff}
-  .footer-brand-title small{display:block;color:#F8D008;font-size:.78rem;font-weight:600}
-  .footer-desc{font-size:.88rem;color:rgba(255,255,255,.72);line-height:1.55;margin-bottom:.9rem}
-  .footer-badges{display:flex;flex-wrap:wrap;gap:.45rem}
-  .footer-badge{display:inline-block;font-size:.74rem;font-weight:600;padding:.25rem .65rem;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.9)}
-  .footer-links{list-style:none;padding:0;margin:0;display:grid;gap:.5rem}
-  .footer-links a{display:inline-flex;align-items:center;gap:.45rem;color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem}
-  .footer-links a::before{content:"›";color:#F8D008;font-weight:800;font-size:1.1rem;line-height:1}
-  .footer-contact-list{list-style:none;padding:0;margin:0;display:grid;gap:.8rem}
-  .footer-contact-list li{display:flex;align-items:flex-start;gap:.8rem;font-size:.88rem}
-  .footer-contact-list .f-ico{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#122854 0%,#18509C 100%);border:1.5px solid rgba(248,208,8,.5);color:#F8D008;display:grid;place-items:center;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,.25)}
-  .footer-contact-list .f-ico svg{width:17px;height:17px;display:block}
-  .footer-contact-list .f-ico-pin{background:linear-gradient(135deg,#F8D008 0%,#e0ba00 100%);border-color:#F8D008;color:#122854}
-  .footer-contact-list .f-ico-phone{background:linear-gradient(135deg,#D82828 0%,#B51F1F 100%);border-color:rgba(248,208,8,.6);color:#fff}
-  .footer-contact-list .f-ico-wa{background:linear-gradient(135deg,#18509C 0%,#122854 100%);border-color:rgba(248,208,8,.55);color:#F8D008}
-  .footer-contact-list .f-ico-mail{background:linear-gradient(135deg,#122854 0%,#1E1B20 100%);border-color:#F8D008;color:#F8D008}
-  .footer-contact-list strong{display:block;color:#fff;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
-  @media(max-width:900px){.hub-grid,.rules-grid,.footer-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:600px){.hub-grid,.rules-grid,.footer-grid{grid-template-columns:1fr}.brand-motto{display:none}}
-</style>
+  <link rel="stylesheet" href="css/styles.css?v=20261101e" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -105,10 +38,9 @@
         <a href="stories.html">Success Stories</a>
         <a href="gallery.html">Gallery</a>
         <a href="contact.html">Contact</a>
-        <a href="join.html" class="btn btn-gold btn-sm">Join / Support</a>
+        <a href="join.html" class="btn btn-primary btn-sm">Join / Support</a>
       </nav>
     </div>
-    <div class="ribbon" aria-hidden="true"><i></i><i></i><i></i></div>
   </header>
 
   <main id="main">
@@ -124,17 +56,17 @@
               <div class="hero-slide-inner">
                 <div class="hero-grid">
                   <div class="hero-copy">
-                    <span class="pill pill-gold">Non-Partisan, Non-Profit NGO • Uganda</span>
+                    <span class="pill pill-light">Non-Partisan, Non-Profit NGO • Uganda</span>
                     <h1>The Career Development<br /><span class="accent">Society of Uganda (CDSU)</span></h1>
                     <p class="motto">“<span data-bind="organization.motto">Building people first, for wealth to follow.</span>”</p>
                     <p class="lead">The Career Development Society of Uganda (CDSU) is a non-partisan and non-profit organization established following the need for a structured, data-driven Career Development Programme (CDP) to enhance Uganda&#39;s national leap to high middle-income status. We are focused on raising a critical mass of citizens with productive skills, who passionately add holistic value to themselves and the country at large. Our intent is on &#39;building people first, for wealth to follow&#39;—bridging the gap between education, TVET skills mastery, industry mentorship, and sustainable entrepreneurship.</p>
                     <div class="hero-ctas">
-                      <a href="programme.html" class="btn btn-gold">Explore Our Programme</a>
-                      <a href="about.html" class="btn btn-red">About CDSU &amp; Leadership</a>
+                      <a href="programme.html" class="btn btn-primary">Explore Our Programme</a>
+                      <a href="about.html" class="btn btn-outline-light">About CDSU &amp; Leadership</a>
                       <button type="button" class="btn btn-outline-light" data-open-pay="donate">Partner / Support Us</button>
                     </div>
                     <ul class="hero-tags">
-                      <li>Inspire</li><li>Empower</li><li>Transform</li>
+                      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.74V17h8v-2.26A7 7 0 0 0 12 2z"/></svg>Inspire</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>Empower</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>Transform</li>
                     </ul>
                   </div>
                   <div class="hero-visual">
@@ -170,20 +102,20 @@
                     <p class="motto">The Lead Reference Manual &amp; Self-Assessment Workbook for the CDP</p>
                     <p class="lead">Authored by seasoned Ugandan educators, university vice chancellors, and school career counselors. Bridges Uganda's Competence-Based Curriculum, UVTAB/TVET pathways, and Enterprise Uganda (B.E.S.T) wealth creation principles.</p>
                     <div class="hero-ctas">
-                      <button type="button" class="btn btn-red" data-open-pay="tier-book">Get the Book — UGX 50,000</button>
-                      <a href="book.html" class="btn btn-gold">Explore 8-Chapter Syllabus</a>
+                      <button type="button" class="btn btn-primary" data-open-pay="tier-book">Get the Book — UGX 50,000</button>
+                      <a href="book.html" class="btn btn-outline-light">Explore 8-Chapter Syllabus</a>
                       <a href="book.html#access" class="btn btn-outline-light">Register Book Serial No.</a>
                     </div>
                     <ul class="hero-tags">
-                      <li>8 Practical Chapters</li><li>Self-Awareness Tool</li><li>Serialized CDP Access Code</li>
+                      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/></svg>8 Practical Chapters</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Self-Awareness Tool</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Serialized CDP Access Code</li>
                     </ul>
                   </div>
                   <div class="hero-visual">
                     <div class="hero-book-showcase">
-                      <img src="assets/images/book_3d.jpg" alt="Career Development: A Path to Wealth — 3D Book Cover" />
+                      <img src="assets/images/book_3d.png" alt="Career Development: A Path to Wealth — book cover" />
                       <div class="hero-book-badges">
-                        <span class="hero-float-badge"><strong>UGX 50,000</strong> • Official Copy</span>
-                        <span class="hero-float-badge">Unlocks <strong>CDP Access Code</strong></span>
+                        <span class="hero-float-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.5"/></svg><span><strong>UGX 50,000</strong> · Official copy</span></span>
+                        <span class="hero-float-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Unlocks <strong>CDP Access Code</strong></span></span>
                       </div>
                     </div>
                   </div>
@@ -193,21 +125,21 @@
 
             <!-- SLIDE 3: CREATIVE TESTIMONIALS & KEYNOTE ENDORSEMENTS -->
             <div class="hero-slide" data-slide="2">
-              <div class="hero-slide-bg" style="background-image:url('assets/images/gallery_exhibition_tent.jpg')" aria-hidden="true"></div>
+              <div class="hero-slide-bg" style="background-image:url('assets/images/story_kabenge_lawrence_2.jpg')" aria-hidden="true"></div>
               <div class="hero-slide-inner">
                 <div class="hero-grid">
                   <div class="hero-copy">
-                    <span class="pill pill-gold">Voices of Impact • Endorsements &amp; Testimonies</span>
+                    <span class="pill pill-light">Voices of Impact • Endorsements &amp; Testimonies</span>
                     <h1>Endorsed by Leaders,<br /><span class="accent">Proven by Ugandan Youth</span></h1>
                     <p class="motto">Real stories of career clarity, scientific discovery, and enterprise creation</p>
-                    <p class="lead">From national investment and academic pioneers to secondary school biological innovators, TVET furniture artisans, and international space scientists — see how structured career guidance transforms lives across Uganda.</p>
+                    <p class="lead">From national investment leaders to a Senior One yogurt entrepreneur, a TVET veterinary and poultry farmer, and an NIH-funded epidemiologist — see how structured career guidance transforms lives across Uganda.</p>
                     <div class="hero-ctas">
-                      <a href="stories.html" class="btn btn-gold">Read Full Youth Stories</a>
-                      <a href="book.html" class="btn btn-red">View Keynote Endorsements</a>
+                      <a href="stories.html" class="btn btn-primary">Read Full Youth Stories</a>
+                      <a href="book.html" class="btn btn-outline-light">View Keynote Endorsements</a>
                       <a href="contact.html?topic=Sharing%20a%20success%20story" class="btn btn-outline-light">Share Your Story</a>
                     </div>
                     <ul class="hero-tags">
-                      <li>Space Science</li><li>CBC School Innovation</li><li>TVET Manufacturing</li>
+                      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Health Science</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></svg>CBC Student Enterprise</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>TVET Agribusiness</li>
                     </ul>
                   </div>
                   <div class="hero-visual">
@@ -215,22 +147,22 @@
                       <article class="hero-testi-card">
                         <img src="assets/images/maggie_kigozi.jpg" alt="Prof. Maggie Kigozi" />
                         <div>
-                          <blockquote>“A comprehensive, step-by-step career guidance tool that aligns young people with Uganda's wealth creation opportunities.”</blockquote>
-                          <div class="hero-testi-meta"><strong>Prof. Maggie Kigozi</strong> <span>• Keynote Endorser, Former ED UIA</span></div>
+                          <blockquote>“Indeed, your career is the path to wealth – not only in material terms, but in purpose, fulfilment, and impact.”</blockquote>
+                          <div class="hero-testi-meta"><strong>Prof. Maggie Kigozi</strong> <span>· Former Executive Director, Uganda Investment Authority</span></div>
                         </div>
                       </article>
                       <article class="hero-testi-card">
                         <img src="assets/images/story_safari_daniel.jpg" alt="Mr. Safari Daniel" />
                         <div>
-                          <blockquote>“Never let your rural background define your ceiling — structured career mentorship launched me from Uganda into space physics.”</blockquote>
-                          <div class="hero-testi-meta"><strong>Mr. Safari Daniel</strong> <span>• Space Scientist &amp; Physicist</span></div>
+                          <blockquote>“My story is proof that one's starting point does not determine one's destination.”</blockquote>
+                          <div class="hero-testi-meta"><strong>Mr. Safari Daniel</strong> <span>· Clinical Epidemiologist &amp; NIH Grant Recipient</span></div>
                         </div>
                       </article>
                       <article class="hero-testi-card">
                         <img src="assets/images/story_kirabo_mimi.jpg" alt="Ms. Kirabo Mimi Rehema" />
                         <div>
-                          <blockquote>“Through school career guidance and the new curriculum, I turned classroom biology into an organic pesticide enterprise.”</blockquote>
-                          <div class="hero-testi-meta"><strong>Ms. Kirabo Mimi Rehema</strong> <span>• Student Innovator, Seeta High School</span></div>
+                          <blockquote>“…I learned how friendly bacteria like Lactobacillus can be used in food production. That inspired me to start Mimi's Yogurt.”</blockquote>
+                          <div class="hero-testi-meta"><strong>Ms. Kirabo Mimi Rehema</strong> <span>· Student Founder, Mimi's Yogurt</span></div>
                         </div>
                       </article>
                     </div>
@@ -241,7 +173,7 @@
 
             <!-- SLIDE 4: THE 3-PHASE PROGRAMME & INTERACTIVE CAREER CLUSTER QUIZ -->
             <div class="hero-slide" data-slide="3">
-              <div class="hero-slide-bg" style="background-image:url('assets/images/gallery_school_talk.jpg')" aria-hidden="true"></div>
+              <div class="hero-slide-bg" style="background-image:url('assets/images/students_laptop.jpg');background-position:center 70%" aria-hidden="true"></div>
               <div class="hero-slide-inner">
                 <div class="hero-grid">
                   <div class="hero-copy">
@@ -250,12 +182,12 @@
                     <p class="motto">Phase I: Theorizing • Phase II: Practice • Phase III: Exposure</p>
                     <p class="lead">Unsure which career cluster fits your talents, values, and work style? Take our interactive Self-Awareness &amp; Career Direction check and see how schools and institutions implement the 3-Phase CDP.</p>
                     <div class="hero-ctas">
-                      <a href="programme.html#quiz-section" class="btn btn-gold">Take Free Career Quiz &rarr;</a>
-                      <a href="programme.html" class="btn btn-red">Explore 3-Phase CDP</a>
+                      <a href="programme.html#quiz-section" class="btn btn-primary">Take Free Career Quiz &rarr;</a>
+                      <a href="programme.html" class="btn btn-outline-light">Explore 3-Phase CDP</a>
                       <a href="join.html" class="btn btn-outline-light">Onboard a School (100 Books)</a>
                     </div>
                     <ul class="hero-tags">
-                      <li>6 Career Clusters</li><li>5 Core Products</li><li>School &amp; Corporate Tiers</li>
+                      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>6 Career Clusters</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>5 Core Products</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>School &amp; Corporate Tiers</li>
                     </ul>
                   </div>
                   <div class="hero-visual">
@@ -277,6 +209,8 @@
         </div>
       </div>
     </section>
+
+    <div class="motto-band"><p><span>“<span data-bind="organization.motto">Building people first, for wealth to follow.</span>”</span></p></div>
 
     <!-- PARTNERS STRIP -->
     <section class="partners" aria-label="Partners and contributors">
@@ -455,7 +389,7 @@
             <p>Onboard your school, order serialized copies of the reference manual, or support Ugandan youth from anywhere in the world.</p>
           </div>
           <div class="form-actions">
-            <a href="join.html" class="btn btn-gold">View Membership &amp; Packages</a>
+            <a href="join.html" class="btn btn-primary">View Membership &amp; Packages</a>
             <a href="contact.html" class="btn btn-outline-light">Contact Secretariat</a>
           </div>
         </div>
@@ -464,7 +398,6 @@
   </main>
 
   <footer class="site-footer">
-    <div class="ribbon" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="footer-cta">
       <div class="container footer-cta-inner">
         <div>
@@ -472,9 +405,9 @@
           <p>Order serialized copies of <em>Career Development: A Path to Wealth</em>, onboard a beneficiary school, or make a direct contribution.</p>
         </div>
         <div class="footer-cta-btns">
-          <button type="button" class="btn btn-gold btn-sm" data-open-pay="tier-book">Order the Book (UGX 50,000)</button>
+          <button type="button" class="btn btn-primary btn-sm" data-open-pay="tier-book">Order the Book (UGX 50,000)</button>
           <a href="programme.html#quiz-section" class="btn btn-outline-light btn-sm">Take Free Career Quiz</a>
-          <button type="button" class="btn btn-red btn-sm" data-open-pay="donate">Donate / Support</button>
+          <button type="button" class="btn btn-outline-light btn-sm" data-open-pay="donate">Donate / Support</button>
         </div>
       </div>
     </div>
@@ -591,7 +524,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/cdsuData.js?v=20261101d"></script>
-  <script src="js/app.js?v=20261101d"></script>
+  <script src="js/cdsuData.js?v=20261101e"></script>
+  <script src="js/app.js?v=20261101e"></script>
 </body>
 </html>
