@@ -44,10 +44,12 @@ Or upload the folder to any web host (cPanel, Netlify, Vercel, Firebase Hosting,
 - **Security:** every table has row-level security; visitors can only submit, members see only their own records, and staff actions go through permission-checked functions recorded in the activity log. Only the publishable key is in this repo — never add the service-role key.
 - **Staff:** a person creates an account on the site, then an administrator adds their email under *Admin → Staff* (roles: Administrator, Secretariat).
 
-## Hosting (Railway)
-The site is deployed on Railway from this GitHub repository using the `Dockerfile`:
-Caddy serves the static files on Railway's `PORT`, with clean URLs (`/about`), `/admin` → `/admin/`,
-compression, caching for versioned CSS/JS and security headers (see `Caddyfile`). `railway.json` tells
-Railway to build from the Dockerfile and health-check `/`. Every push to `main` redeploys.
+## Hosting (GitHub Pages)
+The site is published by `.github/workflows/pages.yml` on every push to `main`. The workflow copies only the
+website files (`*.html`, `css`, `js`, `assets`, `admin`) and deploys them to GitHub Pages, so notes and scripts
+in this repository are not published. Until CDSU has its own domain, the site is at https://balirwa.me/cdsu-main/
+(the GitHub account's Pages domain). To use a CDSU domain, add it under the repository's Settings → Pages →
+Custom domain and point the domain's DNS at GitHub Pages.
 
-Test the production container locally: `podman build -t cdsu-site . && podman run --rm -e PORT=8080 -p 8080:8080 cdsu-site`
+`Dockerfile` + `Caddyfile` package the same site as a container for any container host (Railway, Render, Fly.io),
+should hosting move later: `podman build -t cdsu-site . && podman run --rm -e PORT=8080 -p 8080:8080 cdsu-site`
