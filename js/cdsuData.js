@@ -113,11 +113,11 @@ window.CDSU_DATA = {
       ugxAccount: "6010048654",
       usdAccount: "6010048522"
     },
-    // TODO(Treasurer): set merchantCode once MTN MoMo / Airtel Money codes are issued.
-    // While null, the site shows "coming soon" and directs payers to bank transfer or a phone call.
+    // Merchant codes from the official CDSU MoMo Pay & Airtel Money merchant signs.
+    // Setting a merchantCode back to null shows "coming soon" for that provider.
     mobileMoney: {
-      mtn: { provider: "MTN Mobile Money", merchantCode: null },
-      airtel: { provider: "Airtel Money", merchantCode: null }
+      mtn: { provider: "MTN MoMo", merchantCode: "7232094", codeLabel: "Merchant code", ussd: "*165*3#", app: "MoMo app" },
+      airtel: { provider: "Airtel Money", merchantCode: "7261407", codeLabel: "Merchant ID", ussd: "*185*9#", app: "Airtel Money app" }
     }
   },
 

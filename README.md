@@ -22,7 +22,7 @@ Or upload the folder to any web host (cPanel, Netlify, Vercel, Firebase Hosting,
 - `assets/images/`: Authentic logo, book cover, author, endorser, and story photos extracted from the supplied PDFs
 
 ## Things to fill in or confirm (in `js/cdsuData.js`)
-1. **Mobile Money**: set `payments.mobileMoney.mtn.merchantCode` and `.airtel.merchantCode`. While they are `null`, the site shows "coming soon".
+1. **Mobile Money**: MTN MoMo (merchant code 7232094, `*165*3#`) and Airtel Money (merchant ID 7261407, `*185*9#`) are live in `payments.mobileMoney`. Setting a `merchantCode` to `null` shows "coming soon" again.
 2. **Partners/sponsors** (`sponsors`): the list currently holds only institutions named in the book. Confirm each one's status and add a `url`. A chip is clickable only when it has a URL. You can add logos with `logo: "assets/images/…"`.
 3. **Gallery** (`galleryItems`): it currently uses brochure and book images. Add real outreach photos as they become available.
 4. **Office address / phones**: edit `contact` when the office moves.

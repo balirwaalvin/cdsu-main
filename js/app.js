@@ -543,10 +543,24 @@
     ${row("UGX account no.", P.bank.ugxAccount)}
     ${row("USD account no. (international donors)", P.bank.usdAccount)}
   </div>`;
-  const momo = (m, cls) =>
-    `<div class="momo-card ${cls}"><div><strong>${esc(m.provider)}</strong><br>${
-      m.merchantCode ? `<span class="small">Merchant code: <strong>${esc(m.merchantCode)}</strong></span>` : `<span class="small muted">Merchant code coming soon</span>`
-    }</div>${m.merchantCode ? `<button class="copy-btn" data-copy="${esc(m.merchantCode)}">Copy</button>` : `<span class="tag">Pending</span>`}</div>`;
+  const momo = (m, cls) => {
+    if (!m.merchantCode) {
+      return `<div class="momo-card ${cls}"><div><strong>${esc(m.provider)}</strong><br><span class="small muted">Merchant code coming soon</span></div><span class="tag">Pending</span></div>`;
+    }
+    // "#" must be percent-encoded or the dialer drops everything after it
+    const label = m.codeLabel.replace(/^\w+/, (w) => w.toLowerCase()); // "merchant code" / "merchant ID"
+    const dial = `tel:${m.ussd.replace(/#/g, "%23")}`;
+    return `<div class="momo-card momo-live ${cls}">
+      <div class="momo-top"><strong>${esc(m.provider)}</strong><span class="tag">${esc(m.codeLabel)}</span></div>
+      <div class="momo-code" aria-label="${esc(m.codeLabel)} ${esc(m.merchantCode.split("").join(" "))}">${esc(m.merchantCode)}</div>
+      <ol class="momo-steps">
+        <li>Dial <strong>${esc(m.ussd)}</strong> or open the ${esc(m.app)}</li>
+        <li>Enter ${esc(label)} <strong>${esc(m.merchantCode)}</strong></li>
+        <li>Enter the amount and confirm with your PIN</li>
+      </ol>
+      <div class="momo-actions"><a class="btn btn-sm momo-dial" href="${dial}">Dial ${esc(m.ussd)}</a><button class="copy-btn" data-copy="${esc(m.merchantCode)}">Copy ${esc(label)}</button></div>
+    </div>`;
+  };
   const momoHtml =
     momo(P.mobileMoney.mtn, "momo-mtn") +
     momo(P.mobileMoney.airtel, "momo-airtel") +

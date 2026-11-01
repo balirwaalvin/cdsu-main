@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20261024i" />
+  <link rel="stylesheet" href="css/styles.css?v=20261101a" />
   <style>
   .brand{display:inline-flex;align-items:center;gap:.75rem;text-decoration:none;color:#1E1B20;padding:.25rem .4rem .25rem .25rem;border-radius:12px}
   .brand-logo-wrap{display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#fff 0%,#f5f4fb 100%);border:1.5px solid rgba(24,80,156,.18);box-shadow:0 4px 12px rgba(18,40,84,.1);border-radius:11px;padding:.3rem .45rem;flex-shrink:0}
@@ -556,7 +556,25 @@
   <div class="kv-row"><div><small>UGX account no.</small><strong>6010048654</strong></div><button class="copy-btn" data-copy="6010048654">Copy</button></div>
   <div class="kv-row"><div><small>USD account no. (international donors)</small><strong>6010048522</strong></div><button class="copy-btn" data-copy="6010048522">Copy</button></div>
 </div></div>
-      <div class="pay-pane" id="pane-momo" hidden><div class="momo-card momo-mtn"><div><strong>MTN Mobile Money</strong><br><span class="small muted">Merchant code coming soon</span></div><span class="tag">Pending</span></div><div class="momo-card momo-airtel"><div><strong>Airtel Money</strong><br><span class="small muted">Merchant code coming soon</span></div><span class="tag">Pending</span></div><p class="small muted">Our Mobile Money merchant codes are being finalised. Meanwhile please use bank transfer, or call <a href="tel:+256746265724">+256 746 265 724</a>.</p></div>
+      <div class="pay-pane" id="pane-momo" hidden><div class="momo-card momo-live momo-mtn">
+      <div class="momo-top"><strong>MTN MoMo</strong><span class="tag">Merchant code</span></div>
+      <div class="momo-code" aria-label="Merchant code 7 2 3 2 0 9 4">7232094</div>
+      <ol class="momo-steps">
+        <li>Dial <strong>*165*3#</strong> or open the MoMo app</li>
+        <li>Enter merchant code <strong>7232094</strong></li>
+        <li>Enter the amount and confirm with your PIN</li>
+      </ol>
+      <div class="momo-actions"><a class="btn btn-sm momo-dial" href="tel:*165*3%23">Dial *165*3#</a><button class="copy-btn" data-copy="7232094">Copy merchant code</button></div>
+    </div><div class="momo-card momo-live momo-airtel">
+      <div class="momo-top"><strong>Airtel Money</strong><span class="tag">Merchant ID</span></div>
+      <div class="momo-code" aria-label="Merchant ID 7 2 6 1 4 0 7">7261407</div>
+      <ol class="momo-steps">
+        <li>Dial <strong>*185*9#</strong> or open the Airtel Money app</li>
+        <li>Enter merchant ID <strong>7261407</strong></li>
+        <li>Enter the amount and confirm with your PIN</li>
+      </ol>
+      <div class="momo-actions"><a class="btn btn-sm momo-dial" href="tel:*185*9%23">Dial *185*9#</a><button class="copy-btn" data-copy="7261407">Copy merchant ID</button></div>
+    </div></div>
       <p class="muted small">After paying, send your name and transaction reference so we can confirm your order or membership.</p>
       <div class="form-actions" id="pay-confirm"></div>
     </div>
@@ -573,7 +591,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/cdsuData.js?v=20261024i"></script>
-  <script src="js/app.js?v=20261024i"></script>
+  <script src="js/cdsuData.js?v=20261101a"></script>
+  <script src="js/app.js?v=20261101a"></script>
 </body>
 </html>
