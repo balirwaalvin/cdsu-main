@@ -25,7 +25,7 @@ window.CDSU_DATA = {
         "The Career Development Society of Uganda is a non-partisan, non-profit organisation based in Gayaza, Wakiso District, Uganda, East Africa.",
       committee:
         "It is managed by an Executive Committee of career professionals from the fields of Education, Health, Gender, Labour and Social Development, Justice and Constitutional Affairs, and Internal Affairs.",
-      executiveDirector: "Ivan Dan Gitta",
+      executiveDirector: "Mr. Ivan Dan Gitta",
       deputyExecutiveDirector: null,
       reach:
         "It serves children and youth aged 8 to 35, parents and community educators, mainly through schools, colleges, TVET institutes and community groups."
