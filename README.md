@@ -16,6 +16,7 @@ Or upload the folder to any web host (cPanel, Netlify, Vercel, Firebase Hosting,
 - `gallery.html`: Filterable Activities & Outreach Gallery (with Lightbox viewer)
 - `join.html`: 6 Membership & Impact Tiers + Direct Bank (ABSA UGX/USD) & Mobile Money Support Portal
 - `contact.html`: Secretariat Contact Details + Interactive School Referral & Partnership Form
+- `terms.html`: Terms & Conditions for payments, book orders, memberships, the National Seminar, donations and personal data
 - `css/styles.css`: Brand kit (colours sampled from the logo and book cover) and responsive multi-page styles
 - `js/cdsuData.js`: **All text, contacts, prices, payments, partners, stories, and gallery items. Edit this file to change content.**
 - `js/app.js`: Conditional page rendering, navigation active-state detection, and interactive components

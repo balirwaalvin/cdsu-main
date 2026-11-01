@@ -233,6 +233,7 @@ window.CDSU_DATA = {
     venue: "Seeta High School, Mukono",
     fee: "UGX 50,000",
     feeNote: "Terms & Conditions Apply.",
+    feeTermsUrl: "terms.html#seminar",
     participants: "50 teachers & career counsellors",
     participantsNote: "A balanced representation from primary, secondary, TVET and tertiary institutions and community education programmes.",
     keynote: {
