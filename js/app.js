@@ -116,6 +116,19 @@
       .join("");
   }
 
+  /* ---------- about: who CDSU is ---------- */
+  const whoEl = $("#who-we-are");
+  if (whoEl) {
+    const W = D.organization.whoWeAre;
+    const deputy = W.deputyExecutiveDirector ? `, deputised by the Deputy Executive Director, ${W.deputyExecutiveDirector}` : "";
+    const oversight = `The Executive Committee plays an advisory and oversight role, with the Executive Director, ${W.executiveDirector}, at the helm${deputy}.`;
+    whoEl.innerHTML = `
+      <h3>Who CDSU Is</h3>
+      <p>${esc(W.intro)}</p>
+      <p>${esc(W.committee)} ${esc(oversight)}</p>
+      <p>Its motto is <em class="who-motto">“${esc(D.organization.motto)}”</em> ${esc(W.reach)}</p>`;
+  }
+
   /* ---------- objectives ---------- */
   const objEl = $("#objectives");
   if (objEl) {

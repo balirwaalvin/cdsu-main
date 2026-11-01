@@ -414,6 +414,11 @@ a.partner-chip:hover { border-color: var(--blue); }
 .sub-head { margin: 3rem 0 1.2rem; font-size: 1.35rem; }
 
 /* About */
+.who-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); border-left: 5px solid var(--gold); padding: 1.8rem 2rem; margin-bottom: 1.5rem; }
+.who-card h3 { font-size: 1.35rem; }
+.who-card p { color: var(--muted); margin: 0 0 .8em; }
+.who-card p:last-child { margin-bottom: 0; }
+.who-motto { font-family: var(--font-serif); color: var(--red); }
 .vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 .vm-card { padding: 2rem; border-radius: var(--radius); color: var(--white); box-shadow: var(--shadow); }
 .vm-card p { font-size: 1.08rem; margin: 0; }
@@ -756,4 +761,5 @@ a.partner-chip:hover { border-color: var(--blue); }
   /* join.html sets these paddings inline; trim the nested padding so merchant cards have room */
   #donate-section { padding: 1.25rem .9rem !important; }
   #donate-section .contact-grid > div { padding: 1.1rem !important; }
+  .who-card { padding: 1.3rem 1.2rem; }
 }

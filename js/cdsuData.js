@@ -18,6 +18,18 @@ window.CDSU_DATA = {
       "The Career Development Society of Uganda (CDSU) is a non-partisan and non-profit organization established following the need for a structured, data-driven Career Development Programme (CDP) to enhance Uganda's national leap to high middle-income status.",
     aboutExtended:
       "We are focused on raising a critical mass of citizens with productive skills, who passionately add holistic value to themselves and the country at large. Our intent is on 'building people first, for wealth to follow'—bridging the gap between education, TVET skills mastery, industry mentorship, and sustainable entrepreneurship.",
+    // "Who CDSU Is" card on the About page. While deputyExecutiveDirector is null the
+    // "deputised by …" clause is left out; set it to a name to show it.
+    whoWeAre: {
+      intro:
+        "The Career Development Society of Uganda is a non-partisan, non-profit organisation based in Gayaza, Wakiso District, Uganda, East Africa.",
+      committee:
+        "It is managed by an Executive Committee of career professionals from the fields of Education, Health, Gender, Labour and Social Development, Justice and Constitutional Affairs, and Internal Affairs.",
+      executiveDirector: "Ivan Dan Gitta",
+      deputyExecutiveDirector: null,
+      reach:
+        "It serves children and youth aged 8 to 35, parents and community educators, mainly through schools, colleges, TVET institutes and community groups."
+    },
     vision:
       "To be the lead career development enterprise contributing to the production of balanced and wealthy citizens.",
     mission:
