@@ -43,3 +43,11 @@ Or upload the folder to any web host (cPanel, Netlify, Vercel, Firebase Hosting,
 - **Messages:** the contact form saves to the portal inbox (`submit_message`).
 - **Security:** every table has row-level security; visitors can only submit, members see only their own records, and staff actions go through permission-checked functions recorded in the activity log. Only the publishable key is in this repo — never add the service-role key.
 - **Staff:** a person creates an account on the site, then an administrator adds their email under *Admin → Staff* (roles: Administrator, Secretariat).
+
+## Hosting (Railway)
+The site is deployed on Railway from this GitHub repository using the `Dockerfile`:
+Caddy serves the static files on Railway's `PORT`, with clean URLs (`/about`), `/admin` → `/admin/`,
+compression, caching for versioned CSS/JS and security headers (see `Caddyfile`). `railway.json` tells
+Railway to build from the Dockerfile and health-check `/`. Every push to `main` redeploys.
+
+Test the production container locally: `podman build -t cdsu-site . && podman run --rm -e PORT=8080 -p 8080:8080 cdsu-site`

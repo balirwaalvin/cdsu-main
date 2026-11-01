@@ -1,0 +1,38 @@
+# Production web server for the CDSU site (used by the Dockerfile on Railway).
+# Railway sets PORT; locally it falls back to 8080.
+{
+	admin off
+	auto_https off
+}
+
+:{$PORT:8080} {
+	root * /srv
+	encode zstd gzip
+
+	# The portal uses relative links, so it must be served with a trailing slash
+	redir /admin /admin/ 308
+
+	# Clean URLs: /about serves about.html
+	try_files {path} {path}.html {path}/index.html
+	file_server
+
+	header {
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-Frame-Options "SAMEORIGIN"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		-Server
+	}
+
+	# CSS and JS are versioned with ?v=, so browsers may keep them; images change rarely
+	@versioned path /css/* /js/* /admin/*.css /admin/*.js
+	header @versioned Cache-Control "public, max-age=604800"
+	@images path /assets/*
+	header @images Cache-Control "public, max-age=86400"
+	@pages path / *.html /admin/
+	header @pages Cache-Control "no-cache"
+
+	# Keep the private areas out of search engines
+	@private path /admin* /account* /reader*
+	header @private X-Robots-Tag "noindex, nofollow"
+}

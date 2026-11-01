@@ -1,0 +1,11 @@
+.git
+CDSU Imagery*
+*.pdf
+*.md
+__pycache__
+server.py
+package.json
+dist
+build
+.env
+.env.*
