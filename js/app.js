@@ -193,6 +193,87 @@
       .join("");
   }
 
+  /* ---------- national seminar (home teaser + programme page details) ---------- */
+  const S = D.seminar;
+  if (S) {
+    const svg = (body) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
+    const sIco = {
+      calendar: svg('<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>'),
+      pin: svg('<path d="M12 21s-7-5.686-7-11a7 7 0 1 1 14 0c0 5.314-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>'),
+      users: svg('<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'),
+      ticket: svg('<path d="M3 9a3 3 0 0 0 0 6v3a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-3a3 3 0 0 0 0-6V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z"/><path d="M13 5v2M13 11v2M13 17v2"/>'),
+      star: svg('<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>'),
+      book: svg('<path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/>'),
+      bulb: svg('<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.74V17h8v-2.26A7 7 0 0 0 12 2z"/>'),
+      target: svg('<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>'),
+      layers: svg('<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>'),
+      award: svg('<circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/>')
+    };
+    const registerHref = `contact.html?topic=${encodeURIComponent(S.registerTopic)}`;
+
+    const teaserEl = $("#seminar-teaser");
+    if (teaserEl) {
+      teaserEl.innerHTML = `
+      <div class="event-card">
+        <div class="event-date"><span>${esc(S.dateBadge.month)}</span><strong>${esc(S.dateBadge.days)}</strong><span>${esc(S.dateBadge.year)}</span></div>
+        <div class="event-body">
+          <span class="event-kicker">Upcoming national seminar</span>
+          <h3>${esc(S.title)} <span>${esc(S.audience)}</span></h3>
+          <ul class="event-facts">
+            <li>${sIco.pin}${esc(S.venue)}</li>
+            <li>${sIco.users}${esc(S.participants)}</li>
+            <li>${sIco.star}Keynote: ${esc(S.keynote.name)}</li>
+          </ul>
+        </div>
+        <div class="event-actions">
+          <a class="btn btn-primary btn-sm" href="programme.html#seminar">Seminar details</a>
+          <a class="btn btn-outline btn-sm" href="${registerHref}">Register interest</a>
+        </div>
+      </div>`;
+    }
+
+    const detailEl = $("#seminar-detail");
+    if (detailEl) {
+      const fact = (icon, label, value) =>
+        `<div class="seminar-fact"><span class="icon-disc">${sIco[icon]}</span><div><small>${esc(label)}</small><strong>${esc(value)}</strong></div></div>`;
+      const person = (label, p, talk) =>
+        `<div class="speaker"><small>${esc(label)}</small><strong>${esc(p.name)}</strong><span>${esc(p.role)}</span>${talk ? `<em>“${esc(talk)}”</em>` : ""}</div>`;
+      detailEl.innerHTML = `
+      <div class="section-head">
+        <span class="pill">Upcoming national seminar</span>
+        <h2>${esc(S.title)}</h2>
+        <p><strong>${esc(S.audience.replace(/^for /, "For "))}.</strong> ${esc(S.tagline)}</p>
+      </div>
+      <div class="seminar-facts">
+        ${fact("calendar", "Dates", S.dates)}
+        ${fact("pin", "Venue", S.venue)}
+        ${fact("users", "Participants", S.participants)}
+        ${fact("ticket", "Registration fee", S.fee)}
+      </div>
+      <div class="seminar-grid">
+        <div class="seminar-panel">
+          <h3>Seminar objectives</h3>
+          <ol class="seminar-list seminar-objectives">${S.objectives.map((o) => `<li>${esc(o)}</li>`).join("")}</ol>
+          <h3>Key topics</h3>
+          <ul class="seminar-list seminar-topics">${S.topics.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+          <h3>Key features</h3>
+          <ul class="seminar-features">${S.features.map((f) => `<li><span class="icon-disc">${sIco[f.icon]}</span>${esc(f.text)}</li>`).join("")}</ul>
+        </div>
+        <aside class="seminar-panel seminar-people">
+          ${person("Keynote speaker", S.keynote, S.keynote.talk)}
+          ${person("Guest of honour", S.guestOfHonour)}
+          ${person("Technical leadership", S.technicalLead)}
+          <p class="seminar-note">${esc(S.participantsNote)}</p>
+          <div class="seminar-ctas">
+            <a class="btn btn-primary" href="${registerHref}">Register your interest</a>
+            <a class="btn btn-outline" href="${waLink(`Hello CDSU, I have a question about the ${S.title} (${S.dates}).`)}" target="_blank" rel="noopener">Ask on WhatsApp</a>
+          </div>
+        </aside>
+      </div>
+      <p class="seminar-closing">${esc(S.closing)}</p>`;
+    }
+  }
+
   /* ---------- endorsements ---------- */
   const endorseEl = $("#endorsements");
   if (endorseEl) {

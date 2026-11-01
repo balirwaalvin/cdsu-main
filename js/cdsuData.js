@@ -222,6 +222,52 @@ window.CDSU_DATA = {
     }
   ],
 
+  // National seminar: teaser on the home page, full details on programme.html#seminar.
+  // Set to null to hide both once the event has passed.
+  seminar: {
+    title: "National Career Development Training Seminar",
+    audience: "for Teachers and Career Counsellors",
+    tagline: "Equipping educators to guide Uganda's youth from education to skills, enterprise and wealth creation.",
+    dates: "19–21 January 2027",
+    dateBadge: { month: "Jan", days: "19–21", year: "2027" },
+    venue: "Seeta High School, Mukono",
+    fee: "To be confirmed",
+    participants: "50 teachers & career counsellors",
+    participantsNote: "A balanced representation from primary, secondary, TVET and tertiary institutions and community education programmes.",
+    keynote: {
+      name: "Dr. Maggie Kigozi",
+      role: "Former Executive Director, Uganda Investment Authority",
+      talk: "Building People First: Turning Career Potential into Productivity, Enterprise and Wealth Creation"
+    },
+    guestOfHonour: { name: "To be confirmed", role: "A senior representative from the Ministry of Education and Sports" },
+    technicalLead: { name: "Commissioner for Guidance and Counselling", role: "Ministry of Education and Sports" },
+    objectives: [
+      "Introduce CDSU, its mission, objectives and national career development programme.",
+      "Equip participants with practical tools to use the book Career Development: A Path to Wealth.",
+      "Build skills to guide learners in career choice, employability, entrepreneurship and wealth creation.",
+      "Establish a network of trained career development champions to implement the programme in schools and communities.",
+      "Develop a pilot implementation plan with clear targets and reporting tools."
+    ],
+    topics: [
+      "Understanding the career landscape and education pathways",
+      "Self-awareness and subject-to-career mapping",
+      "Entrepreneurship and income generation",
+      "Employability, digital skills and the future of work",
+      "Career guidance, counselling and mentoring",
+      "Planning for implementation and monitoring"
+    ],
+    features: [
+      { icon: "book", text: "Interactive sessions and practical exercises" },
+      { icon: "bulb", text: "Practical guidance on education pathways, career options and entrepreneurship" },
+      { icon: "users", text: "Career exhibition and industry encounters" },
+      { icon: "target", text: "Development of institutional action plans" },
+      { icon: "layers", text: "Group work, case studies, role plays and micro-teaching" },
+      { icon: "award", text: "Certificates of participation" }
+    ],
+    registerTopic: "Registering for the teachers' seminar",
+    closing: "Together, we can build a generation of skilled, confident and productive Ugandans."
+  },
+
   // Institutions named in the book as contributors/reviewers. Sponsorship status is NOT confirmed
   // in the documents — set `status: "sponsor"` and fill `url` once each is confirmed by CDSU.
   // Only entries with status "sponsor" or "partner" are shown; logos can be added via `logo`.
@@ -243,7 +289,7 @@ window.CDSU_DATA = {
 
   endorsements: [
     {
-      name: "Prof. Maggie Kigozi",
+      name: "Dr. Maggie Kigozi",
       title: "Key Message • Former Executive Director, Uganda Investment Authority",
       role: "Medical doctor, business consultant, educator & sportswoman",
       image: "assets/images/maggie_kigozi.jpg",
