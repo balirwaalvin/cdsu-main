@@ -53,3 +53,10 @@ Custom domain and point the domain's DNS at GitHub Pages.
 
 `Dockerfile` + `Caddyfile` package the same site as a container for any container host (Railway, Render, Fly.io),
 should hosting move later: `podman build -t cdsu-site . && podman run --rm -e PORT=8080 -p 8080:8080 cdsu-site`
+
+## Link previews (WhatsApp, Facebook, LinkedIn, X, Telegram)
+Every public page carries Open Graph / Twitter Card tags (between `<!-- share:start -->` and `<!-- share:end -->`)
+and its own 1200×630 preview image in `assets/images/share/`. Both come from `tools/share_preview.py`, which holds
+the site address and each page's preview wording; the images are drawn from `tools/share-card.html`.
+- Change wording or the site address (e.g. a new CDSU domain): edit `tools/share_preview.py`, run `python3 tools/share_preview.py`.
+- Redraw the images too: `python3 tools/share_preview.py --render` (needs Google Chrome and ImageMagick), then bump `IMAGE_VERSION`.
