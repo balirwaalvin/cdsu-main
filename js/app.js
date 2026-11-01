@@ -82,23 +82,102 @@
     }
   }
 
-  /* ---------- partners marquee (only partner/sponsor entries; linked if URL set) ---------- */
-  const partnerTrack = $("#partner-track");
-  if (partnerTrack) {
-    const partners = D.sponsors.filter((s) => s.status === "partner" || s.status === "sponsor");
-    const chip = (s) => {
-      const inner = `${s.logo ? `<img src="${esc(s.logo)}" alt="">` : ""}<span><strong>${esc(s.name)}</strong> <small>${esc(s.note || "")}</small></span>`;
-      return s.url
-        ? `<a class="partner-chip" href="${esc(s.url)}" target="_blank" rel="noopener" title="Visit ${esc(s.name)}">${inner}</a>`
-        : `<span class="partner-chip">${inner}</span>`;
+  /* ---------- official sponsors showcase (one slide per sponsor, in its own brand colours) ---------- */
+  const showcase = $("#sponsor-showcase");
+  if (showcase && D.sponsors.length) {
+    const svg = (body) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
+    const spIco = {
+      calendar: svg('<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>'),
+      pin: svg('<path d="M12 21s-7-5.686-7-11a7 7 0 1 1 14 0c0 5.314-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>'),
+      phone: svg('<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>'),
+      out: svg('<path d="M7 17 17 7"/><path d="M8 7h9v9"/>'),
+      prev: svg('<path d="m15 18-6-6 6-6"/>'),
+      next: svg('<path d="m9 18 6-6-6-6"/>'),
+      gear: `<svg viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M43 2h14l2 11a38 38 0 0 1 9 4l9-7 10 10-7 9a38 38 0 0 1 4 9l11 2v14l-11 2a38 38 0 0 1-4 9l7 9-10 10-9-7a38 38 0 0 1-9 4l-2 11H43l-2-11a38 38 0 0 1-9-4l-9 7-10-10 7-9a38 38 0 0 1-4-9L5 57V43l11-2a38 38 0 0 1 4-9l-7-9 10-10 9 7a38 38 0 0 1 9-4zM50 30a20 20 0 1 0 0 40 20 20 0 1 0 0-40z"/></svg>`
     };
-    partnerTrack.innerHTML =
-      partners.map(chip).join("") +
-      partners
-        .map(chip)
-        .join("")
-        .replace(/<a /g, '<a tabindex="-1" aria-hidden="true" ')
-        .replace(/<span class="partner-chip"/g, '<span class="partner-chip" aria-hidden="true"');
+    const visual = (sp) =>
+      sp.theme === "seeta"
+        ? `<div class="sp-visual sp-visual-photos">
+            <img class="sp-photo-main" src="${esc(sp.photos[0].src)}" alt="${esc(sp.photos[0].alt)}" loading="lazy">
+            <img class="sp-photo-inset" src="${esc(sp.photos[1].src)}" alt="${esc(sp.photos[1].alt)}" loading="lazy">
+          </div>`
+        : `<div class="sp-visual sp-visual-mark">
+            <span class="sp-gear sp-gear-a">${spIco.gear}</span><span class="sp-gear sp-gear-b">${spIco.gear}</span>
+            <img src="${esc(sp.logo)}" alt="${esc(sp.logoAlt)}" loading="lazy">
+          </div>`;
+    const slide = (sp, i) => `
+      <article class="sp-slide ${i === 0 ? "is-active" : ""}" data-theme="${esc(sp.theme)}" id="sp-slide-${i}" role="tabpanel" aria-labelledby="sp-tab-${i}" ${i === 0 ? "" : 'aria-hidden="true"'}>
+        <div class="sp-copy">
+          <span class="sp-kicker">${esc(sp.kicker)}</span>
+          ${sp.theme === "seeta"
+            ? `<h3 class="sp-name sp-name-logo"><img src="${esc(sp.logo)}" alt="${esc(sp.logoAlt)}"><span class="sr-only">${esc(sp.name)}</span></h3>`
+            : `<h3 class="sp-name">${esc(sp.name)}${sp.shortName ? ` <span>(${esc(sp.shortName)})</span>` : ""}</h3>`}
+          <p class="sp-headline">${esc(sp.headline)}</p>
+          <p class="sp-summary">${esc(sp.summary)}</p>
+          <small class="sp-label">${esc(sp.highlightsLabel)}</small>
+          <ul class="sp-chips">${sp.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>
+          <div class="sp-foot">
+            <ul class="sp-facts">${sp.facts.map((f) => `<li>${spIco[f.icon]}<span><small>${esc(f.label)}</small>${esc(f.value)}</span></li>`).join("")}</ul>
+            <a class="btn sp-cta" href="${esc(sp.url)}" target="_blank" rel="noopener">Visit ${esc(sp.urlLabel)} ${spIco.out}</a>
+          </div>
+        </div>
+        ${visual(sp)}
+      </article>`;
+    showcase.innerHTML = `
+      <div class="sp-head">
+        <div>
+          <span class="pill">Our official sponsors</span>
+          <h2>Proudly supported by</h2>
+        </div>
+        <div class="sp-controls">
+          <div class="sp-tabs" role="tablist" aria-label="Official sponsors">${D.sponsors
+            .map((sp, i) => `<button type="button" class="sp-tab" role="tab" id="sp-tab-${i}" aria-controls="sp-slide-${i}" aria-selected="${i === 0}" data-i="${i}">${esc(sp.shortName || sp.name)}<span class="sp-progress"></span></button>`)
+            .join("")}</div>
+          <button type="button" class="sp-arrow" data-step="-1" aria-label="Previous sponsor">${spIco.prev}</button>
+          <button type="button" class="sp-arrow" data-step="1" aria-label="Next sponsor">${spIco.next}</button>
+        </div>
+      </div>
+      <div class="sp-stage">${D.sponsors.map(slide).join("")}</div>`;
+
+    const spSlides = $$(".sp-slide", showcase);
+    const spTabs = $$(".sp-tab", showcase);
+    const DWELL = 8000;
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let current = 0;
+    let timer = null;
+    const show = (i) => {
+      current = (i + spSlides.length) % spSlides.length;
+      spSlides.forEach((el, k) => {
+        el.classList.toggle("is-active", k === current);
+        el.toggleAttribute("aria-hidden", k !== current);
+      });
+      spTabs.forEach((t, k) => t.setAttribute("aria-selected", k === current));
+      // restart the progress line on the active tab
+      showcase.classList.remove("is-timing");
+      void showcase.offsetWidth;
+      if (timer) showcase.classList.add("is-timing");
+    };
+    const stop = () => { clearInterval(timer); timer = null; showcase.classList.remove("is-timing"); };
+    const start = () => {
+      if (still || spSlides.length < 2) return;
+      stop();
+      showcase.style.setProperty("--sp-dwell", `${DWELL}ms`);
+      timer = setInterval(() => show(current + 1), DWELL);
+      showcase.classList.add("is-timing");
+    };
+    showcase.addEventListener("click", (e) => {
+      const tab = e.target.closest(".sp-tab");
+      const arrow = e.target.closest(".sp-arrow");
+      if (tab) show(+tab.dataset.i);
+      else if (arrow) show(current + +arrow.dataset.step);
+      else return;
+      start();
+    });
+    showcase.addEventListener("mouseenter", stop);
+    showcase.addEventListener("mouseleave", start);
+    showcase.addEventListener("focusin", stop);
+    showcase.addEventListener("focusout", (e) => { if (!showcase.contains(e.relatedTarget)) start(); });
+    start();
   }
 
   /* ---------- rules to a super career ---------- */

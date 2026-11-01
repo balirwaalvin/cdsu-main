@@ -268,23 +268,59 @@ window.CDSU_DATA = {
     closing: "Together, we can build a generation of skilled, confident and productive Ugandans."
   },
 
-  // Institutions named in the book as contributors/reviewers. Sponsorship status is NOT confirmed
-  // in the documents — set `status: "sponsor"` and fill `url` once each is confirmed by CDSU.
-  // Only entries with status "sponsor" or "partner" are shown; logos can be added via `logo`.
-  // Sponsors & Partners slide-through marquee (as requested by Executive).
-  // Clicking an active sponsor/partner links directly to their official website.
-  // Entries with status: "sponsor" or "partner" appear in the slide-through.
+  // Official sponsors (confirmed by CDSU, Nov 2026), shown as the showcase below the home hero.
+  // `theme` picks each slide's colours so it reflects that organisation's own identity.
   sponsors: [
-    { id: "seeta-uni", name: "Seeta University", note: "Confirmed Sponsor • Editorial Review", status: "sponsor", url: "https://seetauniversity.ac.ug", logo: null },
-    { id: "uvtab", name: "UVTAB", note: "Confirmed Sponsor • TVET Assessment Board", status: "sponsor", url: "https://uvtab.go.ug", logo: null },
-    { id: "enterprise-uganda", name: "Enterprise Uganda", note: "Development Partner • B.E.S.T Training", status: "partner", url: "https://enterprise.co.ug", logo: null },
-    { id: "victoria-uni", name: "Victoria University", note: "Academic Review Partner", status: "partner", url: "https://vu.ac.ug", logo: null },
-    { id: "avance-uni", name: "Avance International University", note: "Academic Leadership Partner", status: "partner", url: "https://aiu.ac.ug", logo: null },
-    { id: "smack", name: "St. Mary's College Kisubi", note: "Careers Office Partner", status: "partner", url: "https://smack.sc.ug", logo: null },
-    // Pipeline sponsors mentioned in executive briefing (change status to "sponsor" once confirmed):
-    { id: "absa-bank", name: "ABSA Bank Uganda", note: "Official Banking Partner", status: "pipeline", url: "https://www.absa.co.ug", logo: null },
-    { id: "prudential", name: "Prudential Uganda", note: "Prospective Sponsor", status: "pipeline", url: "https://www.prudential.ug", logo: null },
-    { id: "nssf", name: "NSSF Uganda", note: "Prospective Sponsor", status: "pipeline", url: "https://www.nssfug.org", logo: null }
+    {
+      id: "seeta-uni",
+      name: "Seeta University",
+      theme: "seeta",
+      kicker: "Official Sponsor · Higher Education",
+      logo: "assets/images/sponsors/seeta_lockup.png",
+      logoAlt: "Seeta University crest and wordmark — “Accende Mentibus” Ignite Minds",
+      headline: "Holistic education with strong industry links",
+      summary:
+        "Seeta University in Mbalala, Mukono offers bachelor's, diploma and certificate programmes built on quality research, practical training and a strong value system of community service and leadership.",
+      highlightsLabel: "Faculties & institutes",
+      highlights: [
+        "Health Sciences", "Law", "Computing & Technology", "Business", "Education",
+        "Vocational & Technical Education", "Engineering & Design (coming soon)"
+      ],
+      facts: [
+        { icon: "calendar", label: "Intakes", value: "January · May · September" },
+        { icon: "pin", label: "Campus", value: "Mbalala, Mukono" }
+      ],
+      photos: [
+        { src: "assets/images/sponsors/seeta_campus.jpg", alt: "Seeta University teaching block" },
+        { src: "assets/images/sponsors/seeta_lab.jpg", alt: "Seeta University students in a science lab" }
+      ],
+      url: "https://su.ac.ug",
+      urlLabel: "su.ac.ug"
+    },
+    {
+      id: "uvtab",
+      name: "Uganda Vocational and Technical Assessment Board",
+      shortName: "UVTAB",
+      theme: "uvtab",
+      kicker: "Official Sponsor · TVET Assessment & Certification",
+      logo: "assets/images/sponsors/uvtab_logo_white.png",
+      logoAlt: "UVTAB logo — Assessment for Employable Skills",
+      headline: "Trusted skills. Recognised qualifications.",
+      summary:
+        "The national board responsible for assessing and certifying competences gained through formal and informal technical and vocational education and training (TVET) in Uganda.",
+      highlightsLabel: "What UVTAB does",
+      highlights: [
+        "Registration & assessment of candidates", "Accreditation of assessment centres",
+        "Certification & document verification", "Equating of qualifications",
+        "Quality assurance & standards", "Development of assessment instruments"
+      ],
+      facts: [
+        { icon: "pin", label: "Head office", value: "Plot 891 Kigobe Road, Kyambogo" },
+        { icon: "phone", label: "Telephone", value: "0392 002 468" }
+      ],
+      url: "https://uvtab.go.ug",
+      urlLabel: "uvtab.go.ug"
+    }
   ],
 
   endorsements: [
