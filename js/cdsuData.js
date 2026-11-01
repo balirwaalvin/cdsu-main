@@ -231,7 +231,8 @@ window.CDSU_DATA = {
     dates: "19–21 January 2027",
     dateBadge: { month: "Jan", days: "19–21", year: "2027" },
     venue: "Seeta High School, Mukono",
-    fee: "To be confirmed",
+    fee: "UGX 50,000",
+    feeNote: "Terms & Conditions Apply.",
     participants: "50 teachers & career counsellors",
     participantsNote: "A balanced representation from primary, secondary, TVET and tertiary institutions and community education programmes.",
     keynote: {

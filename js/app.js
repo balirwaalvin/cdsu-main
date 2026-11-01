@@ -294,6 +294,7 @@
             <li>${sIco.pin}${esc(S.venue)}</li>
             <li>${sIco.users}${esc(S.participants)}</li>
             <li>${sIco.star}Keynote: ${esc(S.keynote.name)}</li>
+            <li>${sIco.ticket}${esc(S.fee)}${S.feeNote ? ` <em class="fee-note">· ${esc(S.feeNote)}</em>` : ""}</li>
           </ul>
         </div>
         <div class="event-actions">
@@ -305,8 +306,8 @@
 
     const detailEl = $("#seminar-detail");
     if (detailEl) {
-      const fact = (icon, label, value) =>
-        `<div class="seminar-fact"><span class="icon-disc">${sIco[icon]}</span><div><small>${esc(label)}</small><strong>${esc(value)}</strong></div></div>`;
+      const fact = (icon, label, value, note) =>
+        `<div class="seminar-fact"><span class="icon-disc">${sIco[icon]}</span><div><small>${esc(label)}</small><strong>${esc(value)}</strong>${note ? `<em class="fee-note">${esc(note)}</em>` : ""}</div></div>`;
       const person = (label, p, talk) =>
         `<div class="speaker"><small>${esc(label)}</small><strong>${esc(p.name)}</strong><span>${esc(p.role)}</span>${talk ? `<em>“${esc(talk)}”</em>` : ""}</div>`;
       detailEl.innerHTML = `
@@ -319,7 +320,7 @@
         ${fact("calendar", "Dates", S.dates)}
         ${fact("pin", "Venue", S.venue)}
         ${fact("users", "Participants", S.participants)}
-        ${fact("ticket", "Registration fee", S.fee)}
+        ${fact("ticket", "Registration fee", S.fee, S.feeNote)}
       </div>
       <div class="seminar-grid">
         <div class="seminar-panel">
