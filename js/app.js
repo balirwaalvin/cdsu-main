@@ -538,7 +538,7 @@
   const row = (label, value, copy = true) =>
     `<div class="kv-row"><div><small>${esc(label)}</small><strong>${esc(value)}</strong></div>${copy ? `<button class="copy-btn" data-copy="${esc(value)}">Copy</button>` : ""}</div>`;
   const bankHtml = `<div class="kv">
-    ${row("Bank", `${P.bank.bankName}, ${P.bank.branch}`, false)}
+    ${row("Bank", P.bank.bankName, false)}
     ${row("Account name", P.bank.accountName)}
     ${row("UGX account no.", P.bank.ugxAccount)}
     ${row("USD account no. (international donors)", P.bank.usdAccount)}

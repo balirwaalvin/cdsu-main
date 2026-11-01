@@ -108,7 +108,6 @@ window.CDSU_DATA = {
   payments: {
     bank: {
       bankName: "ABSA Bank",
-      branch: "Wandegeya Branch, Uganda",
       accountName: "The Career Development Society of Uganda",
       ugxAccount: "6010048654",
       usdAccount: "6010048522"
