@@ -234,6 +234,8 @@ window.CDSU_DATA = {
     fee: "UGX 50,000",
     feeNote: "Terms & Conditions Apply.",
     feeTermsUrl: "terms.html#seminar",
+    serviceCode: "seminar-2027-01",
+    priceUgx: 50000,
     participants: "50 teachers & career counsellors",
     participantsNote: "A balanced representation from primary, secondary, TVET and tertiary institutions and community education programmes.",
     keynote: {

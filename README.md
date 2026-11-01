@@ -17,6 +17,10 @@ Or upload the folder to any web host (cPanel, Netlify, Vercel, Firebase Hosting,
 - `join.html`: 6 Membership & Impact Tiers + Direct Bank (ABSA UGX/USD) & Mobile Money Support Portal
 - `contact.html`: Secretariat Contact Details + Interactive School Referral & Partnership Form
 - `terms.html`: Terms & Conditions for payments, book orders, memberships, the National Seminar, donations and personal data
+- `account.html` + `js/account.js`: Member accounts (sign up / sign in, payments, memberships, redeem a book serial)
+- `reader.html` + `js/reader.js` + `css/reader.css`: Protected online reader for the book
+- `admin/`: Admin portal at `/admin` (payments queue, serials, inbox, members, book upload, staff, activity log)
+- `js/supa.js`: Connection to the Supabase backend (publishable key only)
 - `css/styles.css`: Brand kit (colours sampled from the logo and book cover) and responsive multi-page styles
 - `js/cdsuData.js`: **All text, contacts, prices, payments, partners, stories, and gallery items. Edit this file to change content.**
 - `js/app.js`: Conditional page rendering, navigation active-state detection, and interactive components
@@ -31,3 +35,11 @@ Or upload the folder to any web host (cPanel, Netlify, Vercel, Firebase Hosting,
 ## Notes
 - Forms have no server. They open WhatsApp (to the WhatsApp-only number) or the visitor's email app with the message already filled in.
 - The book's chapters appear only as summaries, so the full content stays in the paid book.
+
+## Backend (Supabase project "CDSU", ref `kmkankeawivfduiumtnb`)
+- **Payments:** the payment pop-up's confirmation form calls `submit_payment`; every confirmation lands in `/admin` as *pending*. Confirming it (`review_payment`) unlocks what was bought: a book serial (`CDSU-XXXX-XXXX-XXXX`), a membership/registration, a seminar seat, or a recorded donation.
+- **Book serials:** sent to the buyer with one-click WhatsApp/email buttons in the portal; the buyer redeems it in *My Account*. Printed copies get serials from *Book serials → Generate*.
+- **Online book:** upload the PDF in *Admin → Online book*. The browser converts pages to images and stores them in the private `book` bucket; the PDF is never uploaded or committed. Readers get 60-second links to one page at a time, watermarked with their email and serial.
+- **Messages:** the contact form saves to the portal inbox (`submit_message`).
+- **Security:** every table has row-level security; visitors can only submit, members see only their own records, and staff actions go through permission-checked functions recorded in the activity log. Only the publishable key is in this repo — never add the service-role key.
+- **Staff:** a person creates an account on the site, then an administrator adds their email under *Admin → Staff* (roles: Administrator, Secretariat).

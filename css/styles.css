@@ -123,7 +123,7 @@ p { margin: 0 0 1em; }
   font-family: var(--font-body); font-style: italic; font-size: .76rem;
   color: var(--navy); opacity: .8; margin-top: .14rem;
 }
-.site-nav { display: flex; align-items: center; gap: 1.35rem; }
+.site-nav { display: flex; align-items: center; gap: 1.1rem; }
 .site-nav a:not(.btn) {
   color: var(--ink); text-decoration: none; font-weight: 500;
   font-size: .94rem; position: relative; white-space: nowrap;
@@ -134,7 +134,7 @@ p { margin: 0 0 1em; }
 }
 .site-nav a:not(.btn):hover::after, .site-nav a.active::after { width: 100%; }
 .site-nav a.active:not(.btn) { color: var(--navy); font-weight: 700; }
-.site-nav .btn { border-radius: 10px; padding: .65em 1.3em; }
+.site-nav .btn { border-radius: 10px; padding: .65em 1.2em; white-space: nowrap; }
 .nav-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
 .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--navy); margin: 5px 0; transition: .2s; }
 
@@ -568,6 +568,49 @@ a.fee-note:hover { color: var(--navy); }
 .seminar-ctas { display: grid; gap: .6rem; }
 .seminar-closing { text-align: center; font-family: var(--font-serif); font-style: italic; font-size: 1.02rem; color: var(--navy); margin: 2.2rem 0 0; }
 
+/* Member account */
+.page-hero-slim { padding: clamp(2rem, 4vw, 2.8rem) 0; }
+.acct-section { padding-top: clamp(2rem, 4vw, 3rem); }
+.acct-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.6rem 1.8rem; }
+.acct-card h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: .9rem; }
+.auth-wrap { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 1.5rem; align-items: start; max-width: 980px; margin: 0 auto; }
+.auth-tabs { display: flex; gap: .3rem; background: var(--surface); border-radius: 999px; padding: .3rem; margin-bottom: 1.2rem; }
+.auth-tabs button { flex: 1; border: 0; background: none; border-radius: 999px; padding: .6rem; font: 600 .9rem var(--font-display); color: var(--muted); cursor: pointer; }
+.auth-tabs button[aria-selected="true"] { background: var(--navy); color: #fff; }
+.auth-note { background: var(--tint); border-left: 3px solid var(--gold); padding: .7rem .9rem; border-radius: 8px; font-size: .9rem; }
+.auth-aside { background: var(--navy); color: #fff; border-radius: var(--radius); padding: 1.6rem 1.8rem; }
+.auth-aside h3 { color: var(--gold); font-size: 1.05rem; }
+.auth-aside ul { margin: 0; padding-left: 1.2rem; display: grid; gap: .7rem; color: rgba(255,255,255,.85); font-size: .93rem; }
+.auth-aside li::marker { color: var(--gold); }
+.auth-aside strong { color: #fff; }
+.link-btn { border: 0; background: none; padding: 0; color: var(--blue); font: inherit; font-size: .88rem; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; justify-self: start; }
+.form .check { display: flex; align-items: flex-start; gap: .55rem; font-size: .86rem; color: var(--muted); }
+.form .check input { margin-top: .2rem; }
+.acct-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+.acct-head h2 { margin: 0; color: var(--ink); font-size: clamp(1.5rem, 2.6vw, 2rem); }
+.acct-head p { margin: .2rem 0 0; }
+.acct-head .pill { margin-bottom: .6rem; }
+.acct-head-actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+.acct-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.acct-wide { grid-column: 1 / -1; }
+.acct-book { border-top: 3px solid var(--gold); }
+.book-row { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; }
+.book-row img { filter: drop-shadow(0 8px 14px rgba(0,0,0,.25)); flex-shrink: 0; }
+.progress { height: 8px; background: var(--tint); border-radius: 99px; overflow: hidden; margin: .6rem 0 .3rem; }
+.progress span { display: block; height: 100%; background: var(--gold); border-radius: 99px; }
+.serial-input { font-family: var(--font-display); letter-spacing: .08em; text-transform: uppercase; }
+.acct-list { list-style: none; margin: 0 0 .8rem; padding: 0; display: grid; gap: .6rem; }
+.acct-list li { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .75rem .9rem; border: 1px solid var(--line); border-radius: 10px; }
+.acct-list small { display: block; color: var(--muted); font-size: .8rem; }
+.chip-status { display: inline-block; white-space: nowrap; font-size: .74rem; font-weight: 700; padding: .25rem .65rem; border-radius: 999px; background: var(--tint); color: var(--navy); }
+.chip-status.is-pending { background: #FFF4D6; color: #7A5A00; }
+.chip-status.is-confirmed, .chip-status.is-active, .chip-status.is-redeemed { background: #E3F4E6; color: #1E6B34; }
+.chip-status.is-rejected, .chip-status.is-revoked, .chip-status.is-cancelled { background: #FBE7E5; color: #9B2C20; }
+.table-wrap { overflow-x: auto; }
+.acct-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.acct-table th, .acct-table td { text-align: left; padding: .65rem .8rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.acct-table th { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: var(--surface); }
+
 /* Terms & Conditions */
 .terms-layout { display: grid; grid-template-columns: 250px 1fr; gap: 2.5rem; align-items: start; }
 .terms-toc {
@@ -829,6 +872,26 @@ a.fee-note:hover { color: var(--navy); }
 .momo-dial:hover { background: var(--blue); }
 .lightbox img { width: 100%; max-height: 70vh; object-fit: contain; border-radius: 8px; }
 
+/* Payment confirmation form inside the payment pop-up */
+#pay-confirm { display: block; margin-top: 1.2rem; }
+.pay-form { border-top: 1px solid var(--line); padding-top: 1.2rem; gap: .8rem; }
+.pay-form h4 { margin: 0; font-size: 1.02rem; color: var(--navy); }
+.pay-form > p.small { margin: -.4rem 0 0; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem 1rem; align-items: start; }
+.pay-form .btn { justify-self: start; }
+.pay-alt { margin: 0; }
+.pay-done { border-top: 1px solid var(--line); padding-top: 1.4rem; text-align: center; display: grid; justify-items: center; gap: .3rem; }
+.pay-done h4 { color: var(--navy); margin: .4rem 0 .2rem; }
+.pay-done p { margin: 0 0 .4rem; }
+.pay-done-icon { width: 52px; height: 52px; border-radius: 50%; background: var(--gold); color: var(--navy); display: grid; place-items: center; }
+.pay-done-icon svg { width: 26px; height: 26px; }
+.seats-left { font-weight: 700; color: var(--navy); }
+.access-steps { margin: 0 0 1.4rem; padding-left: 1.3rem; display: grid; gap: .55rem; color: rgba(255,255,255,.85); }
+.access-steps li::marker { color: var(--gold); font-weight: 700; }
+.access-steps strong { color: #fff; }
+.seminar-fact .seats-left { display: block; font-size: .78rem; margin-top: .15rem; color: var(--blue); }
+.seats-left.is-full { color: var(--danger); }
+
 .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120px); background: var(--navy-deep); color: #fff; padding: .8rem 1.4rem; border-radius: 999px; z-index: 200; transition: transform .3s; font-size: .9rem; }
 .toast.show { transform: translateX(-50%) translateY(0); }
 
@@ -842,6 +905,11 @@ a.fee-note:hover { color: var(--navy); }
 }
 
 /* Responsive */
+@media (max-width: 1240px) {
+  .brand-motto { display: none; }
+  .site-nav { gap: .95rem; }
+  .site-nav a:not(.btn) { font-size: .9rem; }
+}
 @media (max-width: 1080px) {
   .product-grid, .rules-grid { grid-template-columns: repeat(3, 1fr); }
   .author-grid { grid-template-columns: repeat(3, 1fr); }
@@ -879,6 +947,7 @@ a.fee-note:hover { color: var(--navy); }
   .sp-visual-mark img { width: min(40%, 190px); }
   .seminar-grid { grid-template-columns: 1fr; }
   .terms-layout { grid-template-columns: 1fr; gap: 1.2rem; }
+  .auth-wrap, .acct-grid { grid-template-columns: 1fr; }
   .terms-toc { position: static; }
   .event-card { grid-template-columns: auto 1fr; }
   .event-actions { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; }
@@ -902,6 +971,7 @@ a.fee-note:hover { color: var(--navy); }
   #donate-section { padding: 1.25rem .9rem !important; }
   #donate-section .contact-grid > div { padding: 1.1rem !important; }
   .who-card { padding: 1.3rem 1.2rem; }
+  .form-grid { grid-template-columns: 1fr; }
   .terms-section, .terms-summary { padding: 1.3rem 1.2rem; }
   .terms-table tbody th { white-space: normal; }
   .seminar-facts, .seminar-topics, .seminar-features { grid-template-columns: 1fr; }

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20261101n" />
+  <link rel="stylesheet" href="css/styles.css?v=20261101p" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -38,6 +38,7 @@
         <a href="stories.html">Success Stories</a>
         <a href="gallery.html">Gallery</a>
         <a href="contact.html">Contact</a>
+        <a href="account.html" class="nav-account">My Account</a>
         <a href="join.html" class="btn btn-primary btn-sm">Join / Support</a>
       </nav>
     </div>
@@ -165,20 +166,18 @@
     <section class="section section-dark" id="access">
       <div class="container" style="max-width:720px">
         <div class="tool-card">
-          <span class="pill pill-light">CDP Access Code Portal</span>
-          <h2 style="font-size:1.75rem;margin-bottom:.4rem">Register Your Original Book Serial Number</h2>
-          <p>Purchased an original copy of <em>Career Development: A Path to Wealth</em>? Submit your book's serial number below to receive your official CDP participant access code from the CDSU Secretariat.</p>
-          <form id="access-form" class="form" novalidate>
-            <label>Full name<input name="name" required placeholder="e.g. Kirabo Mimi Rehema" /></label>
-            <label>School / institution / community<input name="org" placeholder="e.g. Seeta High School, Mukono" /></label>
-            <label>Phone or email<input name="contact" required placeholder="e.g. +256 7XX XXX XXX or email" /></label>
-            <label>Book serial number<input name="serial" required placeholder="Enter the serial number on your original book copy" /></label>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary" data-channel="whatsapp">Send via WhatsApp</button>
-              <button type="submit" class="btn btn-outline-light" data-channel="email">Send via Email</button>
-            </div>
-            <p class="form-msg" role="status"></p>
-          </form>
+          <span class="pill pill-light">Online Book Access</span>
+          <h2 style="font-size:1.75rem;margin-bottom:.4rem">Read Your Book Online</h2>
+          <p>Every original copy of <em>Career Development: A Path to Wealth</em> comes with a unique serial number. Enter it in your free CDSU account to read the full book online on any phone or computer, always continuing from the page where you stopped.</p>
+          <ol class="access-steps">
+            <li><strong>Buy the book</strong> and confirm your payment on this site, or buy an original printed copy.</li>
+            <li><strong>Receive your serial number</strong> by WhatsApp or email once we confirm your payment (printed copies carry it inside).</li>
+            <li><strong>Sign in and enter it</strong> under "My Account" to unlock the online book.</li>
+          </ol>
+          <div class="form-actions">
+            <a href="account.html#book" class="btn btn-primary btn-go">Go to My Account</a>
+            <button type="button" class="btn btn-outline-light" data-open-pay="tier-book">Buy the book — UGX 50,000</button>
+          </div>
         </div>
       </div>
     </section>
@@ -235,7 +234,7 @@
         <ul class="footer-links">
           <li><a href="programme.html#seminar">Teachers&#39; Seminar · Jan 2027</a></li>
           <li><a href="programme.html#quiz-section">Career Cluster Self-Check</a></li>
-          <li><a href="book.html#access">Register Book Serial No.</a></li>
+          <li><a href="account.html#book">Read the Book Online</a></li>
           <li><a href="programme.html#products-section">5 Core CDSU Products</a></li>
           <li><a href="book.html#chapters-section">8-Chapter Book Syllabus</a></li>
           <li><a href="join.html#tiers-section">School &amp; Corporate Tiers</a></li>
@@ -296,7 +295,7 @@
       </ol>
       <div class="momo-actions"><a class="btn btn-sm momo-dial" href="tel:*185*9%23">Dial *185*9#</a><button class="copy-btn" data-copy="7261407">Copy merchant ID</button></div>
     </div></div>
-      <p class="muted small">After paying, send your name and transaction reference so we can confirm your order or membership. Payments are subject to our <a href="terms.html">Terms &amp; Conditions</a>.</p>
+      <p class="muted small">After paying, confirm your payment with the form below so we can activate what you paid for. Payments are subject to our <a href="terms.html">Terms &amp; Conditions</a>.</p>
       <div class="form-actions" id="pay-confirm"></div>
     </div>
   </div>
@@ -305,7 +304,9 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/cdsuData.js?v=20261101n"></script>
-  <script src="js/app.js?v=20261101n"></script>
+  <script src="js/cdsuData.js?v=20261101p"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="js/supa.js?v=20261101p"></script>
+  <script src="js/app.js?v=20261101p"></script>
 </body>
 </html>

@@ -4,3 +4,9 @@ build/
 .DS_Store
 __pycache__/
 *.pyc
+# Never commit the book or other source documents: this repository is public.
+# The book is uploaded through the admin portal (Online book), which stores page images privately.
+*.pdf
+CDSU Imagery*/
+.env
+.env.*

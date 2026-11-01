@@ -292,14 +292,14 @@
           <h3>${esc(S.title)} <span>${esc(S.audience)}</span></h3>
           <ul class="event-facts">
             <li>${sIco.pin}${esc(S.venue)}</li>
-            <li>${sIco.users}${esc(S.participants)}</li>
+            <li>${sIco.users}${esc(S.participants)}<span class="seats-left" data-seats="${esc(S.serviceCode)}" hidden></span></li>
             <li>${sIco.star}Keynote: ${esc(S.keynote.name)}</li>
             <li>${sIco.ticket}${esc(S.fee)}${S.feeNote ? ` <a class="fee-note" href="${esc(S.feeTermsUrl)}">· ${esc(S.feeNote)}</a>` : ""}</li>
           </ul>
         </div>
         <div class="event-actions">
           <a class="btn btn-primary btn-sm" href="programme.html#seminar">Seminar details</a>
-          <a class="btn btn-outline btn-sm" href="${registerHref}">Register interest</a>
+          <button type="button" class="btn btn-outline btn-sm" data-open-pay="${esc(S.serviceCode)}">Register &amp; pay</button>
         </div>
       </div>`;
     }
@@ -307,7 +307,7 @@
     const detailEl = $("#seminar-detail");
     if (detailEl) {
       const fact = (icon, label, value, note) =>
-        `<div class="seminar-fact"><span class="icon-disc">${sIco[icon]}</span><div><small>${esc(label)}</small><strong>${esc(value)}</strong>${note ? `<a class="fee-note" href="${esc(S.feeTermsUrl)}">${esc(note)}</a>` : ""}</div></div>`;
+        `<div class="seminar-fact"><span class="icon-disc">${sIco[icon]}</span><div><small>${esc(label)}</small><strong>${esc(value)}</strong>${note ? `<a class="fee-note" href="${esc(S.feeTermsUrl)}">${esc(note)}</a>` : ""}${icon === "users" ? `<span class="seats-left" data-seats="${esc(S.serviceCode)}" hidden></span>` : ""}</div></div>`;
       const person = (label, p, talk) =>
         `<div class="speaker"><small>${esc(label)}</small><strong>${esc(p.name)}</strong><span>${esc(p.role)}</span>${talk ? `<em>“${esc(talk)}”</em>` : ""}</div>`;
       detailEl.innerHTML = `
@@ -337,13 +337,27 @@
           ${person("Technical leadership", S.technicalLead)}
           <p class="seminar-note">${esc(S.participantsNote)}</p>
           <div class="seminar-ctas">
-            <a class="btn btn-primary" href="${registerHref}">Register your interest</a>
+            <button type="button" class="btn btn-primary" data-open-pay="${esc(S.serviceCode)}">Register &amp; pay — ${esc(S.fee)}</button>
+            <a class="btn btn-outline" href="${registerHref}">Register interest only</a>
             <a class="btn btn-outline" href="${waLink(`Hello CDSU, I have a question about the ${S.title} (${S.dates}).`)}" target="_blank" rel="noopener">Ask on WhatsApp</a>
           </div>
         </aside>
       </div>
       <p class="seminar-closing">${esc(S.closing)}</p>`;
     }
+  }
+
+  /* ---------- live "seats left" counters ---------- */
+  const seatEls = $$("[data-seats]");
+  if (seatEls.length && window.CDSU_DB) {
+    window.CDSU_DB.rpc("seats_left", { p_service: seatEls[0].dataset.seats }).then(({ data, error }) => {
+      if (error || data == null) return;
+      seatEls.forEach((el) => {
+        el.textContent = data > 0 ? ` · ${data} seat${data === 1 ? "" : "s"} left` : " · Fully booked";
+        el.classList.toggle("is-full", data === 0);
+        el.hidden = false;
+      });
+    });
   }
 
   /* ---------- endorsements ---------- */
@@ -393,10 +407,10 @@
     });
   }
 
-  /* ---------- forms (hand off to WhatsApp or email) ---------- */
-  function wireForm(form, build) {
+  /* ---------- forms (CDSU inbox first; WhatsApp or email as alternatives) ---------- */
+  function wireForm(form, build, saveToInbox) {
     if (!form) return;
-    let channel = "whatsapp";
+    let channel = $("button[data-channel]", form)?.dataset.channel || "whatsapp";
     $$("button[data-channel]", form).forEach((b) =>
       b.addEventListener("click", () => {
         channel = b.dataset.channel;
@@ -415,16 +429,25 @@
         if (msg) msg.textContent = "Please fill in the highlighted fields.";
         return;
       }
-      const { subject, body } = build(Object.fromEntries(new FormData(form)));
-      window.open(channel === "whatsapp" ? waLink(body) : mailLink(subject, body), "_blank", "noopener");
-      if (msg) msg.textContent = channel === "whatsapp" ? "Opening WhatsApp with your message…" : "Opening your email app…";
+      const values = Object.fromEntries(new FormData(form));
+      if (channel === "inbox" && saveToInbox && window.CDSU_DB) {
+        const btn = $('button[data-channel="inbox"]', form);
+        btn.disabled = true;
+        if (msg) msg.textContent = "Sending…";
+        saveToInbox(values).then(
+          () => {
+            form.reset();
+            if (msg) msg.textContent = "Thank you — your message has reached the CDSU Secretariat. We'll get back to you soon.";
+          },
+          (err) => { if (msg) msg.textContent = window.CDSU_ERR(err); }
+        ).finally(() => { btn.disabled = false; });
+        return;
+      }
+      const { subject, body } = build(values);
+      window.open(channel === "email" ? mailLink(subject, body) : waLink(body), "_blank", "noopener");
+      if (msg) msg.textContent = channel === "email" ? "Opening your email app…" : "Opening WhatsApp with your message…";
     });
   }
-
-  wireForm($("#access-form"), (v) => ({
-    subject: "CDP Access Code Request",
-    body: `Hello CDSU, I would like to register my book serial number for a CDP access code.\n\nName: ${v.name}\nSchool/Community: ${v.org || "-"}\nContact: ${v.contact}\nSerial number: ${v.serial}`
-  }));
 
   const contactForm = $("#contact-form");
   if (contactForm) {
@@ -438,10 +461,17 @@
         });
       }
     }
-    wireForm(contactForm, (v) => ({
-      subject: `CDSU Website: ${v.topic}`,
-      body: `Hello CDSU,\n\nTopic: ${v.topic}\nName: ${v.name}\nContact: ${v.contact}\n\n${v.message}`
-    }));
+    wireForm(
+      contactForm,
+      (v) => ({
+        subject: `CDSU Website: ${v.topic}`,
+        body: `Hello CDSU,\n\nTopic: ${v.topic}\nName: ${v.name}\nContact: ${v.contact}\n\n${v.message}`
+      }),
+      async (v) => {
+        const { error } = await window.CDSU_DB.rpc("submit_message", { p_name: v.name, p_contact: v.contact, p_topic: v.topic, p_body: v.message });
+        if (error) throw error;
+      }
+    );
   }
 
   /* ---------- career cluster quiz (Annexure 3, short form) ---------- */
@@ -700,6 +730,18 @@
       .join("");
   }
 
+  /* ---------- what can be paid for (codes match the `services` table in the database) ---------- */
+  const catalogue = Object.fromEntries(
+    D.impactTiers.map((t) => [t.id, { code: t.id, heading: t.ctaLabel, priceUgx: t.priceUgx, label: `${t.title} — ${t.priceFormatted}` }])
+  );
+  if (D.seminar) {
+    catalogue[D.seminar.serviceCode] = {
+      code: D.seminar.serviceCode, heading: "Register for the National Seminar", priceUgx: D.seminar.priceUgx, perPerson: true,
+      label: `${D.seminar.title} (${D.seminar.dates}) — ${D.seminar.fee} per participant`
+    };
+  }
+  catalogue.donate = { code: "donate", heading: "Donate to CDSU", priceUgx: null, label: "Donation to CDSU — any amount" };
+
   const P = D.payments;
   const row = (label, value, copy = true) =>
     `<div class="kv-row"><div><small>${esc(label)}</small><strong>${esc(value)}</strong></div>${copy ? `<button class="copy-btn" data-copy="${esc(value)}">Copy</button>` : ""}</div>`;
@@ -760,19 +802,103 @@
     const b = e.target.closest("[data-open-pay]");
     if (!b) return;
     e.preventDefault();
-    const t = D.impactTiers.find((x) => x.id === b.dataset.openPay);
-    const label = t ? `${t.title} — ${t.priceFormatted}` : "Donation to CDSU — any amount";
-    if ($("#pay-title")) $("#pay-title").textContent = t ? t.ctaLabel : "Donate to CDSU";
-    if ($("#pay-summary")) $("#pay-summary").textContent = label;
-    const note = `Hello CDSU, I have paid for: ${label}.\nName: \nTransaction reference: `;
-    if ($("#pay-confirm")) {
-      $("#pay-confirm").innerHTML = `<a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="${waLink(note)}">Confirm via WhatsApp</a><a class="btn btn-outline btn-sm" href="${mailLink(
-        "Payment confirmation: " + label,
-        note
-      )}">Confirm via Email</a>`;
+    const item = catalogue[b.dataset.openPay] || catalogue.donate;
+    if ($("#pay-title")) $("#pay-title").textContent = item.heading;
+    if ($("#pay-summary")) $("#pay-summary").textContent = item.label;
+    const confirmEl = $("#pay-confirm");
+    if (confirmEl) {
+      const note = `Hello CDSU, I have paid for: ${item.label}.\nName: \nTransaction reference: `;
+      if (window.CDSU_DB) {
+        confirmEl.innerHTML = payFormHtml(item, note);
+        wirePayForm($(".pay-form", confirmEl), item);
+      } else {
+        confirmEl.innerHTML = `<a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="${waLink(note)}">Confirm via WhatsApp</a><a class="btn btn-outline btn-sm" href="${mailLink("Payment confirmation: " + item.label, note)}">Confirm via Email</a>`;
+      }
     }
     openModal("#pay-modal");
   });
+
+  /* ---------- payment confirmation form (goes to the admin queue as "pending") ---------- */
+  function payFormHtml(item, note) {
+    const qtyLabel = item.code === "tier-book" ? "Number of copies" : item.perPerson ? "Number of participants" : "";
+    const needsOrg = item.perPerson || ["tier-school", "tier-corporate", "tier-training"].includes(item.code);
+    return `
+      <form class="form form-light pay-form" novalidate>
+        <h4>Already paid? Confirm your payment</h4>
+        <p class="small muted">Our team checks it against CDSU's statements, then activates what you paid for.</p>
+        <div class="form-grid">
+          <label>Full name<input name="name" required autocomplete="name"></label>
+          <label>Phone (WhatsApp)<input name="phone" type="tel" autocomplete="tel" placeholder="+256 7XX XXX XXX"></label>
+          <label>Email<input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label>
+          ${needsOrg ? `<label>School / organisation<input name="institution" autocomplete="organization"></label>` : ""}
+          <label>Paid with<select name="method">${Object.entries(window.CDSU_METHODS).map(([v, l]) => `<option value="${v}">${esc(l)}</option>`).join("")}</select></label>
+          <label>Transaction ID<input name="txn" required autocomplete="off" placeholder="From your SMS or bank slip"></label>
+          ${qtyLabel ? `<label>${qtyLabel}<input name="qty" type="number" min="1" max="1000" value="1" inputmode="numeric"></label>` : ""}
+          <label><span>Amount paid (<span data-currency>UGX</span>)</span><input name="amount" required inputmode="decimal" value="${item.priceUgx || ""}"></label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit for confirmation</button>
+        <p class="form-msg" role="status"></p>
+        <p class="small muted pay-alt">Prefer WhatsApp? <a href="${waLink(note)}" target="_blank" rel="noopener">Confirm on WhatsApp instead</a>. See our <a href="terms.html#payments">payment terms</a>.</p>
+      </form>`;
+  }
+
+  function wirePayForm(form, item) {
+    const f = (n) => form.elements[n];
+    let amountEdited = false;
+    const syncAmount = () => {
+      const usd = f("method").value === "bank_usd";
+      $("[data-currency]", form).textContent = usd ? "USD" : "UGX";
+      if (!amountEdited && item.priceUgx) f("amount").value = usd ? "" : item.priceUgx * Math.max(1, +(f("qty")?.value || 1));
+    };
+    f("amount").addEventListener("input", () => { amountEdited = true; });
+    f("method").addEventListener("change", syncAmount);
+    f("qty")?.addEventListener("input", syncAmount);
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const msg = $(".form-msg", form);
+      const v = Object.fromEntries(new FormData(form));
+      const missing = ["name", "txn", "amount"].filter((n) => !String(v[n] || "").trim());
+      if (!v.phone.trim() && !v.email.trim()) missing.push("phone", "email");
+      $$("input", form).forEach((el) => el.classList.toggle("invalid", missing.includes(el.name)));
+      if (missing.length) {
+        msg.textContent = missing.includes("phone") ? "Please give a phone number or an email address so we can reach you." : "Please fill in the highlighted fields.";
+        return;
+      }
+      const btn = $("button[type=submit]", form);
+      btn.disabled = true;
+      msg.textContent = "Submitting…";
+      const { data: ref, error } = await window.CDSU_DB.rpc("submit_payment", {
+        p_service: item.code, p_name: v.name, p_phone: v.phone, p_email: v.email, p_institution: v.institution || null,
+        p_quantity: +(v.qty || 1), p_amount: Number(String(v.amount).replace(/[^\d.]/g, "")),
+        p_currency: v.method === "bank_usd" ? "USD" : "UGX", p_method: v.method, p_transaction_id: v.txn, p_note: null
+      });
+      btn.disabled = false;
+      if (error) { msg.textContent = window.CDSU_ERR(error); return; }
+      const { data: auth } = await window.CDSU_DB.auth.getSession();
+      form.outerHTML = payDoneHtml(item, ref, v.email, !!auth.session);
+    });
+  }
+
+  function payDoneHtml(item, ref, email, signedIn) {
+    const next =
+      item.code === "tier-book" ? "Once we confirm your payment, we'll send your book serial number by WhatsApp or email. Enter it in your CDSU account to read the book online."
+      : item.code === "donate" ? "Once we confirm your donation, we'll send you an acknowledgement. Thank you for supporting CDSU."
+      : item.perPerson ? "Once we confirm your payment, your seminar place is booked and we'll let you know."
+      : "Once we confirm your payment, your membership or registration is activated and we'll let you know.";
+    const account = item.code === "donate" ? ""
+      : signedIn ? `<p class="small">This payment now appears in <a href="account.html">your account</a>.</p>`
+      : `<p class="small">Create a free CDSU account with the same email to follow this payment${item.code === "tier-book" ? " and read the book online" : ""}.</p>
+         <a class="btn btn-outline btn-sm" href="account.html?${new URLSearchParams({ email: email || "" })}#signup">Create my account</a>`;
+    return `
+      <div class="pay-done" role="status">
+        <span class="pay-done-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <h4>Thank you — we've received your confirmation</h4>
+        <p>Your reference: <strong>${esc(ref)}</strong> <button type="button" class="copy-btn" data-copy="${esc(ref)}">Copy</button></p>
+        <p class="small muted">${esc(next)}</p>
+        ${account}
+      </div>`;
+  }
 
   /* ---------- authors ---------- */
   const authorsEl = $("#authors");
