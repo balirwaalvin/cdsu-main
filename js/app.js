@@ -91,8 +91,6 @@
       pin: svg('<path d="M12 21s-7-5.686-7-11a7 7 0 1 1 14 0c0 5.314-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>'),
       phone: svg('<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>'),
       out: svg('<path d="M7 17 17 7"/><path d="M8 7h9v9"/>'),
-      prev: svg('<path d="m15 18-6-6 6-6"/>'),
-      next: svg('<path d="m9 18 6-6-6-6"/>'),
       gear: `<svg viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M43 2h14l2 11a38 38 0 0 1 9 4l9-7 10 10-7 9a38 38 0 0 1 4 9l11 2v14l-11 2a38 38 0 0 1-4 9l7 9-10 10-9-7a38 38 0 0 1-9 4l-2 11H43l-2-11a38 38 0 0 1-9-4l-9 7-10-10 7-9a38 38 0 0 1-4-9L5 57V43l11-2a38 38 0 0 1 4-9l-7-9 10-10 9 7a38 38 0 0 1 9-4zM50 30a20 20 0 1 0 0 40 20 20 0 1 0 0-40z"/></svg>`
     };
     const visual = (sp) =>
@@ -133,8 +131,6 @@
           <div class="sp-tabs" role="tablist" aria-label="Official sponsors">${D.sponsors
             .map((sp, i) => `<button type="button" class="sp-tab" role="tab" id="sp-tab-${i}" aria-controls="sp-slide-${i}" aria-selected="${i === 0}" data-i="${i}">${esc(sp.shortName || sp.name)}<span class="sp-progress"></span></button>`)
             .join("")}</div>
-          <button type="button" class="sp-arrow" data-step="-1" aria-label="Previous sponsor">${spIco.prev}</button>
-          <button type="button" class="sp-arrow" data-step="1" aria-label="Next sponsor">${spIco.next}</button>
         </div>
       </div>
       <div class="sp-stage">${D.sponsors.map(slide).join("")}</div>`;
@@ -142,7 +138,6 @@
     const spSlides = $$(".sp-slide", showcase);
     const spTabs = $$(".sp-tab", showcase);
     const DWELL = 8000;
-    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let current = 0;
     let timer = null;
     const show = (i) => {
@@ -158,8 +153,9 @@
       if (timer) showcase.classList.add("is-timing");
     };
     const stop = () => { clearInterval(timer); timer = null; showcase.classList.remove("is-timing"); };
+    // Loops continuously; it only holds still while keyboard focus is inside it, so it can be read.
     const start = () => {
-      if (still || spSlides.length < 2) return;
+      if (spSlides.length < 2) return;
       stop();
       showcase.style.setProperty("--sp-dwell", `${DWELL}ms`);
       timer = setInterval(() => show(current + 1), DWELL);
@@ -167,15 +163,11 @@
     };
     showcase.addEventListener("click", (e) => {
       const tab = e.target.closest(".sp-tab");
-      const arrow = e.target.closest(".sp-arrow");
-      if (tab) show(+tab.dataset.i);
-      else if (arrow) show(current + +arrow.dataset.step);
-      else return;
+      if (!tab) return;
+      show(+tab.dataset.i);
       start();
     });
-    showcase.addEventListener("mouseenter", stop);
-    showcase.addEventListener("mouseleave", start);
-    showcase.addEventListener("focusin", stop);
+    showcase.addEventListener("focusin", (e) => { if (e.target.matches(":focus-visible")) stop(); });
     showcase.addEventListener("focusout", (e) => { if (!showcase.contains(e.relatedTarget)) start(); });
     start();
   }
