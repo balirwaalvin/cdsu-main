@@ -110,8 +110,8 @@ window.CDSU_DATA = {
     physicalAddress: "Plot 5007, Valley Drive, Bulamu Ward, Gayaza, Wakiso District - Uganda",
     addressNote: "Head Secretariat (Wakiso / Kampala Metropolitan Area)",
     phones: ["+256 746 265 724", "+256 759 746 364", "+256 791 662 188"],
-    whatsappNumber: "+211 988 196 141",
-    whatsappClean: "211988196141",
+    whatsappNumber: "+256 783 120 230",
+    whatsappClean: "256783120230",
     primaryPhoneClean: "256746265724",
     emailPrimary: "info.cdsu@gmail.com",
     emailSecondary: "infor.cdsu@gmail.com"
