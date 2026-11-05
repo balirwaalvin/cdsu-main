@@ -7,6 +7,6 @@ export default defineConfig({
     name: "cdsu-site",
     compatibilityDate: "2026-11-05",
     observability: { enabled: true },
-    domains: ["cdsu.online"],
+    domains: ["cdsu.online", "www.cdsu.online"],
   },
 });

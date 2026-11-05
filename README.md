@@ -59,7 +59,7 @@ notes and scripts in this repository are not published. `_headers` sets the secu
 addresses are canonical: `/about.html` redirects to `/about`.
 
 **Domain and DNS:** `cdsu.online` is registered at Namecheap with its nameservers pointed at Cloudflare, so DNS records
-are edited in Cloudflare. `www.cdsu.online` redirects to `cdsu.online`. The MX, SPF, `mail`, `autodiscover` and
+are edited in Cloudflare. `www.cdsu.online` serves the same site, while canonical and share links use `cdsu.online`. The MX, SPF, `mail`, `autodiscover` and
 `autoconfig` records belong to Namecheap Private Email and must stay DNS-only.
 
 **Other hosts:** `.github/workflows/pages.yml` still publishes a copy to GitHub Pages at
