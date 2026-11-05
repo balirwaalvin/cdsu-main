@@ -16,7 +16,7 @@ import tempfile
 from html import escape
 from urllib.parse import urlencode
 
-SITE_URL = "https://balirwaalvin.github.io/cdsu-main/"
+SITE_URL = "https://cdsu.online/"
 SITE_NAME = "The Career Development Society of Uganda (CDSU)"
 IMAGE_VERSION = "20261101"  # bump after redrawing so platforms fetch the new images
 
@@ -80,7 +80,7 @@ START, END = "<!-- share:start -->", "<!-- share:end -->"
 
 
 def page_url(name: str) -> str:
-    return SITE_URL if name == "index.html" else SITE_URL + name
+    return SITE_URL if name == "index.html" else SITE_URL + name[:-5]  # the host serves clean URLs: /about
 
 
 def tags(name: str) -> str:

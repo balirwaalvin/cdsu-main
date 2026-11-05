@@ -44,15 +44,27 @@ Or upload the folder to any web host (cPanel, Netlify, Vercel, Firebase Hosting,
 - **Security:** every table has row-level security; visitors can only submit, members see only their own records, and staff actions go through permission-checked functions recorded in the activity log. Only the publishable key is in this repo — never add the service-role key.
 - **Staff:** a person creates an account on the site, then an administrator adds their email under *Admin → Staff* (roles: Administrator, Secretariat).
 
-## Hosting (GitHub Pages)
-The site is published by `.github/workflows/pages.yml` on every push to `main`. The workflow copies only the
-website files (`*.html`, `css`, `js`, `assets`, `admin`) and deploys them to GitHub Pages, so notes and scripts
-in this repository are not published. Until CDSU has its own domain, the site is at https://balirwa.me/cdsu-main/
-(the GitHub account's Pages domain). To use a CDSU domain, add it under the repository's Settings → Pages →
-Custom domain and point the domain's DNS at GitHub Pages.
+## Hosting (Cloudflare)
+The site lives at https://cdsu.online as a static-assets Cloudflare Worker named `cdsu-site`, configured by
+`cloudflare.config.ts` and `wrangler.config.ts`. To publish:
 
-`Dockerfile` + `Caddyfile` package the same site as a container for any container host (Railway, Render, Fly.io),
-should hosting move later: `podman build -t cdsu-site . && podman run --rm -e PORT=8080 -p 8080:8080 cdsu-site`
+```sh
+npm ci            # first time only; needs Node.js 22.18+
+npx cf auth login # first time only
+npm run deploy
+```
+
+`npm run build` copies only the website files (`*.html`, `css`, `js`, `assets`, `admin`, `_headers`) into `dist/`, so
+notes and scripts in this repository are not published. `_headers` sets the security and cache headers. Plain page
+addresses are canonical: `/about.html` redirects to `/about`.
+
+**Domain and DNS:** `cdsu.online` is registered at Namecheap with its nameservers pointed at Cloudflare, so DNS records
+are edited in Cloudflare. `www.cdsu.online` redirects to `cdsu.online`. The MX, SPF, `mail`, `autodiscover` and
+`autoconfig` records belong to Namecheap Private Email and must stay DNS-only.
+
+**Other hosts:** `.github/workflows/pages.yml` still publishes a copy to GitHub Pages at
+https://balirwaalvin.github.io/cdsu-main/ on every push to `main`. `Dockerfile` + `Caddyfile` package the same site as
+a container for any container host: `podman build -t cdsu-site . && podman run --rm -e PORT=8080 -p 8080:8080 cdsu-site`
 
 ## Link previews (WhatsApp, Facebook, LinkedIn, X, Telegram)
 Every public page carries Open Graph / Twitter Card tags (between `<!-- share:start -->` and `<!-- share:end -->`)

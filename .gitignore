@@ -10,3 +10,8 @@ __pycache__/
 CDSU Imagery*/
 .env
 .env.*
+
+# Cloudflare build output
+.cloudflare/
+.wrangler/
+.dev.vars*

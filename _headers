@@ -1,0 +1,26 @@
+# Response headers for the site on Cloudflare (the same rules as Caddyfile).
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# CSS and JS are versioned with ?v=, so browsers may keep them; images change rarely
+/css/*
+  Cache-Control: public, max-age=604800
+/js/*
+  Cache-Control: public, max-age=604800
+/admin/admin.css
+  Cache-Control: public, max-age=604800
+/admin/admin.js
+  Cache-Control: public, max-age=604800
+/assets/*
+  Cache-Control: public, max-age=86400
+
+# Keep the private areas out of search engines
+/admin/*
+  X-Robots-Tag: noindex, nofollow
+/account
+  X-Robots-Tag: noindex, nofollow
+/reader
+  X-Robots-Tag: noindex, nofollow
