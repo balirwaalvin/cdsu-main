@@ -63,9 +63,8 @@ addresses are canonical: `/about.html` redirects to `/about`.
 are edited in Cloudflare. `www.cdsu.online` serves the same site, while canonical and share links use `cdsu.online`. The MX, SPF, `mail`, `autodiscover` and
 `autoconfig` records belong to Namecheap Private Email and must stay DNS-only.
 
-**Other hosts:** `.github/workflows/pages.yml` still publishes a copy to GitHub Pages at
-https://balirwaalvin.github.io/cdsu-main/ on every push to `main`. `Dockerfile` + `Caddyfile` package the same site as
-a container for any container host: `podman build -t cdsu-site . && podman run --rm -e PORT=8080 -p 8080:8080 cdsu-site`
+**Other hosts:** `Dockerfile` + `Caddyfile` package the same site as a container for any container host:
+`podman build -t cdsu-site . && podman run --rm -e PORT=8080 -p 8080:8080 cdsu-site`
 
 ## Link previews (WhatsApp, Facebook, LinkedIn, X, Telegram)
 Every public page carries Open Graph / Twitter Card tags (between `<!-- share:start -->` and `<!-- share:end -->`)

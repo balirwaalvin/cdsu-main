@@ -456,6 +456,36 @@ p { margin: 0 0 1em; }
 .sp-gear-b { width: 260px; height: 260px; left: -90px; bottom: -100px; animation: sp-spin 45s linear infinite reverse; }
 @keyframes sp-spin { to { transform: rotate(360deg); } }
 
+/* Sponsor cards — the band under inner page headers and the row in every footer */
+.sponsor-band { background: var(--white); border-bottom: 1px solid var(--line); }
+.sponsor-band-inner { display: flex; align-items: center; justify-content: space-between; gap: .8rem 2rem; flex-wrap: wrap; padding: 1rem 0; }
+.sponsor-band-label { font-family: var(--font-display); font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.sponsor-cards { display: flex; flex-wrap: wrap; gap: .7rem; }
+.sponsor-card {
+  display: flex; align-items: center; gap: .75rem; padding: .5rem 1.15rem .5rem .75rem; border-radius: 12px;
+  background: var(--sb-bg); color: var(--white); text-decoration: none; transition: transform .2s, box-shadow .2s;
+}
+.sponsor-card[data-theme="seeta"] { --sb-bg: #24245C; }
+.sponsor-card[data-theme="uvtab"] { --sb-bg: #282C7C; }
+.sponsor-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.sponsor-card:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.sponsor-card img { height: 48px; width: auto; flex-shrink: 0; }
+.sponsor-card strong { display: block; font-family: var(--font-display); font-size: .95rem; line-height: 1.25; }
+.sponsor-card small { display: block; font-size: .74rem; line-height: 1.3; color: rgba(255,255,255,.82); }
+.sponsor-band-footer { background: transparent; border-bottom: 1px solid rgba(255,255,255,.1); }
+.sponsor-band-footer .sponsor-band-inner { padding: 1.3rem 0; }
+.sponsor-band-footer .sponsor-band-label { color: rgba(255,255,255,.82); }
+.sponsor-band-footer .sponsor-card { box-shadow: inset 0 0 0 1px rgba(255,255,255,.16); }
+.sponsor-band-footer .sponsor-card:focus-visible { outline-color: var(--white); }
+@media (max-width: 620px) {
+  .sponsor-cards { width: 100%; }
+  .sponsor-card { flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sponsor-card { transition: none; }
+  .sponsor-card:hover { transform: none; }
+}
+
 /* Sections */
 .section { padding: clamp(3.5rem, 7vw, 6rem) 0; }
 .section-tint { background: var(--tint); }

@@ -272,8 +272,10 @@ window.CDSU_DATA = {
     closing: "Together, we can build a generation of skilled, confident and productive Ugandans."
   },
 
-  // Official sponsors (confirmed by CDSU, Nov 2026), shown as the showcase below the home hero.
+  // Official sponsors (confirmed by CDSU, Nov 2026), shown as the showcase below the home hero
+  // and as the cards under each inner page's header and in every page's footer.
   // `theme` picks each slide's colours so it reflects that organisation's own identity.
+  // `crest` and `field` are the small image and wording for the cards.
   sponsors: [
     {
       id: "seeta-uni",
@@ -282,6 +284,8 @@ window.CDSU_DATA = {
       kicker: "Official Sponsor · Higher Education",
       logo: "assets/images/sponsors/seeta_lockup.png",
       logoAlt: "Seeta University crest and wordmark — “Accende Mentibus” Ignite Minds",
+      crest: "assets/images/sponsors/seeta_crest.webp",
+      field: "Higher Education",
       headline: "Holistic education with strong industry links",
       summary:
         "Seeta University in Mbalala, Mukono offers bachelor's, diploma and certificate programmes built on quality research, practical training and a strong value system of community service and leadership.",
@@ -309,6 +313,8 @@ window.CDSU_DATA = {
       kicker: "Official Sponsor · TVET Assessment & Certification",
       logo: "assets/images/sponsors/uvtab_logo_white.png",
       logoAlt: "UVTAB logo — Assessment for Employable Skills",
+      crest: "assets/images/sponsors/uvtab_crest.webp",
+      field: "TVET Assessment & Certification",
       headline: "Trusted skills. Recognised qualifications.",
       summary:
         "The national board responsible for assessing and certifying competences gained through formal and informal technical and vocational education and training (TVET) in Uganda.",

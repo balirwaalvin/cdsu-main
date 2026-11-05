@@ -172,6 +172,25 @@
     start();
   }
 
+  /* ---------- sponsor cards: under each inner page's header and in every footer ---------- */
+  if (D.sponsors.length) {
+    const cards = D.sponsors.map((sp) => `
+      <a class="sponsor-card" data-theme="${esc(sp.theme)}" href="${esc(sp.url)}" target="_blank" rel="noopener">
+        <img src="${esc(sp.crest)}" alt="" width="71" height="48">
+        <span><strong>${esc(sp.shortName || sp.name)}</strong><small>${esc(sp.field)}</small></span>
+      </a>`).join("");
+    const band = (cls) => `
+      <aside class="${cls}" aria-label="Our official sponsors">
+        <div class="container sponsor-band-inner">
+          <span class="sponsor-band-label">Proudly supported by our official sponsors</span>
+          <div class="sponsor-cards">${cards}</div>
+        </div>
+      </aside>`;
+    // The account page keeps its sign-in form at the top, so it has the footer row only.
+    $(".page-hero:not(.page-hero-slim)")?.insertAdjacentHTML("afterend", band("sponsor-band"));
+    $(".footer-cta")?.insertAdjacentHTML("afterend", band("sponsor-band sponsor-band-footer"));
+  }
+
   /* ---------- rules to a super career ---------- */
   const rulesEl = $("#rules-grid");
   if (rulesEl && D.organization.rulesToSuperCareer) {
