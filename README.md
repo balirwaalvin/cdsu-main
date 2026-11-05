@@ -46,7 +46,8 @@ Or upload the folder to any web host (cPanel, Netlify, Vercel, Firebase Hosting,
 
 ## Hosting (Cloudflare)
 The site lives at https://cdsu.online as a static-assets Cloudflare Worker named `cdsu-site`, configured by
-`cloudflare.config.ts` and `wrangler.config.ts`. To publish:
+`cloudflare.config.ts` and `wrangler.config.ts`. Every push to `main` builds and deploys it through Cloudflare's Workers
+Builds (build command `npm run build`, deploy command `npx cf deploy`). To publish by hand instead:
 
 ```sh
 npm ci            # first time only; needs Node.js 22.18+
