@@ -707,8 +707,9 @@ a.fee-note:hover { color: var(--navy); }
 .tools-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; }
 .tool-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); padding: 2rem; }
 .tool-card > p { opacity: .8; }
-.form { display: grid; gap: .9rem; }
-.form label { display: grid; gap: .3rem; font-size: .88rem; font-weight: 500; }
+/* minmax(0, 1fr) stops a dropdown's longest option from pushing fields wider than the form on phones */
+.form { display: grid; grid-template-columns: minmax(0, 1fr); gap: .9rem; }
+.form label { display: grid; grid-template-columns: minmax(0, 1fr); gap: .3rem; font-size: .88rem; font-weight: 500; }
 .form input, .form select, .form textarea {
   font: inherit; padding: .7rem .9rem; border-radius: 8px; border: 1px solid rgba(255,255,255,.25);
   background: rgba(255,255,255,.08); color: inherit;
@@ -800,15 +801,17 @@ a.fee-note:hover { color: var(--navy); }
 
 /* Contact */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.contact-grid > * { min-width: 0; } /* let the columns shrink below their longest line on small phones */
 .contact-list { list-style: none; padding: 0; display: grid; gap: 1.1rem; }
 .contact-list li { display: flex; align-items: flex-start; gap: 1rem; }
+.contact-list li > div { min-width: 0; overflow-wrap: anywhere; }
 .contact-list .ico {
   width: 46px; height: 46px; border-radius: 50%; background: var(--tint); color: var(--navy);
   display: grid; place-items: center; flex-shrink: 0;
 }
 .contact-list .ico svg { width: 20px; height: 20px; display: block; }
 .contact-list strong { display: block; font-family: var(--font-display); }
-.contact-list a { color: var(--ink); }
+.contact-list a { color: var(--ink); white-space: nowrap; } /* keep each phone number on one line */
 
 /* Footer */
 .site-footer { background: var(--navy-deep); color: rgba(255,255,255,.82); }
