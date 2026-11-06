@@ -180,7 +180,7 @@
         <a class="stat" href="#members"><small>Members</small><strong>${s.members}</strong><span>accounts created</span></a>
         <div class="stat"><small>Online readers</small><strong>${s.readers}</strong><span>books unlocked</span></div>
         <a class="stat ${s.serials_unsent ? "is-alert" : ""}" href="#serials"><small>Serials to send</small><strong>${s.serials_unsent}</strong><span>confirmed, not yet sent</span></a>
-        <div class="stat"><small>Seminar seats left</small><strong>${s.seminar_seats_left ?? "—"}</strong><span>of ${D.seminar ? 50 : "—"} · ${esc(D.seminar?.dates || "")}</span></div>
+        <div class="stat"><small>Seminar seats left</small><strong>${s.seminar_seats_left ?? "—"}</strong><span>of ${D.seminar ? 100 : "—"} ·${esc(D.seminar?.dates || "")}</span></div>
       </div>
       <div class="panel-grid">
         <section class="panel">
