@@ -231,11 +231,10 @@ window.CDSU_DATA = {
     dates: "19–21 January 2027",
     dateBadge: { month: "Jan", days: "19–21", year: "2027" },
     venue: "Seeta High School, Mukono",
-    fee: "UGX 50,000",
-    feeNote: "Terms & Conditions Apply.",
-    feeTermsUrl: "terms.html#seminar",
+    // Registration is by interest only until sponsorship is confirmed; CDSU then contacts each person.
+    registration: "Expression of interest",
+    registrationNote: "Register your interest and we will contact you individually once sponsorship is confirmed.",
     serviceCode: "seminar-2027-01",
-    priceUgx: 50000,
     participants: "Teachers & career counsellors",
     participantsNote: "A balanced representation from primary, secondary, TVET and tertiary institutions and community education programmes.",
     keynote: {
@@ -267,7 +266,7 @@ window.CDSU_DATA = {
       { icon: "layers", text: "Group work, case studies, role plays and micro-teaching" },
       { icon: "award", text: "Certificates of participation" }
     ],
-    registerTopic: "Registering for the teachers' seminar",
+    registerTopic: "Registering interest in the teachers' seminar",
     closing: "Together, we can build a generation of skilled, confident and productive Ugandans."
   },
 

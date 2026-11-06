@@ -313,12 +313,12 @@
             <li>${sIco.pin}${esc(S.venue)}</li>
             <li>${sIco.users}${esc(S.participants)}<span class="seats-left" data-seats="${esc(S.serviceCode)}" hidden></span></li>
             <li>${sIco.star}Keynote: ${esc(S.keynote.name)}</li>
-            <li>${sIco.ticket}${esc(S.fee)}${S.feeNote ? ` <a class="fee-note" href="${esc(S.feeTermsUrl)}">· ${esc(S.feeNote)}</a>` : ""}</li>
+            <li>${sIco.ticket}${esc(S.registrationNote)}</li>
           </ul>
         </div>
         <div class="event-actions">
           <a class="btn btn-primary btn-sm" href="programme.html#seminar">Seminar details</a>
-          <button type="button" class="btn btn-outline btn-sm" data-open-pay="${esc(S.serviceCode)}">Register &amp; pay</button>
+          <a class="btn btn-outline btn-sm" href="${registerHref}">Register interest</a>
         </div>
       </div>`;
     }
@@ -326,7 +326,7 @@
     const detailEl = $("#seminar-detail");
     if (detailEl) {
       const fact = (icon, label, value, note) =>
-        `<div class="seminar-fact"><span class="icon-disc">${sIco[icon]}</span><div><small>${esc(label)}</small><strong>${esc(value)}</strong>${note ? `<a class="fee-note" href="${esc(S.feeTermsUrl)}">${esc(note)}</a>` : ""}${icon === "users" ? `<span class="seats-left" data-seats="${esc(S.serviceCode)}" hidden></span>` : ""}</div></div>`;
+        `<div class="seminar-fact"><span class="icon-disc">${sIco[icon]}</span><div><small>${esc(label)}</small><strong>${esc(value)}</strong>${note ? `<span class="fact-note">${esc(note)}</span>` : ""}${icon === "users" ? `<span class="seats-left" data-seats="${esc(S.serviceCode)}" hidden></span>` : ""}</div></div>`;
       const person = (label, p, talk) =>
         `<div class="speaker"><small>${esc(label)}</small><strong>${esc(p.name)}</strong>${p.role ? `<span>${esc(p.role)}</span>` : ""}${talk ? `<em>“${esc(talk)}”</em>` : ""}</div>`;
       detailEl.innerHTML = `
@@ -339,7 +339,7 @@
         ${fact("calendar", "Dates", S.dates)}
         ${fact("pin", "Venue", S.venue)}
         ${fact("users", "Participants", S.participants)}
-        ${fact("ticket", "Registration fee", S.fee, S.feeNote)}
+        ${fact("ticket", "Registration", S.registration, S.registrationNote)}
       </div>
       <div class="seminar-grid">
         <div class="seminar-panel">
@@ -355,8 +355,7 @@
           ${person("Guest of honour", S.guestOfHonour)}
           <p class="seminar-note">${esc(S.participantsNote)}</p>
           <div class="seminar-ctas">
-            <button type="button" class="btn btn-primary" data-open-pay="${esc(S.serviceCode)}">Register &amp; pay — ${esc(S.fee)}</button>
-            <a class="btn btn-outline" href="${registerHref}">Register interest only</a>
+            <a class="btn btn-primary" href="${registerHref}">Register interest</a>
             <a class="btn btn-outline" href="${waLink(`Hello CDSU, I have a question about the ${S.title} (${S.dates}).`)}" target="_blank" rel="noopener">Ask on WhatsApp</a>
           </div>
         </aside>
@@ -477,6 +476,10 @@
         [...sel.options].forEach((o) => {
           if (o.text.toLowerCase() === topicParam.toLowerCase()) sel.value = o.text;
         });
+      }
+      const msg = $("textarea[name=message]", contactForm);
+      if (msg && D.seminar && topicParam.toLowerCase() === D.seminar.registerTopic.toLowerCase()) {
+        msg.value = `I would like to register my interest in the ${D.seminar.title} (${D.seminar.dates}).`;
       }
     }
     wireForm(
@@ -752,12 +755,6 @@
   const catalogue = Object.fromEntries(
     D.impactTiers.map((t) => [t.id, { code: t.id, heading: t.ctaLabel, priceUgx: t.priceUgx, label: `${t.title} — ${t.priceFormatted}` }])
   );
-  if (D.seminar) {
-    catalogue[D.seminar.serviceCode] = {
-      code: D.seminar.serviceCode, heading: "Register for the National Seminar", priceUgx: D.seminar.priceUgx, perPerson: true,
-      label: `${D.seminar.title} (${D.seminar.dates}) — ${D.seminar.fee} per participant`
-    };
-  }
   catalogue.donate = { code: "donate", heading: "Donate to CDSU", priceUgx: null, label: "Donation to CDSU — any amount" };
 
   const P = D.payments;
