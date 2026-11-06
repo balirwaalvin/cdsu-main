@@ -689,7 +689,7 @@ p { margin: 0 0 1em; }
 .book-meta dt { font-size: .74rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
 .book-meta dd { margin: 0; font-weight: 600; }
 .note { background: var(--tint); border-left: 3px solid var(--navy); padding: .8rem 1rem; border-radius: 6px; font-size: .92rem; }
-.endorse-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 3.5rem; }
+.endorse-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; margin-top: 3.5rem; }
 .endorse-card { background: var(--white); border-radius: var(--radius); padding: 1.6rem; border: 1px solid var(--line); box-shadow: var(--shadow); display: flex; flex-direction: column; }
 .endorse-card blockquote { font-family: var(--font-serif); font-style: italic; margin: 0 0 1.2rem; font-size: .95rem; flex: 1; position: relative; padding-top: 1.4rem; color: var(--ink); }
 .endorse-card blockquote::before { content: "“"; position: absolute; top: -.6rem; left: 0; font-size: 3rem; color: var(--gold); line-height: 1; }

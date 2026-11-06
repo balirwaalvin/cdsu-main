@@ -352,6 +352,13 @@ window.CDSU_DATA = {
         "Young people cannot go where they know not, or rely on chance to get a fulfilling life. Those who have gone ahead must hold a candle and pacify career anxiety. They say a word to a wise man is enough, but we say a word to a young man or woman changes life. This manual gives a clear footprint on how one can get to that desired place in the marketplace."
     },
     {
+      name: "Ms. Ainembabazi Shillah",
+      title: "President, Uganda National Students' Association (UNSA)",
+      image: "assets/images/ainembabazi_shillah.jpg",
+      quote:
+        "As President of the Uganda National Students' Association (UNSA), I have seen too many graduates struggle not from a lack of ability but from a lack of direction... It moves beyond theory to address the real pillars of career success: self-awareness, financial literacy, entrepreneurship, and adaptability in a changing world... I commend this work. Let it serve to guide our youth not just for jobs but to have meaningful livelihoods and participate in national transformation."
+    },
+    {
       name: "Prof. Kefa Natolooka",
       title: "Lead Academic Reviewer & Endorser",
       role: "Seasoned Academician, Lecturer & University Consultant in Uganda",
