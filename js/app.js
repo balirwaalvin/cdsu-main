@@ -9,7 +9,7 @@
   const C = D.contact;
 
   const waLink = (text) => `https://wa.me/${C.whatsappClean}?text=${encodeURIComponent(text)}`;
-  const mailLink = (subject, body) => `mailto:${C.emailPrimary}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const mailLink = (subject, body, to = C.emailPrimary) => `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
   function toast(msg) {
     const t = $("#toast");
@@ -827,7 +827,7 @@
         confirmEl.innerHTML = payFormHtml(item, note);
         wirePayForm($(".pay-form", confirmEl), item);
       } else {
-        confirmEl.innerHTML = `<a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="${waLink(note)}">Confirm via WhatsApp</a><a class="btn btn-outline btn-sm" href="${mailLink("Payment confirmation: " + item.label, note)}">Confirm via Email</a>`;
+        confirmEl.innerHTML = `<a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="${waLink(note)}">Confirm via WhatsApp</a><a class="btn btn-outline btn-sm" href="${mailLink("Payment confirmation: " + item.label, note, C.emailSupport)}">Confirm via Email</a>`;
       }
     }
     openModal("#pay-modal");
@@ -950,7 +950,9 @@
       <li><span class="ico ico-pin">${ico.pin}</span><div><strong>Physical address</strong>${esc(C.physicalAddress)}</div></li>
       <li><span class="ico ico-phone">${ico.phone}</span><div><strong>Telephone</strong>${C.phones.map((p) => `<a href="tel:${p.replace(/\s/g, "")}">${esc(p)}</a>`).join(" / ")}</div></li>
       <li><span class="ico ico-wa">${ico.wa}</span><div><strong>WhatsApp only</strong><a href="https://wa.me/${C.whatsappClean}" target="_blank" rel="noopener">${esc(C.whatsappNumber)}</a></div></li>
-      <li><span class="ico ico-mail">${ico.mail}</span><div><strong>Email</strong><a href="mailto:${esc(C.emailPrimary)}">${esc(C.emailPrimary)}</a></div></li>`;
+      <li><span class="ico ico-mail">${ico.mail}</span><div><strong>General enquiries</strong><a href="mailto:${esc(C.emailPrimary)}">${esc(C.emailPrimary)}</a></div></li>
+      <li><span class="ico ico-mail">${ico.mail}</span><div><strong>Payments &amp; support</strong><a href="mailto:${esc(C.emailSupport)}">${esc(C.emailSupport)}</a></div></li>
+      <li><span class="ico ico-mail">${ico.mail}</span><div><strong>Executive Director</strong><a href="mailto:${esc(C.emailDirector)}">${esc(C.emailDirector)}</a></div></li>`;
   }
   const footerContact = $("#footer-contact");
   if (footerContact && !footerContact.querySelector(".footer-contact-list")) {

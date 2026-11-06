@@ -113,8 +113,9 @@ window.CDSU_DATA = {
     whatsappNumber: "+256 781 442 037",
     whatsappClean: "256781442037",
     primaryPhoneClean: "256746265724",
-    emailPrimary: "info.cdsu@gmail.com",
-    emailSecondary: "infor.cdsu@gmail.com"
+    emailPrimary: "info@cdsu.online",
+    emailSupport: "support@cdsu.online",
+    emailDirector: "ed@cdsu.online"
   },
 
   payments: {
