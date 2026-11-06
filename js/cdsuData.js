@@ -377,6 +377,11 @@ window.CDSU_DATA = {
       bio: "A professional teacher, lecturer, project/community developer, and change agent. He most recently served as Dean of Students at Star International University in Juba, South Sudan, with a distinguished track record in social transformation and education innovations in Uganda."
     },
     {
+      name: "Mr. Difason Isabirye",
+      role: "Co-Founder & Executive Treasurer, CDSU",
+      image: "assets/images/author_difason_isabirye.jpg"
+    },
+    {
       name: "Dr. Kato Kimata Joshua (PhD)",
       role: "Co-Author • Substantive Vice Chancellor, Avance International University",
       credentials: "PhD & Masters in Education Planning & Management • BA Education (Kyambogo University)",

@@ -801,7 +801,7 @@ p { margin: 0 0 1em; }
 .donate-band p { opacity: .85; margin: 0; }
 
 /* Authors */
-.author-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+.author-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
 .author-card { background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); }
 .author-card img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: top; background: #e9ecf2; }
 .author-card .body { padding: 1rem; }
@@ -956,6 +956,7 @@ p { margin: 0 0 1em; }
   .brand-motto { display: none; }
   .site-nav { gap: .95rem; }
   .site-nav a:not(.btn) { font-size: .9rem; }
+  .author-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 1080px) {
   .product-grid, .rules-grid { grid-template-columns: repeat(3, 1fr); }

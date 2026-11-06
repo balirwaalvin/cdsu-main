@@ -926,7 +926,7 @@
         <div class="body">
           <h4>${esc(a.name)}</h4>
           <div class="role">${esc(a.role)}</div>
-          <details><summary>Profile</summary><p>${esc(a.credentials)}</p><p>${esc(a.bio)}</p></details>
+          ${a.bio ? `<details><summary>Profile</summary><p>${esc(a.credentials)}</p><p>${esc(a.bio)}</p></details>` : ""}
         </div>
       </article>`
       )
