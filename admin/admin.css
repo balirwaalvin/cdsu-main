@@ -1,6 +1,6 @@
 /* CDSU admin portal — builds on the brand tokens in ../css/styles.css */
 .admin-body { margin: 0; background: var(--surface); min-height: 100vh; }
-.admin-shell { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
+.admin-shell { display: grid; grid-template-columns: 15.625rem minmax(0, 1fr); min-height: 100vh; }
 
 /* Sidebar */
 .admin-side { background: var(--navy-deep); color: #fff; padding: 1.2rem 1rem; display: flex; flex-direction: column; gap: 1.2rem; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
@@ -47,7 +47,7 @@ a.stat:hover { border-color: var(--gold); }
 .seg { display: inline-flex; background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: .25rem; }
 .seg button { border: 0; background: none; border-radius: 999px; padding: .45rem .9rem; font: 600 .84rem var(--font-display); color: var(--muted); cursor: pointer; }
 .seg button[aria-pressed="true"] { background: var(--navy); color: #fff; }
-.search { flex: 1; min-width: 200px; max-width: 360px; font: inherit; padding: .55rem .9rem; border: 1px solid var(--line); border-radius: 999px; background: var(--white); }
+.search { flex: 1; min-width: 12.5rem; max-width: 22.5rem; font: inherit; padding: .55rem .9rem; border: 1px solid var(--line); border-radius: 999px; background: var(--white); }
 
 .table-wrap { overflow-x: auto; }
 .data { width: 100%; border-collapse: collapse; font-size: .88rem; }
@@ -66,7 +66,7 @@ a.stat:hover { border-color: var(--gold); }
 /* Drawer for reviewing a payment / message */
 .drawer { position: fixed; inset: 0; z-index: 90; background: rgba(10,26,66,.5); display: none; justify-content: flex-end; }
 .drawer.open { display: flex; }
-.drawer-box { width: min(560px, 100%); height: 100%; overflow-y: auto; background: var(--white); padding: 1.6rem 1.7rem; box-shadow: var(--shadow-lg); position: relative; }
+.drawer-box { width: min(35rem, 100%); height: 100%; overflow-y: auto; background: var(--white); padding: 1.6rem 1.7rem; box-shadow: var(--shadow-lg); position: relative; }
 .drawer-box h2 { color: var(--navy); font-size: 1.2rem; margin: 0 2rem .3rem 0; }
 .drawer-close { position: absolute; top: .8rem; right: 1rem; border: 0; background: none; font-size: 1.9rem; line-height: 1; cursor: pointer; color: var(--muted); }
 .kv-list { display: grid; grid-template-columns: 9rem 1fr; gap: .45rem 1rem; margin: 1rem 0; font-size: .9rem; }
@@ -91,7 +91,7 @@ a.stat:hover { border-color: var(--gold); }
 
 /* Sign-in screen */
 .admin-login { min-height: 100vh; display: grid; place-items: center; padding: 1.5rem; background: radial-gradient(ellipse at 85% 20%, rgba(49,85,140,.55), transparent 55%), linear-gradient(135deg, var(--navy-deep), var(--navy)); }
-.admin-login .acct-card { width: min(420px, 100%); }
+.admin-login .acct-card { width: min(26.25rem, 100%); }
 .admin-login .admin-brand { color: var(--navy); margin-bottom: 1.2rem; padding: 0; }
 .admin-login .admin-brand img { border: 1px solid var(--line); }
 
