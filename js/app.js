@@ -328,7 +328,7 @@
       const fact = (icon, label, value, note) =>
         `<div class="seminar-fact"><span class="icon-disc">${sIco[icon]}</span><div><small>${esc(label)}</small><strong>${esc(value)}</strong>${note ? `<a class="fee-note" href="${esc(S.feeTermsUrl)}">${esc(note)}</a>` : ""}${icon === "users" ? `<span class="seats-left" data-seats="${esc(S.serviceCode)}" hidden></span>` : ""}</div></div>`;
       const person = (label, p, talk) =>
-        `<div class="speaker"><small>${esc(label)}</small><strong>${esc(p.name)}</strong><span>${esc(p.role)}</span>${talk ? `<em>“${esc(talk)}”</em>` : ""}</div>`;
+        `<div class="speaker"><small>${esc(label)}</small><strong>${esc(p.name)}</strong>${p.role ? `<span>${esc(p.role)}</span>` : ""}${talk ? `<em>“${esc(talk)}”</em>` : ""}</div>`;
       detailEl.innerHTML = `
       <div class="section-head">
         <span class="pill">Upcoming national seminar</span>
@@ -353,7 +353,6 @@
         <aside class="seminar-panel seminar-people">
           ${person("Keynote speaker", S.keynote, S.keynote.talk)}
           ${person("Guest of honour", S.guestOfHonour)}
-          ${person("Technical leadership", S.technicalLead)}
           <p class="seminar-note">${esc(S.participantsNote)}</p>
           <div class="seminar-ctas">
             <button type="button" class="btn btn-primary" data-open-pay="${esc(S.serviceCode)}">Register &amp; pay — ${esc(S.fee)}</button>

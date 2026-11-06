@@ -236,15 +236,14 @@ window.CDSU_DATA = {
     feeTermsUrl: "terms.html#seminar",
     serviceCode: "seminar-2027-01",
     priceUgx: 50000,
-    participants: "50 teachers & career counsellors",
+    participants: "Teachers & career counsellors",
     participantsNote: "A balanced representation from primary, secondary, TVET and tertiary institutions and community education programmes.",
     keynote: {
       name: "Dr. Maggie Kigozi",
       role: "Former Executive Director, Uganda Investment Authority",
       talk: "Building People First: Turning Career Potential into Productivity, Enterprise and Wealth Creation"
     },
-    guestOfHonour: { name: "To be confirmed", role: "A senior representative from the Ministry of Education and Sports" },
-    technicalLead: { name: "Commissioner for Guidance and Counselling", role: "Ministry of Education and Sports" },
+    guestOfHonour: { name: "To be confirmed" },
     objectives: [
       "Introduce CDSU, its mission, objectives and national career development programme.",
       "Equip participants with practical tools to use the book Career Development: A Path to Wealth.",
