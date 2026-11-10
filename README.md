@@ -19,7 +19,9 @@ Or upload the folder to any web host (cPanel, Netlify, Vercel, Firebase Hosting,
 - `terms.html`: Terms & Conditions for payments, book orders, memberships, the National Seminar, donations and personal data
 - `account.html` + `js/account.js`: Member accounts (sign up / sign in, payments, memberships, redeem a book serial)
 - `reader.html` + `js/reader.js` + `css/reader.css`: Protected online reader for the book
-- `admin/`: Admin portal at `/admin` (payments queue, serials, inbox, members, book upload, staff, activity log)
+- `admin/`: Admin portal at `/admin` (payments queue, serials, inbox, members, book upload, staff, mailboxes, activity log)
+- `mail/`: CDSU Mail at `/mail`, webmail for ed@, info@ and support@cdsu.online (see *CDSU Mail* below)
+- `supabase/`: Database migrations and Edge Functions for CDSU Mail
 - `js/supa.js`: Connection to the Supabase backend (publishable key only)
 - `css/styles.css`: Brand kit (colours sampled from the logo and book cover) and responsive multi-page styles
 - `js/cdsuData.js`: **All text, contacts, prices, payments, partners, stories, and gallery items. Edit this file to change content.**
@@ -44,6 +46,42 @@ Or upload the folder to any web host (cPanel, Netlify, Vercel, Firebase Hosting,
 - **Security:** every table has row-level security; visitors can only submit, members see only their own records, and staff actions go through permission-checked functions recorded in the activity log. Only the publishable key is in this repo — never add the service-role key.
 - **Staff:** a person creates an account on the site, then an administrator adds their email under *Admin → Staff* (roles: Administrator, Secretariat).
 
+## CDSU Mail (`/mail`)
+Webmail for three mailboxes: **ed@cdsu.online**, **info@cdsu.online** and **support@cdsu.online**. Mail is sent and
+received through [Resend](https://resend.com); messages and attachments are stored in Supabase.
+
+- **Signing in:** each mailbox has its own password. An administrator sets or resets it in *Admin → Mailboxes*;
+  the mailbox's user can change it later in *CDSU Mail → Settings*. Only a mailbox's own sign-in can read its mail —
+  administrators manage passwords but cannot read anyone's messages. CDSU Mail keeps its own session, separate from
+  the admin portal and member accounts.
+- **Features:** Inbox, Starred, Sent, Drafts, Archive, Spam and Trash; conversations; search; replies, reply-all and
+  forwards; attachments up to 28 MB; drafts saved as you type; per-mailbox name and signature; new mail appears live.
+  Pictures in received mail stay hidden until you choose to show them. Keyboard: `c` compose, `/` search,
+  `j`/`k` next/previous, `r` reply, `a` reply all, `f` forward, `e` archive, `#` trash, Ctrl+Enter send.
+- **Routing:** mail to any other @cdsu.online address goes to info@. Mail that fails the sender's DMARC check goes to Spam.
+
+How it works (`supabase/`):
+| Piece | What it does |
+|---|---|
+| `migrations/…_mail_schema.sql` | `mailboxes` and `mail_messages` tables with row-level security |
+| `migrations/…_mail_storage_realtime.sql` | private `mail` storage bucket, live updates, `mail_counts`, `list_mailboxes` |
+| `functions/mail-send` | sends from the signed-in mailbox through the Resend API and files a copy in Sent |
+| `functions/mail-inbound` | Resend webhook: files received mail and records delivery/bounce updates |
+| `functions/mail-admin` | administrators set mailbox passwords and check the Resend connection |
+
+Setting up Resend (once):
+1. Add the domain `cdsu.online` in Resend, turn on **receiving** for it, and add the DNS records Resend lists
+   (DKIM, SPF/return-path and the receiving MX) in Cloudflare DNS.
+2. Create a **full access** API key and save it as the Supabase Edge Function secret `RESEND_API_KEY`.
+3. Create a Resend webhook to
+   `https://kmkankeawivfduiumtnb.supabase.co/functions/v1/mail-inbound` with the events `email.received`,
+   `email.delivered`, `email.delivery_delayed`, `email.bounced`, `email.complained` and `email.failed`, and save its
+   signing secret as `RESEND_WEBHOOK_SECRET`.
+4. Set each mailbox's password in *Admin → Mailboxes*. That page also shows whether the key, secret and domain are ready.
+
+The receiving MX record replaces whatever currently receives mail for cdsu.online, so mail stops going to any
+previous mail host once it is switched.
+
 ## Hosting (Cloudflare)
 The site lives at https://cdsu.online as a static-assets Cloudflare Worker named `cdsu-site`, configured by
 `cloudflare.config.ts` and `wrangler.config.ts`. Every push to `main` builds and deploys it through Cloudflare's Workers
@@ -55,7 +93,7 @@ npx cf auth login # first time only
 npm run deploy
 ```
 
-`npm run build` copies only the website files (`*.html`, `css`, `js`, `assets`, `admin`, `_headers`) into `dist/`, so
+`npm run build` copies only the website files (`*.html`, `css`, `js`, `assets`, `admin`, `mail`, `_headers`) into `dist/`, so
 notes and scripts in this repository are not published. `_headers` sets the security and cache headers. Plain page
 addresses are canonical: `/about.html` redirects to `/about`.
 
