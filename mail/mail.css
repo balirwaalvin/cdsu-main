@@ -188,3 +188,7 @@
   .read-inner { padding: 1rem 1rem 3rem; }
 }
 @media (prefers-reduced-motion: reduce) { .mail-side { transition: none; } }
+
+/* filled star when a message is starred */
+.star-on .ic, .icon-btn.is-on .ic { fill: currentColor; }
+.card-actions .btn .ic { width: 16px; height: 16px; }
