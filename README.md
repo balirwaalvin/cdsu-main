@@ -82,8 +82,9 @@ Setting up Resend (once):
    `_dmarc.cdsu.online` TXT `v=DMARC1; p=none;` (monitor only). Once mail has been delivering cleanly for a few
    weeks it can be tightened to `p=quarantine`.
 
-The receiving MX record replaces whatever currently receives mail for cdsu.online, so mail stops going to any
-previous mail host once it is switched.
+Resend's receiving MX has priority 9, so it receives cdsu.online mail first. Namecheap Private Email's MX records
+(priority 10) remain only as a fallback for when Resend can't be reached. Remove them if the Private Email
+subscription lapses.
 
 ## Hosting (Cloudflare)
 The site lives at https://cdsu.online as a static-assets Cloudflare Worker named `cdsu-site`, configured by
