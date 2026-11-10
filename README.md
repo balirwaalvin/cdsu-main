@@ -78,6 +78,9 @@ Setting up Resend (once):
    `email.delivered`, `email.delivery_delayed`, `email.bounced`, `email.complained` and `email.failed`, and save its
    signing secret as `RESEND_WEBHOOK_SECRET`.
 4. Set each mailbox's password in *Admin → Mailboxes*. That page also shows whether the key, secret and domain are ready.
+5. Publish a DMARC policy so receiving servers can align SPF/DKIM with the From domain. cdsu.online has
+   `_dmarc.cdsu.online` TXT `v=DMARC1; p=none;` (monitor only). Once mail has been delivering cleanly for a few
+   weeks it can be tightened to `p=quarantine`.
 
 The receiving MX record replaces whatever currently receives mail for cdsu.online, so mail stops going to any
 previous mail host once it is switched.
