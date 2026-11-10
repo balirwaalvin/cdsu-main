@@ -20,6 +20,8 @@
   Cache-Control: public, max-age=604800
 /mail/mail-compose.js
   Cache-Control: public, max-age=604800
+/mail/mail-emoji.js
+  Cache-Control: public, max-age=604800
 /assets/*
   Cache-Control: public, max-age=86400
 
