@@ -398,7 +398,11 @@
   }
 
   function open(anchor, host, onPick, onClose) {
-    if (P) return close();
+    if (P) {
+      const again = P.anchor === anchor && anchor.isConnected;
+      close();
+      if (again) return; // second click on the button closes it
+    }
     const el = document.createElement("div");
     el.className = "emoji-pop";
     el.setAttribute("role", "dialog");

@@ -79,6 +79,7 @@
   };
 
   function render(title, v) {
+    M.emoji?.close();
     $("#composer")?.remove();
     const tool = (cmd, label, inner) => `<button type="button" class="icon-btn" data-cmd="${cmd}" aria-label="${label}" title="${label}">${inner}</button>`;
     const el = document.createElement("div");
@@ -102,6 +103,8 @@
         ${tool("insertUnorderedList", "Bulleted list", svg("list"))}${tool("insertOrderedList", "Numbered list", "1.")}${tool("quote", "Quote", svg("quote"))}
         <span class="sep"></span>
         ${tool("link", "Add link", svg("link"))}${tool("removeFormat", "Clear formatting", "T<sub>x</sub>")}
+        <span class="sep"></span>
+        <button type="button" class="icon-btn" data-c-emoji aria-label="Insert emoji" title="Insert emoji" aria-haspopup="dialog" aria-expanded="false">${svg("smile")}</button>
       </div>
       <div class="c-editor" id="c-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Message" data-placeholder="Write your message…">${v.body}</div>
       <div class="c-atts" id="c-atts"></div>
@@ -115,7 +118,7 @@
     document.body.appendChild(el);
     renderFiles();
 
-    el.addEventListener("input", (e) => { if (e.target.id !== "c-file") changed(); });
+    el.addEventListener("input", (e) => { if (e.target.id !== "c-file" && !e.target.closest(".emoji-pop")) changed(); });
     el.addEventListener("mousedown", (e) => { if (e.target.closest("[data-cmd]")) e.preventDefault(); }); // keep the editor's selection
     el.addEventListener("click", onClick);
     el.addEventListener("keydown", (e) => {
@@ -124,6 +127,8 @@
     });
     $("#c-file").addEventListener("change", (e) => { addFiles([...e.target.files]); e.target.value = ""; });
     const ed = $("#c-editor");
+    ed.addEventListener("focus", () => { if (C) C.target = "editor"; });
+    $("#c-subject").addEventListener("focus", () => { if (C) C.target = "subject"; });
     ed.addEventListener("paste", (e) => {
       const html = e.clipboardData?.getData("text/html");
       if (!html) return;
@@ -145,6 +150,7 @@
     if (el("[data-c-ccbcc]")) { document.querySelectorAll("#composer [data-cc]").forEach((f) => { f.hidden = false; }); return $("#c-cc").focus(); }
     if (el("[data-c-send]")) return send();
     if (el("[data-c-attach]")) return $("#c-file").click();
+    if (el("[data-c-emoji]")) return M.emoji?.open(el("[data-c-emoji]"), $("#composer"), insertEmoji, emojiClosed);
     if (el("[data-c-discard]")) return discard();
     if (el("[data-c-unattach]")) {
       C.files = C.files.filter((f) => f.key !== el("[data-c-unattach]").dataset.cUnattach);
@@ -168,6 +174,49 @@
       document.execCommand(cmd, false, null);
     }
     changed();
+  }
+
+  /* ---------- emoji ---------- */
+  // Track the caret in the message so an emoji lands where the user was typing, even though focus moves
+  // into the picker while they choose.
+  document.addEventListener("selectionchange", () => {
+    const ed = C && $("#c-editor"), sel = getSelection();
+    if (ed && sel.rangeCount && ed.contains(sel.anchorNode)) C.range = sel.getRangeAt(0).cloneRange();
+  });
+
+  function insertEmoji(emoji) {
+    if (!C) return;
+    if (C.target === "subject") {
+      const s = $("#c-subject"), a = s.selectionStart ?? s.value.length, b = s.selectionEnd ?? a;
+      s.setRangeText(emoji, a, b, "end");
+    } else {
+      const ed = $("#c-editor");
+      let r = C.range && ed.contains(C.range.startContainer) ? C.range : null;
+      if (!r) { // never clicked into the message yet: start of the first paragraph, above any signature or quote
+        r = document.createRange();
+        r.setStart(ed.firstElementChild?.tagName === "P" ? ed.firstElementChild : ed, 0);
+      }
+      r.deleteContents();
+      const t = document.createTextNode(emoji);
+      r.insertNode(t);
+      r.setStartAfter(t);
+      r.collapse(true);
+      C.range = r.cloneRange();
+    }
+    changed();
+  }
+
+  // After Escape, put the caret back where the emoji went so typing can carry on.
+  function emojiClosed(returnFocus) {
+    if (!returnFocus || !C) return;
+    if (C.target === "subject") return $("#c-subject").focus();
+    const ed = $("#c-editor");
+    ed.focus();
+    if (C.range && ed.contains(C.range.startContainer)) {
+      const sel = getSelection();
+      sel.removeAllRanges();
+      sel.addRange(C.range);
+    }
   }
 
   /* ---------- attachments ---------- */
@@ -264,6 +313,7 @@
     clearTimeout(c.timer);
     if (c.dirty || (!c.id && !isBlank(values()))) await save();
     await c.saving.catch(() => {});
+    M.emoji?.close();
     $("#composer")?.remove();
     C = null;
     if (c.id) { toast("Saved to Drafts."); M.refresh(); }
@@ -276,6 +326,7 @@
     if (!c || c.sending) return;
     clearTimeout(c.timer);
     await c.saving.catch(() => {});
+    M.emoji?.close();
     $("#composer")?.remove();
     C = null;
     if (c.id) {
@@ -320,6 +371,7 @@
       status(msg, true);
       return;
     }
+    M.emoji?.close();
     $("#composer")?.remove();
     C = null;
     toast("Message sent.");
