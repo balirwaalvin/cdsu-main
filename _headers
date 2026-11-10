@@ -14,11 +14,19 @@
   Cache-Control: public, max-age=604800
 /admin/admin.js
   Cache-Control: public, max-age=604800
+/mail/mail.css
+  Cache-Control: public, max-age=604800
+/mail/mail.js
+  Cache-Control: public, max-age=604800
+/mail/mail-compose.js
+  Cache-Control: public, max-age=604800
 /assets/*
   Cache-Control: public, max-age=86400
 
 # Keep the private areas out of search engines
 /admin/*
+  X-Robots-Tag: noindex, nofollow
+/mail/*
   X-Robots-Tag: noindex, nofollow
 /account
   X-Robots-Tag: noindex, nofollow

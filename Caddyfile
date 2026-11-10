@@ -11,6 +11,7 @@
 
 	# The portal uses relative links, so it must be served with a trailing slash
 	redir /admin /admin/ 308
+	redir /mail /mail/ 308
 
 	# Clean URLs: /about serves about.html
 	try_files {path} {path}.html {path}/index.html
@@ -25,14 +26,14 @@
 	}
 
 	# CSS and JS are versioned with ?v=, so browsers may keep them; images change rarely
-	@versioned path /css/* /js/* /admin/*.css /admin/*.js
+	@versioned path /css/* /js/* /admin/*.css /admin/*.js /mail/*.css /mail/*.js
 	header @versioned Cache-Control "public, max-age=604800"
 	@images path /assets/*
 	header @images Cache-Control "public, max-age=86400"
-	@pages path / *.html /admin/
+	@pages path / *.html /admin/ /mail/
 	header @pages Cache-Control "no-cache"
 
 	# Keep the private areas out of search engines
-	@private path /admin* /account* /reader*
+	@private path /admin* /account* /reader* /mail*
 	header @private X-Robots-Tag "noindex, nofollow"
 }

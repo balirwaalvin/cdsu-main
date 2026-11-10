@@ -7,3 +7,4 @@ COPY css /srv/css
 COPY js /srv/js
 COPY assets /srv/assets
 COPY admin /srv/admin
+COPY mail /srv/mail

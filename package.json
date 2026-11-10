@@ -5,7 +5,7 @@
   "type": "module",
   "description": "The Career Development Society of Uganda (CDSU) — Official Website & Career Development Programme Portal",
   "scripts": {
-    "build": "rm -rf dist && mkdir dist && cp -r *.html css js assets admin _headers dist/",
+    "build": "rm -rf dist && mkdir dist && cp -r *.html css js assets admin mail _headers dist/",
     "start": "python3 server.py 8000",
     "deploy": "npm run build && cf deploy"
   },
