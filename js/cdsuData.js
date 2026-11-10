@@ -379,7 +379,9 @@ window.CDSU_DATA = {
     {
       name: "Mr. Difason Isabirye",
       role: "Co-Founder & Executive Treasurer, CDSU",
-      image: "assets/images/author_difason_isabirye.jpg"
+      credentials: "Bachelor of Business Administration, Accounting (Ndejje University) • Diploma in Business Administration (Nakawa Institute of Business Administration) • National Diploma in Business Management (UNEB)",
+      image: "assets/images/author_difason_isabirye.jpg",
+      bio: "A finance professional with over 18 years of service with Compassion International and Compassion-assisted projects. He has served as Finance Manager at several Child Development Centres, including Katuuso, Mackay and Entebbe CDCs, and currently works as Satellite Manager at Kigungu. His career reflects a passion for transforming children and youth and a commitment to seeing society thrive."
     },
     {
       name: "Dr. Kato Kimata Joshua (PhD)",
