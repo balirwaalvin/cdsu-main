@@ -6,9 +6,15 @@
   const URL = "https://kmkankeawivfduiumtnb.supabase.co";
   const KEY = "sb_publishable_6WDhBYqop97ODi_iJCvRnQ_pJTx29V7";
 
+  // A page can keep its own sign-in apart from the rest of the site with <html data-auth-key="…">.
+  // CDSU Mail does this, so a mailbox session and a staff or member session never replace each other.
+  const storageKey = document.documentElement.dataset.authKey;
   window.CDSU_DB = window.supabase
-    ? window.supabase.createClient(URL, KEY, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } })
+    ? window.supabase.createClient(URL, KEY, {
+        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: !storageKey, ...(storageKey ? { storageKey } : {}) }
+      })
     : null;
+  window.CDSU_FUNCTIONS = `${URL}/functions/v1`;
 
   // Turn database and sign-in errors into sentences people can act on
   window.CDSU_ERR = (err) => {
