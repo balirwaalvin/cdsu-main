@@ -55,7 +55,8 @@ received through [Resend](https://resend.com); messages and attachments are stor
   administrators manage passwords but cannot read anyone's messages. CDSU Mail keeps its own session, separate from
   the admin portal and member accounts.
 - **Features:** Inbox, Starred, Sent, Drafts, Archive, Spam and Trash; conversations; search; replies, reply-all and
-  forwards; attachments up to 28 MB; drafts saved as you type; per-mailbox name and signature; new mail appears live.
+  forwards; attachments up to 28 MB; drafts saved as you type; an emoji picker (searchable, with recently used) for the message and subject;
+  per-mailbox name and signature; new mail appears live.
   Pictures in received mail stay hidden until you choose to show them. Keyboard: `c` compose, `/` search,
   `j`/`k` next/previous, `r` reply, `a` reply all, `f` forward, `e` archive, `#` trash, Ctrl+Enter send.
 - **Routing:** mail to any other @cdsu.online address goes to info@. Mail that fails the sender's DMARC check goes to Spam.
