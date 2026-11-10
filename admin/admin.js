@@ -49,6 +49,7 @@
     members: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
     book: '<path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/>',
     staff: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+    mailboxes: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>',
     activity: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>'
   };
   const svg = (k) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icon[k]}</svg>`;
@@ -60,6 +61,7 @@
     members: { title: "Members", lead: "Everyone with a CDSU account." },
     book: { title: "Online book", lead: "Upload the book once; readers see it page by page, never as a file." },
     staff: { title: "Staff", lead: "Who can sign in to this portal.", admin: true },
+    mailboxes: { title: "Mailboxes", lead: "Sign-ins for CDSU Mail (ed@, info@ and support@cdsu.online). You can set passwords here but never read the mail.", admin: true },
     activity: { title: "Activity log", lead: "Every staff action, newest first.", admin: true }
   };
 
@@ -114,7 +116,7 @@
           <a class="admin-brand" href="../index.html" title="Open the website"><img src="../assets/images/cdsu_emblem.png" alt=""><span><small>${esc(ORG)}</small><strong>Admin Portal</strong></span></a>
           <nav class="admin-nav" aria-label="Admin sections">
             ${link("overview")}${link("payments")}${link("serials")}${link("messages")}${link("members")}${link("book")}
-            ${role === "admin" ? `<div class="admin-nav-label">Administration</div>${link("staff")}${link("activity")}` : ""}
+            ${role === "admin" ? `<div class="admin-nav-label">Administration</div>${link("staff")}${link("mailboxes")}${link("activity")}` : ""}
           </nav>
           <div class="admin-me">
             <strong>${esc(me.user_metadata?.full_name || me.email)}</strong>${esc(me.email)}<br>
@@ -145,7 +147,7 @@
     $("#view-lead").textContent = VIEWS[view].lead;
     $("#admin-side").classList.remove("open");
     $("#view").innerHTML = `<p class="empty">Loading…</p>`;
-    ({ overview, payments, serials, messages, members, book, staff, activity })[view]().catch((err) => {
+    ({ overview, payments, serials, messages, members, book, staff, mailboxes, activity })[view]().catch((err) => {
       $("#view").innerHTML = `<p class="empty">${esc(window.CDSU_ERR(err))}</p>`;
     });
   }
@@ -578,6 +580,86 @@
     });
   }
 
+  /* ---------- mailboxes (administrators) ---------- */
+  // Calls the mail-admin Edge Function and turns its error replies into readable messages
+  async function mailAdmin(action, extra = {}) {
+    const { data, error } = await db.functions.invoke("mail-admin", { body: { action, ...extra } });
+    if (error) {
+      let msg = "";
+      try { msg = (await error.context.json()).error; } catch (_) { /* not JSON */ }
+      throw new Error(msg || error.message);
+    }
+    return data;
+  }
+  const strongPassword = () => {
+    const abc = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789";
+    const r = crypto.getRandomValues(new Uint32Array(16));
+    return Array.from(r, (n) => abc[n % abc.length]).join("").replace(/(.{4})(?!$)/g, "$1-");
+  };
+
+  async function mailboxes() {
+    const [boxes, st] = await Promise.all([call("list_mailboxes"), mailAdmin("status").catch((err) => ({ error: window.CDSU_ERR(err) }))]);
+    const yes = (ok, good, bad) => `<span class="chip-status is-${ok ? "confirmed" : "pending"}">${ok ? good : bad}</span>`;
+    const dom = st.domain;
+    const domainLine = st.error ? esc(st.error)
+      : !st.api_key ? "Add the Resend API key first."
+      : st.domain_error ? esc(st.domain_error)
+      : !dom ? `${yes(false, "", "Not added")} Add cdsu.online as a domain in Resend.`
+      : `${yes(dom.status === "verified", "Verified", esc(dom.status))}${dom.region ? ` <span class="muted small">${esc(dom.region)}</span>` : ""}`;
+    $("#view").innerHTML = `
+      <div class="panel-grid">
+        <section class="panel">
+          <h2>Mailboxes</h2>
+          <div class="table-wrap"><table class="data"><thead><tr><th>Mailbox</th><th>Sign-in</th><th>Unread</th><th></th></tr></thead><tbody>
+          ${boxes.map((b) => `<tr>
+            <td><strong>${esc(b.address)}</strong><small>${esc(b.display_name)}${b.catch_all ? " · also gets mail for unknown @cdsu.online addresses" : ""}</small></td>
+            <td>${b.has_login ? `${yes(true, "Ready", "")}<small>${b.last_sign_in_at ? `Last used ${fmtDate(b.last_sign_in_at, true)}` : "Not used yet"}</small>` : yes(false, "", "No password yet")}</td>
+            <td>${b.unread}${b.last_received_at ? `<small>Last mail ${fmtDate(b.last_received_at, true)}</small>` : ""}</td>
+            <td><button type="button" class="copy-btn" data-mailbox-pw="${esc(b.address)}">${b.has_login ? "Reset password" : "Set password"}</button></td>
+          </tr>`).join("")}
+          </tbody></table></div>
+          <p class="small muted" style="margin-top:1rem">People open CDSU Mail at <a href="../mail/" target="_blank" rel="noopener">${esc(SITE.replace(/^https?:\/\//, ""))}mail</a> and sign in with the mailbox and its password. Only the mailbox's own sign-in can read its mail.</p>
+        </section>
+        <section class="panel">
+          <h2>Resend connection</h2>
+          <div class="table-wrap"><table class="data"><tbody>
+            <tr><td>API key</td><td>${st.error ? "—" : yes(st.api_key, "Added", "Not added yet")}</td></tr>
+            <tr><td>Webhook signing secret</td><td>${st.error ? "—" : yes(st.webhook_secret, "Added", "Not added yet")}</td></tr>
+            <tr><td>Domain cdsu.online</td><td>${domainLine}</td></tr>
+          </tbody></table></div>
+          <p class="small muted" style="margin-top:1rem">Sending needs the API key and a verified domain. Receiving also needs the webhook and the cdsu.online MX record pointing to Resend.</p>
+        </section>
+      </div>`;
+  }
+
+  function openMailboxPassword(address) {
+    openDrawer(`
+      <h2>Password for ${esc(address)}</h2>
+      <p class="small muted">Whoever has this password can read and send this mailbox's mail. Share it privately; they can change it later in CDSU Mail → Settings.</p>
+      <form class="form form-light" id="mbx-form" novalidate>
+        <label>New password<input name="password" type="text" minlength="10" maxlength="72" autocomplete="off" spellcheck="false" required class="mono"></label>
+        <div class="toolbar"><button type="button" class="copy-btn" data-mbx-generate>Suggest a strong password</button><button type="button" class="copy-btn" data-mbx-copy>Copy</button></div>
+        <button type="submit" class="btn btn-primary btn-sm">Save password</button>
+        <p class="form-msg" role="status"></p>
+      </form>`);
+    const f = $("#mbx-form");
+    f.password.value = strongPassword();
+    $("[data-mbx-generate]").addEventListener("click", () => { f.password.value = strongPassword(); });
+    $("[data-mbx-copy]").addEventListener("click", () => navigator.clipboard?.writeText(f.password.value).then(() => toast("Copied.")));
+    f.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const msg = $(".form-msg", f);
+      if (f.password.value.length < 10) { msg.textContent = "Use at least 10 characters."; return; }
+      msg.textContent = "Saving…";
+      try {
+        const r = await mailAdmin("set_password", { address, password: f.password.value });
+        toast(r.created ? `${address} can now sign in to CDSU Mail.` : "Password changed.");
+        closeDrawer();
+        mailboxes();
+      } catch (err) { msg.textContent = err.message; }
+    });
+  }
+
   /* ---------- activity log (administrators) ---------- */
   async function activity() {
     const [{ data, error }, people] = await Promise.all([
@@ -593,7 +675,8 @@
       "serial.batch": `Generated ${a.details?.count} serials${a.details?.label ? ` (${a.details.label})` : ""}`,
       "serial.revoked": `Revoked serial ${a.entity_id}`,
       "staff.role": `Set ${a.entity_id} as ${a.details?.role}`,
-      "book.pages": `Uploaded the online book (${a.details?.pages} pages)`
+      "book.pages": `Uploaded the online book (${a.details?.pages} pages)`,
+      "mailbox.password": `${a.details?.created ? "Created the sign-in for" : "Reset the password of"} ${a.entity_id}`
     }[a.action] || `${a.action} ${a.entity_id || ""}`);
     $("#view").innerHTML = `<section class="panel">${data.length ? `<div class="table-wrap"><table class="data">
       <thead><tr><th>When</th><th>Who</th><th>What</th></tr></thead>
@@ -634,6 +717,7 @@
       try { await call("revoke_serial", { p_code: code, p_reason: reason }); toast("Serial revoked."); serials(); } catch (err) { toast(window.CDSU_ERR(err)); }
       return;
     }
+    if (el("[data-mailbox-pw]")) return openMailboxPassword(el("[data-mailbox-pw]").dataset.mailboxPw);
     if (el("[data-staff-remove]")) {
       const email = el("[data-staff-remove]").dataset.staffRemove;
       if (!confirm(`Remove ${email} from staff? Their account stays, but they lose portal access.`)) return;
