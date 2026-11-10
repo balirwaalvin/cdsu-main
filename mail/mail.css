@@ -192,3 +192,5 @@
 /* filled star when a message is starred */
 .star-on .ic, .icon-btn.is-on .ic { fill: currentColor; }
 .card-actions .btn .ic { width: 16px; height: 16px; }
+.c-field[hidden] { display: none; }
+.composer-foot .btn .ic { width: 16px; height: 16px; }
