@@ -15,11 +15,6 @@
     set: (k, v) => { try { localStorage.setItem(k, v); } catch (_) { /* private mode */ } }
   };
 
-  const MAILBOXES = [
-    { address: "ed@cdsu.online", label: "Executive Director" },
-    { address: "info@cdsu.online", label: "Information" },
-    { address: "support@cdsu.online", label: "Support" }
-  ];
   const FOLDERS = {
     inbox: { title: "Inbox", icon: "inbox", empty: ["Your inbox is empty", "New mail appears here as soon as it arrives."] },
     starred: { title: "Starred", icon: "star", empty: ["Nothing starred", "Star a message to keep it close at hand."] },
@@ -99,16 +94,14 @@
 
   /* ---------- sign in ---------- */
   function renderLogin(note = "") {
-    const last = store.get("cdsu-mail-last") || MAILBOXES[0].address;
+    const last = store.get("cdsu-mail-last") || "";
     app.innerHTML = `
       <div class="mail-login">
         <div class="acct-card">
           <a class="mail-brand" href="../index.html"><img src="../assets/images/cdsu_emblem.png" alt=""><span><small>CDSU</small><strong>Mail</strong></span></a>
           ${note ? `<p class="auth-note">${note}</p>` : ""}
           <form class="form form-light" id="login-form" novalidate>
-            <fieldset class="box-pick"><legend>Mailbox</legend>
-              ${MAILBOXES.map((b) => `<label><input type="radio" name="box" value="${b.address}" ${b.address === last ? "checked" : ""}><span><strong>${esc(b.label)}</strong><span>${esc(b.address)}</span></span></label>`).join("")}
-            </fieldset>
+            <label>Email address<input name="email" type="email" required autocomplete="username" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="you@cdsu.online" value="${esc(last)}"></label>
             <label>Password<input name="password" type="password" required autocomplete="current-password"></label>
             <button type="submit" class="btn btn-primary">Sign in</button>
             <p class="form-msg" role="status"></p>
@@ -117,11 +110,16 @@
         </div>
       </div>`;
     const f = $("#login-form");
-    f.password.focus();
+    (last ? f.password : f.email).focus();
     f.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const msg = $(".form-msg", f), email = f.box.value;
-      if (!f.password.value) { msg.textContent = "Enter the mailbox password."; return; }
+      const msg = $(".form-msg", f);
+      // "ed" on its own is taken as ed@cdsu.online
+      let email = f.email.value.trim().toLowerCase();
+      if (email && !email.includes("@")) email += "@cdsu.online";
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = "Enter your CDSU Mail address."; f.email.focus(); return; }
+      f.email.value = email;
+      if (!f.password.value) { msg.textContent = "Enter the mailbox password."; f.password.focus(); return; }
       msg.textContent = "Signing in…";
       store.set("cdsu-mail-last", email);
       const { error } = await db.auth.signInWithPassword({ email, password: f.password.value });
@@ -139,7 +137,7 @@
     if (error) return renderLogin(esc(ERR(error)));
     if (!box) {
       await db.auth.signOut();
-      return renderLogin(`<strong>${esc(S.user.email)}</strong> isn't a CDSU mailbox. Sign in with ed@, info@ or support@cdsu.online.`);
+      return renderLogin(`<strong>${esc(S.user.email)}</strong> isn't a CDSU mailbox. Sign in with your CDSU Mail address.`);
     }
     S.box = box;
     renderShell();
