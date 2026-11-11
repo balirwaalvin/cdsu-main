@@ -137,7 +137,7 @@
 
     const spSlides = $$(".sp-slide", showcase);
     const spTabs = $$(".sp-tab", showcase);
-    const DWELL = 8000;
+    const DWELL = 10000;
     let current = 0;
     let timer = null;
     const show = (i) => {

@@ -399,7 +399,7 @@ p { margin: 0 0 1em; }
 }
 .sp-tab[aria-selected="true"] { background: var(--navy); color: var(--white); }
 .sp-progress { position: absolute; left: 14%; right: 14%; bottom: 4px; height: 2px; border-radius: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; }
-.is-timing .sp-tab[aria-selected="true"] .sp-progress { animation: sp-progress var(--sp-dwell, 8000ms) linear forwards; }
+.is-timing .sp-tab[aria-selected="true"] .sp-progress { animation: sp-progress var(--sp-dwell, 10000ms) linear forwards; }
 @keyframes sp-progress { to { transform: scaleX(1); } }
 .sp-tab:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
 
