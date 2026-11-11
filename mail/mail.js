@@ -93,10 +93,24 @@
   const M = (window.CDSU_MAIL = { db, S, $, $$, esc, svg, toast, ERR, fmtLong, fmtSize, refresh: () => { refreshCounts(); loadList(); } });
 
   /* ---------- sign in ---------- */
+  // Decorative motion behind the sign-in card: drifting glows, a slow grid and envelopes floating up.
+  // Each envelope's lane, size, speed and delay come from CSS custom properties.
+  const ENVELOPES = [
+    [6, 34, 19, 0], [17, 22, 24, -9], [29, 40, 21, -15], [41, 26, 27, -4], [55, 30, 23, -18],
+    [67, 46, 26, -7], [78, 24, 20, -12], [89, 36, 25, -2], [95, 20, 29, -21], [12, 28, 31, -24]
+  ];
+  const loginBackdrop = () => `
+    <div class="login-bg" aria-hidden="true">
+      <span class="login-orb login-orb-1"></span><span class="login-orb login-orb-2"></span><span class="login-orb login-orb-3"></span>
+      <span class="login-grid"></span>
+      ${ENVELOPES.map(([x, size, dur, delay]) => `<svg class="login-env" style="--x:${x}%;--s:${size}px;--d:${dur}s;--w:${delay}s" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>`).join("")}
+    </div>`;
+
   function renderLogin(note = "") {
     const last = store.get("cdsu-mail-last") || "";
     app.innerHTML = `
       <div class="mail-login">
+        ${loginBackdrop()}
         <div class="acct-card">
           <a class="mail-brand" href="../index.html"><img src="../assets/images/cdsu_emblem.png" alt=""><span><small>CDSU</small><strong>Mail</strong></span></a>
           ${note ? `<p class="auth-note">${note}</p>` : ""}
