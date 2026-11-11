@@ -408,9 +408,9 @@ p { margin: 0 0 1em; }
   grid-area: 1 / 1; display: grid; grid-template-columns: 1.15fr 1fr; min-height: 28.75rem;
   background: var(--sp-bg); color: var(--sp-ink);
   opacity: 0; visibility: hidden; transform: translateX(24px);
-  transition: opacity .7s ease, transform .7s cubic-bezier(.22, 1, .36, 1), visibility 0s linear .7s;
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.22, 1, .36, 1), visibility 0s linear 1.2s;
 }
-.sp-slide.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity .7s ease, transform .7s cubic-bezier(.22, 1, .36, 1), visibility 0s; }
+.sp-slide.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.22, 1, .36, 1), visibility 0s; }
 .sp-slide[data-theme="seeta"] {
   --sp-bg: #24245C; --sp-ink: #FFFFFF; --sp-muted: rgba(255,255,255,.78); --sp-accent: #C0A934;
   --sp-chip-bg: rgba(255,255,255,.06); --sp-chip-line: rgba(192,169,52,.5);
