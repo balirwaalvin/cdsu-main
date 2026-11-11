@@ -9,7 +9,46 @@
   min-height: 100dvh; display: grid; place-items: center; padding: 1.5rem 1rem; overflow-y: auto;
   background: radial-gradient(ellipse at 85% 20%, rgba(49,85,140,.55), transparent 55%), linear-gradient(135deg, var(--navy-deep), var(--navy));
 }
-.mail-login .acct-card { width: min(26rem, 100%); }
+.mail-login { position: relative; isolation: isolate; }
+.mail-login .acct-card { width: min(26rem, 100%); position: relative; z-index: 1; box-shadow: 0 24px 60px rgba(4, 12, 36, .45); animation: login-card-in .8s cubic-bezier(.22, 1, .36, 1) both; }
+@keyframes login-card-in { from { opacity: 0; transform: translateY(18px) scale(.98); } }
+
+/* animated backdrop: transform and opacity only, so it stays smooth on phones */
+.login-bg { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.login-orb { position: absolute; border-radius: 50%; filter: blur(60px); mix-blend-mode: screen; will-change: transform; }
+.login-orb-1 { width: 42vmax; height: 42vmax; left: -12vmax; top: -14vmax; background: rgba(30, 78, 145, .55); animation: login-drift-1 26s ease-in-out infinite alternate; }
+.login-orb-2 { width: 34vmax; height: 34vmax; right: -10vmax; bottom: -12vmax; background: rgba(233, 179, 12, .28); animation: login-drift-2 32s ease-in-out infinite alternate; }
+.login-orb-3 { width: 24vmax; height: 24vmax; left: 55%; top: 10%; background: rgba(74, 120, 196, .35); animation: login-drift-3 22s ease-in-out infinite alternate; }
+@keyframes login-drift-1 { to { transform: translate(18vmax, 14vmax) scale(1.15); } }
+@keyframes login-drift-2 { to { transform: translate(-20vmax, -12vmax) scale(1.2); } }
+@keyframes login-drift-3 { 50% { transform: translate(-14vmax, 22vmax) scale(.85); } to { transform: translate(-30vmax, 6vmax) scale(1.1); } }
+
+.login-grid {
+  position: absolute; inset: -64px; opacity: .5;
+  background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);
+  animation: login-grid-pan 18s linear infinite;
+}
+@keyframes login-grid-pan { to { transform: translate(64px, 64px); } }
+
+.login-env {
+  position: absolute; left: var(--x); bottom: -60px; width: var(--s); height: var(--s); color: rgba(255,255,255,.5);
+  opacity: 0; will-change: transform, opacity;
+  animation: login-float var(--d) linear var(--w) infinite;
+}
+.login-env:nth-child(3n) { color: rgba(233, 179, 12, .65); }
+@keyframes login-float {
+  0% { transform: translate(0, 0) rotate(-12deg); opacity: 0; }
+  12% { opacity: .55; }
+  50% { transform: translate(28px, -55vh) rotate(8deg); }
+  85% { opacity: .35; }
+  100% { transform: translate(-16px, calc(-100vh - 120px)) rotate(-6deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .login-orb, .login-grid, .mail-login .acct-card { animation: none; }
+  .login-env { display: none; }
+}
 .mail-brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; color: inherit; }
 .mail-brand img { width: 42px; height: 42px; object-fit: contain; background: #fff; border-radius: 10px; padding: 4px; border: 1px solid var(--line); }
 .mail-brand small { display: block; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dark); font-weight: 700; }
