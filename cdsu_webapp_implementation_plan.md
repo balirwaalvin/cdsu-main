@@ -114,7 +114,7 @@ flowchart TD
   * **Dr. Simon Mwesigwa (PhD)** — *Co-Author & Deputy Vice Chancellor – Administration, Destiny University* (PhD Theology - Florida USA; MBA & B.Ed - Makerere University; 25+ years in Education Administration).
   * **Ms. Stella Naisanga** — *Co-Author & Youth/Women Empowerment Specialist* (B.IBA - KIU; Dip. ICT & Education - Makerere University; Guidance & Counseling - Reachout Uganda).
   * **Ms. Charity Barungi B.** — *Co-Author & Careers Counselor, St. Mary's College Kisubi (SMACK)* (MBA HR - Uganda Martyrs University; B.Ed English & Literature - Makerere University).
-  * **Editorial & Executive Review Board:** Highlighting **Ms. Ijuka Agnes Barongo** (Senior Executive, CDSU & Communications Lead), **Prof. Kefa Natolooka**, **Dr. Ronald Mbago** (Seeta University), **Mr. Businge Conan Daniel** (Victoria University), **Mr. Kambaho Narasi Anyijuka** (UVTAB), and **Mr. Boniface Ssebukalu**.
+  * **Editorial & Executive Review Board:** Highlighting **Ms. Ijuka Agnes Barongo** (Senior Executive, CDSU & Communications Lead), **Prof. Kefa Natolooka**, **Dr. Ronald Mbago** (Seeta University), **Mr. Businge Conan Daniel** (Victoria University), **Mr. Kambaho Narasi Anyijuka** (UVTAB), and **Mr. Boniface Ssebukalu** (Strategic Linkages, Seeta High School, Mukono).
 
 ### 4.3 Our Work & 5 Core Products (From Brochure)
 * **The 3-Phase CDP Journey Interactive Stepper:**
