@@ -15,13 +15,6 @@
 .mail-brand small { display: block; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dark); font-weight: 700; }
 .mail-brand strong { font-family: var(--font-display); font-size: 1.05rem; color: var(--navy); }
 .mail-login .mail-brand { margin-bottom: 1.2rem; }
-.box-pick { display: grid; gap: .45rem; margin: 0 0 .2rem; padding: 0; border: 0; }
-.box-pick legend { font-size: .88rem; font-weight: 500; margin-bottom: .35rem; padding: 0; }
-.box-pick label { display: flex !important; align-items: center; gap: .7rem; border: 1px solid var(--line); border-radius: 10px; padding: .6rem .8rem; cursor: pointer; }
-.box-pick label:has(input:checked) { border-color: var(--navy); box-shadow: inset 3px 0 0 var(--gold); background: #FAFBFE; }
-.box-pick input { accent-color: var(--navy); margin: 0; }
-.box-pick strong { display: block; font-size: .9rem; }
-.box-pick span span { display: block; font-size: .78rem; color: var(--muted); font-weight: 400; }
 
 /* ---------- three-pane layout ---------- */
 .mail-app { display: grid; grid-template-columns: 15rem minmax(19rem, 25rem) minmax(0, 1fr); height: 100dvh; }
