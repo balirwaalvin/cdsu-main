@@ -419,7 +419,7 @@ window.CDSU_DATA = {
     { name: "Dr. Ronald Mbago", role: "Reviewer • Seeta University" },
     { name: "Mr. Businge Conan Daniel", role: "Reviewer • Victoria University" },
     { name: "Mr. Kambaho Narasi Anyijuka", role: "Reviewer • Uganda Vocational & Technical Assessment Board (UVTAB)" },
-    { name: "Mr. Boniface Ssebukalu", role: "Strategic Linkages & Pilot Phase Advisor" }
+    { name: "Mr. Boniface Ssebukalu", role: "Strategic Linkages • Seeta High School, Mukono" }
   ],
 
   bookChapters: [
